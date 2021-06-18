@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
       for ($i=0; $i < 6; $i++) {
         $new_user = new User();
         $new_user->name = $faker->word();
-        $new_user->email = $faker->uniqueEmail();
+        $new_user->email = $faker->safeEmail();
         $new_user->password = $faker->word();
         $new_user->save();
       }
