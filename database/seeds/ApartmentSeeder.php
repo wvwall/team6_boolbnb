@@ -16,7 +16,7 @@ class ApartmentSeeder extends Seeder
     {
       for ($i=0; $i < 10; $i++) {
         $new_apartment = new Apartment();
-        $new_apartment->title = $faker->word();
+        $new_apartment->title = $faker->sentence(3);
         $new_apartment->city = $faker->city();
         $new_apartment->address = $faker->streetAddress();
         $new_apartment->n_rooms = $faker->numberBetween(1, 15);
