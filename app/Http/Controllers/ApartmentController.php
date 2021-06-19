@@ -9,10 +9,15 @@ class ApartmentController extends Controller
 {
   public function index()
     {
+      return view('guests.apartments.index');
+    }
+    public function database($value='')
+    {
       $apartments = Apartment::all();
       return response()->json([
         'data' => $apartments,
         'success' => true,
       ]);
     }
+
 }

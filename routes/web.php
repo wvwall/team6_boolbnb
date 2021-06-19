@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('apartments', 'ApartmentController@index')->name('apartment.index');
+Route::resource('apartments', 'ApartmentController');
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
   ->group(function () {

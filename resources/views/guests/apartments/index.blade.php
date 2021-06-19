@@ -4,23 +4,30 @@
   <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-12 justify-content-center" style="display: flex">
+          <h1>APARTMENTS</h1>
         </div>
-        @foreach($apartments as $apartment)
-        <a href="">
-          <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-              <img src="" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{ $apartment->title }}</h5>
-                <p class="card-text">{{ $apartment->city }}</p>
-              </div>
+        <div class="col-12" style="display: flex; flex-wrap: wrap;
+        justify-content: space-between;">
+          <div
+          v-for="apartment in apartments"
+          :key="apartment.id"
+          class="card"
+          style="width: 18rem; margin: 30px 0;">
+            <div class="card-body">
+              <h5 class="card-title">@{{apartment.title}}</h5>
+              <p class="card-text">@{{apartment.city}}</p>
+              <p class="card-text">@{{apartment.address}}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
-        </a>
-        @endforeach
+        </div>
+
       </div>
   </div>
 </div>
+@endsection
+
+@section('foot-script')
 <script type="text/javascript">
   let app = new Vue({
     el: '#root',
@@ -29,9 +36,14 @@
     },
     created(){
       axios.get('http://localhost:8000/api/apartments').then((response)=>{
-        console.log("ok");
+        this.apartments = response.data.data;
       });
     }
   })
 </script>
+@endsection
+
+@section('head')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 @endsection
