@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
         $new_user->name = $faker->word();
         $new_user->email = $faker->safeEmail();
         $new_user->password = $faker->word();
+        $new_user->has_appartment = $faker->boolean();
         $new_user->save();
       }
     }
