@@ -17,7 +17,7 @@
               <h5 class="card-title">@{{apartment.title}}</h5>
               <p class="card-text">@{{apartment.city}}</p>
               <p class="card-text">@{{apartment.address}}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="#" class="btn btn-primary">Show</a>
             </div>
           </div>
         </div>
