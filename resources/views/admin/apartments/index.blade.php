@@ -18,7 +18,7 @@
                 <p class="card-text">{{$apartment->city}}</p>
                 <p class="card-text">{{$apartment->address}}</p>
                 <div class="commands" style="display:flex">
-                  <a href="#" class="btn btn-primary">Edit</a>
+                  <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-primary">Edit</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">
                     @csrf
                     @method('DELETE')

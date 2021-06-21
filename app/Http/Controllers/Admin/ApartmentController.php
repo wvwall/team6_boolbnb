@@ -60,7 +60,7 @@ class ApartmentController extends Controller
           ]);
 
           $data = $request->all();
-          $apartment->visibility = ($request->visibility) ? '1' : '0';
+          // $apartment->visibility = ($request->visibility) ? '1' : '0';
           if (array_key_exists('thumb', $data)) {
               $thumb = Storage::put('uploads', $data['thumb']);
           }
