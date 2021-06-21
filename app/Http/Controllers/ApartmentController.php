@@ -11,6 +11,12 @@ class ApartmentController extends Controller
     {
       return view('guests.apartments.index');
     }
+
+    public function show(Apartment $apartment) {
+      return view('guests.apartments.show', compact('apartment'));
+    }
+
+
     public function database()
     {
       $apartments = Apartment::all();
@@ -19,5 +25,4 @@ class ApartmentController extends Controller
         'success' => true,
       ]);
     }
-
 }

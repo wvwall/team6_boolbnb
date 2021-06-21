@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('apartments', 'ApartmentController@index')->name('apartment.index');
-
+Route::get('apartments/{id}', 'ApartmentController@show')->name('guest.apartments.show');
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
   ->group(function () {

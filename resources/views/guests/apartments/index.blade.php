@@ -8,20 +8,21 @@
         </div>
         <div class="col-12" style="display: flex; flex-wrap: wrap;
         justify-content: space-between;">
-          <div
-          v-for="apartment in apartments"
-          :key="apartment.id"
-          class="card"
-          style="width: 18rem; margin: 30px 0;">
-            <div class="card-body">
-              <h5 class="card-title">@{{apartment.title}}</h5>
-              <p class="card-text">@{{apartment.city}}</p>
-              <p class="card-text">@{{apartment.address}}</p>
-              <a href="#" class="btn btn-primary">Show</a>
+          <a href="{{route('guests.apartments.show'), ['apartment'=>$apartment->id]}}">
+            <div
+            v-for="apartment in apartments"
+            :key="apartment.id"
+            class="card"
+            style="width: 18rem; margin: 30px 0;">
+              <div class="card-body">
+                <h5 class="card-title">@{{apartment.title}}</h5>
+                <p class="card-text">@{{apartment.city}}</p>
+                <p class="card-text">@{{apartment.address}}</p>
+                <a href="#" class="btn btn-primary">Show</a>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
-
       </div>
   </div>
 </div>

@@ -81,9 +81,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Postgram
+                    Bnb
                 </div>
-
                 <div class="links">
                     <a href="{{route('apartment.index')}}">Apartments</a>
                 </div>
