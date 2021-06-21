@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\UserController;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
@@ -18,10 +21,11 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::where(User::all()->id == Apartment::all()->user_id );
-        return view('admin.apartments.index', compact('apartments'));
+      $apartments = DB::table('apartments')
+                     ->where('user_id', '=',  Auth::user()->id)
+                     ->get();
+      return view('admin.apartments.index', compact('apartments'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -44,31 +48,31 @@ class ApartmentController extends Controller
             'title' => 'required|string|max:255|unique:apartments',
             'city' =>   'required|string|max:255',
             'address' =>   'required|string|max:255',
-            'lat' => 'required|numeric',
-            'long' => 'required|numeric',
-            'n_rooms' => 'required|numeric',
-            'n_beds' => 'required|numeric',
+            'lat' => 'nullable|numeric',
+            'long' => 'nullable|numeric',
+            'n_rooms' => 'numeric',
+            'n_beds' => 'numeric',
             'n_bathrooms' => 'required|numeric',
             'square_meters' => 'required|numeric',
             'thumb' =>   'nullable|image|max:6000',
-            'visibility' => 'required|boolean',
-            'users_ids.*' => 'exists:users,id'
+            'visibility' => 'nullable|boolean',
+            'users_id' => 'exists:users,id|nullable'
           ]);
-          
+
           $data = $request->all();
+          $apartment->visibility = ($request->visibility) ? '1' : '0';
           if (array_key_exists('thumb', $data)) {
               $thumb = Storage::put('uploads', $data['thumb']);
           }
-
           $thumb = NULL;
           $apartment = new Apartment();
           $apartment->fill($data);
-          /* $data['slug'] = $this->generateSlug($data['title']); */
+
           $apartment->slug = $this->generateSlug($apartment->title);
           $apartment->thumb = $thumb;
           $apartment->save();
 
-        
+
 
           return redirect()->route('admin.apartments.index');
     }
@@ -107,16 +111,16 @@ class ApartmentController extends Controller
         $request->validate([
             'title' => 'required|string|max:255|unique:apartments',
             'city' =>   'required|string|max:255',
-            'address' =>   'required|string|max:255',
-            'lat' => 'required|numeric',
-            'long' => 'required|numeric',
+            'address' =>  'required|string|max:255',
+            'lat' => 'numeric',
+            'long' => 'numeric',
             'n_rooms' => 'required|numeric',
             'n_beds' => 'required|numeric',
             'n_bathrooms' => 'required|numeric',
             'square_meters' => 'required|numeric',
             'thumb' =>   'nullable|image|max:6000',
             'visibility' => 'required|boolean',
-            'users_ids.*' => 'exists:users,id'
+            'users_id' => 'exists:users,id'
           ]);
 
           $data = $request->all();
@@ -154,7 +158,7 @@ class ApartmentController extends Controller
           $slug = $slug_base . '-' . $contatore;
           $contatore++;
           $apartment_with_slug = Apartment::where('slug','=',$slug)->first();
-  }
+      }
         return $slug;
   }
 }

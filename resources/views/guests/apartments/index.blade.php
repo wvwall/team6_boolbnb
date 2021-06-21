@@ -35,7 +35,7 @@
       apartments:[],
     },
     created(){
-      axios.get('http://localhost:8000/api/apartments').then((response)=>{
+      axios.get('http://localhost:8001/api/apartments').then((response)=>{
         this.apartments = response.data.data;
       });
     }
