@@ -27,6 +27,7 @@ class Apartment extends Model
   }
 
   public function message() {
+    
     return $this->hasMany('App\Message');
 }
 }
