@@ -5,15 +5,15 @@
       <div class="row justify-content-center">
         <div class="col-md-12 justify-content-center" style="display: flex">
           <h1>APARTMENTS</h1>
-          <a href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
         </div>
+        <a class="col-12 text-center my-4" href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
         <div class="col-12" style="display: flex; flex-wrap: wrap;">
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
             <div
             class="card"
             style="width: 18rem; margin: 30px 0;">
-              <div class="card-body">
+              <div class="card-body col-4 mx-2">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <p class="card-text">{{$apartment->city}}</p>
                 <p class="card-text">{{$apartment->address}}</p>

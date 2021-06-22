@@ -1,11 +1,26 @@
 @extends('layouts.app')
 @section('content')
+
 <div id="root">
   <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-12 justify-content-center" style="display: flex">
-          <h1>APARTMENTS</h1>
+        <div class="col-md-12 justify-content-center my-2" style="display: flex">
+          <h1>BoolBnB</h1>
         </div>
+
+        <div class="container h-100 my-4 col-xs-8">
+          <div class="d-flex justify-content-center h-100">
+            <div class="searchbar">
+              <input class="search_input" type="text" name="" placeholder="Search...">
+              <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 justify-content-center my-4" style="display: flex">
+          <h3>In Evidenza</h3>
+        </div>
+
         <div class="col-12" style="display: flex; flex-wrap: wrap;
         justify-content: space-between;">
         @foreach($apartments as $apartment)
