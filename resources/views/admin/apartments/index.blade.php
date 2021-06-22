@@ -7,16 +7,15 @@
           <h1>APARTMENTS</h1>
         </div>
         <a class="col-12 text-center my-4" href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
-        <div class="col-12" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
             <div
-            class="card"
-            style="width: 18rem; margin: 30px 0;">
-              <div class="card-body col-4 mx-2">
-                <h5 class="card-title">{{$apartment->title}}</h5>
-                <p class="card-text">{{$apartment->city}}</p>
-                <p class="card-text">{{$apartment->address}}</p>
+            class="card">
+              <div class="card-body col-12 mx-2">
+                <img class="" src="{{ asset('storage/' . $apartment->thumb) }}" width="200">
+                <h5 class="card-title text-center">{{$apartment->title}}</h5>
+                <p class="card-text text-center">{{$apartment->city}} - {{$apartment->address}}</p>
                 <div class="commands" style="display:flex;">
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-primary">Edit</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">

@@ -1,6 +1,14 @@
 .card{
   background-color: white;
+  width: 25%;
+  margin: 30px;
   h5, p{
     color: $pal_dark;
   }
+}
+
+.card-container-index{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

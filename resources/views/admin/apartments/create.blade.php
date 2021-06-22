@@ -120,6 +120,16 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="mb-3">
+            <label for="thumb" class="form-label">Thumb</label>
+            <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
+            <span>Upload Main Image</span>
+            @error('thumb')
+              <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
           <button type="submit" name="button">Save</button>
         </form>
       </div>

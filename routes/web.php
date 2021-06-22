@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Apartment;
 use Illuminate\Support\Facades\DB;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

@@ -64,7 +64,7 @@ class ApartmentController extends Controller
           if (array_key_exists('thumb', $data)) {
               $thumb = Storage::put('uploads', $data['thumb']);
           }
-          $thumb = NULL;
+
           $apartment = new Apartment();
           $apartment->fill($data);
 

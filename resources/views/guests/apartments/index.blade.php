@@ -2,35 +2,42 @@
 @section('content')
 
 <div id="root">
-  <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-12 justify-content-center my-2" style="display: flex">
-          <h1>BoolBnB</h1>
-        </div>
 
-        <div class="container h-100 my-4 col-xs-8">
-          <div class="d-flex justify-content-center h-100">
-            <div class="searchbar">
-              <input class="search_input" type="text" name="" placeholder="Search...">
-              <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-            </div>
+
+  <div class="jumbo py-4">
+    <div class="justify-content-center">
+      <div class="justify-content-center" style="display: flex">
+        <h1>BoolBnB</h1>
+      </div>
+
+      <div class="container h-100 my-4 col-xs-8">
+        <div class="d-flex justify-content-center h-100">
+          <div class="searchbar">
+            <input class="search_input" type="text" name="" placeholder="Search...">
+            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="col-md-12 justify-content-center my-4" style="display: flex">
+
+  <div class="container">
+      <div class="row justify-content-center">
+
+        <div class="col-md-12 justify-content-center mt-4" style="display: flex">
           <h3>In Evidenza</h3>
         </div>
 
-        <div class="col-12" style="display: flex; flex-wrap: wrap;
-        justify-content: space-between;">
+        <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
-            <div class="card" style="width: 18rem; margin: 30px 0;">
+            <div class="card">
               <div class="card-body">
+                <img src="{{ asset('storage/' . $apartment->thumb) }}" width="200">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <p>{{$apartment->id}}</p>
-                <p class="card-text">{{$apartment->city}}</p>
-                <p class="card-text">{{$apartment->address}}</p>
-                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show</a>
+                <p class="card-text">{{$apartment->city}} - {{$apartment->address}}</p>
+                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show More</a>
               </div>
           </div>
         @endforeach

@@ -10956,6 +10956,12 @@ $colorP : #7F7F7F;
 
  */
 
+.bg-main {
+  background-color: #c4e0e2;
+  min-height: 100vh;
+  height: 100%;
+}
+
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;
@@ -11000,12 +11006,25 @@ $colorP : #7F7F7F;
   text-decoration: none;
 }
 
+.jumbo {
+  background-color: #fdd7d0;
+  border-bottom: 5px solid #121611;
+}
+
 .card {
   background-color: white;
+  width: 25%;
+  margin: 30px;
 }
 
 .card h5,
 .card p {
   color: #121611;
+}
+
+.card-container-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
