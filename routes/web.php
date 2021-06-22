@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\DB;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('index');
-Route::get('apartments', 'ApartmentController@index')->name('apartments.index');
+// Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', 'ApartmentController@index')->name('apartments.index');
 Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.show');
 
 
