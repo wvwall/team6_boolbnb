@@ -11009,16 +11009,17 @@ $colorP : #7F7F7F;
 .jumbo {
   background-color: #fdd7d0;
   border-bottom: 5px solid #121611;
+  margin-top: -1.5rem;
 }
 
-.card {
+.apartment-card {
   background-color: white;
   width: 25%;
   margin: 30px;
 }
 
-.card h5,
-.card p {
+.apartment-card h5,
+.apartment-card p {
   color: #121611;
 }
 

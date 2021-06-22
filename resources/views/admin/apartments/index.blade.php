@@ -11,7 +11,7 @@
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
             <div
-            class="card">
+            class="card apartment-card">
               <div class="card-body col-12 mx-2">
                 <img class="" src="{{ asset('storage/' . $apartment->thumb) }}" width="200">
                 <h5 class="card-title text-center">{{$apartment->title}}</h5>

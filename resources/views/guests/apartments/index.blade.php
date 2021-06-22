@@ -31,7 +31,7 @@
 
         <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
-            <div class="card">
+            <div class="card apartment-card">
               <div class="card-body">
                 <img src="{{ asset('storage/' . $apartment->thumb) }}" width="200">
                 <h5 class="card-title">{{$apartment->title}}</h5>
