@@ -63,6 +63,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">{{ Auth::user()->name }} Dashboard</a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
