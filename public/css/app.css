@@ -11000,3 +11000,12 @@ $colorP : #7F7F7F;
   text-decoration: none;
 }
 
+.card {
+  background-color: white;
+}
+
+.card h5,
+.card p {
+  color: #121611;
+}
+

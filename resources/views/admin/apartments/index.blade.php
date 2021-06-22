@@ -7,7 +7,7 @@
           <h1>APARTMENTS</h1>
         </div>
         <a class="col-12 text-center my-4" href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
-        <div class="col-12" style="display: flex; flex-wrap: wrap;">
+        <div class="col-12" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
             <div
@@ -17,7 +17,7 @@
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <p class="card-text">{{$apartment->city}}</p>
                 <p class="card-text">{{$apartment->address}}</p>
-                <div class="commands" style="display:flex">
+                <div class="commands" style="display:flex;">
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-primary">Edit</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">
                     @csrf
