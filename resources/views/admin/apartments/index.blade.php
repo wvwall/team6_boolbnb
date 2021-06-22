@@ -35,16 +35,3 @@
 </div>
 @endsection
 @section('foot-script')
-<script type="text/javascript">
-  let app = new Vue({
-    el: '#root',
-    data:{
-    },
-  })
-</script>
-@endsection
-
-@section('head')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-@endsection

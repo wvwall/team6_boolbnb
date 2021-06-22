@@ -22,8 +22,8 @@ class ApartmentController extends Controller
     public function index()
     {
       $apartments = DB::table('apartments')
-                     ->where('user_id', '=',  Auth::user()->id)
-                     ->get();
+                    ->where('user_id', '=',  Auth::user()->id)
+                    ->get();
       return view('admin.apartments.index', compact('apartments'));
     }
     /**
@@ -108,20 +108,20 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $request->validate([
-            'title' => 'required|string|max:255|unique:apartments',
-            'city' =>   'required|string|max:255',
-            'address' =>  'required|string|max:255',
-            'lat' => 'numeric',
-            'long' => 'numeric',
-            'n_rooms' => 'required|numeric',
-            'n_beds' => 'required|numeric',
-            'n_bathrooms' => 'required|numeric',
-            'square_meters' => 'required|numeric',
-            'thumb' =>   'nullable|image|max:6000',
-            'visibility' => 'required|boolean',
-            'users_id' => 'exists:users,id'
-          ]);
+      $request->validate([
+          'title' => 'required|string|max:255|unique:apartments',
+          'city' =>   'required|string|max:255',
+          'address' =>   'required|string|max:255',
+          'lat' => 'nullable|numeric',
+          'long' => 'nullable|numeric',
+          'n_rooms' => 'numeric',
+          'n_beds' => 'numeric',
+          'n_bathrooms' => 'required|numeric',
+          'square_meters' => 'required|numeric',
+          'thumb' =>   'nullable|image|max:6000',
+          'visibility' => 'nullable|boolean',
+          'users_id' => 'exists:users,id|nullable'
+        ]);
 
           $data = $request->all();
             $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12 justify-content-center" style="display: flex">
-        <a href="{{route('guests.apartments.index')}}">Torna indietro</a>
+        <a href="{{route('apartments.index')}}">Torna indietro</a>
       </div>
       <div class="col-md-3">
           <div class="card" style="width: 18rem;">
