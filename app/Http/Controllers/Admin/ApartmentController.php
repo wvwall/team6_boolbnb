@@ -109,7 +109,7 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment)
     {
       $request->validate([
-          'title' => 'required|string|max:255|unique:apartments',
+          'title' => 'required|string|max:255',
           'city' =>   'required|string|max:255',
           'address' =>   'required|string|max:255',
           'lat' => 'nullable|numeric',
@@ -122,13 +122,12 @@ class ApartmentController extends Controller
           'visibility' => 'nullable|boolean',
           'users_id' => 'exists:users,id|nullable'
         ]);
-
           $data = $request->all();
             $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
             if (array_key_exists('thumb', $data)) {
             $thumb = Storage::put('uploads', $data['thumb']);
             $data['thumb'] = $thumb;
-             }
+            }
             $apartment->update($data);
 
           return redirect()->route('admin.apartments.index');
