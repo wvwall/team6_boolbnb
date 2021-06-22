@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Apartment;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('apartments', 'ApartmentController@index')->name('apartment.index');
-Route::get('apartments/{id}', 'ApartmentController@show')->name('guest.apartments.show');
+Route::get('apartments', 'ApartmentController@index')->name('apartments.index');
+Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.show');
+
+
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
   ->group(function () {

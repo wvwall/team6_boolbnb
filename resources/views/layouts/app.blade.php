@@ -76,7 +76,6 @@
 
         <main class="py-4">
             @yield('content')
-            @yield('foot-script')
         </main>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>

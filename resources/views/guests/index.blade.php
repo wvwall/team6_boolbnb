@@ -84,9 +84,10 @@
                     Bnb
                 </div>
                 <div class="links">
-                    <a href="{{route('apartment.index')}}">Apartments</a>
+                    <a href="{{route('apartments.index')}}">Apartments</a>
                 </div>
             </div>
         </div>
+
     </body>
 </html>
