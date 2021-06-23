@@ -10957,9 +10957,14 @@ $colorP : #7F7F7F;
  */
 
 .bg-main {
-  background-color: #c4e0e2;
+  background: #ff6147;
+  background: linear-gradient(347deg, rgba(255, 97, 71, 0.8099614846) 7%, #c4e0e2 45%, #71a6b0 94%);
   min-height: 100vh;
   height: 100%;
+}
+
+.generic-page-link {
+  color: #121611;
 }
 
 .searchbar {
@@ -11027,5 +11032,9 @@ $colorP : #7F7F7F;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.show-card {
+  border: 2px solid #71a6b0;
 }
 

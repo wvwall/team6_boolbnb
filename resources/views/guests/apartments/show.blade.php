@@ -3,19 +3,18 @@
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12 justify-content-center" style="display: flex">
-        <a href="{{route('apartments.index')}}">Torna indietro</a>
+        <a href="{{route('apartments.index')}}" class="generic-page-link">Torna indietro</a>
       </div>
-      <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
-            <img src="{{ asset('storage/' . $apartment->thumb) }}" width="285">
+      <div class="col-md-12">
+          <div class="card show-card">
+            <img src="{{ asset('storage/' . $apartment->thumb) }}" width="500" style="margin: 0 auto; padding: 20px">
             <div class="card-body">
-              <h5 class="card-title">Title: {{$apartment->title}}</h5>
-              <p class="card-text">City: {{$apartment->city}}</p>
-              <p class="card-text">Address: {{$apartment->address}}</p>
-              <p class="card-text">N Rooms: {{$apartment->n_rooms}}</p>
-              <p class="card-text">N Beds: {{$apartment->n_beds}}</p>
-              <p class="card-text">N Bathrooms: {{$apartment->n_bathrooms}}</p>
-              <p class="card-text">Square meters: {{$apartment->square_meters}}</p>
+              <h5 class="card-title">{{$apartment->title}}</h5>
+              <p class="card-text"><b>{{$apartment->city}}</b> - <i>{{$apartment->address}}</i></p>
+              <p class="card-text"><b>{{$apartment->n_rooms}}</b> Rooms</p>
+              <p class="card-text"><b>{{$apartment->n_beds}}</b> Beds</p>
+              <p class="card-text"><b>{{$apartment->n_bathrooms}}</b> Bathrooms</p>
+              <p class="card-text">{{$apartment->square_meters}} &#13217;</p>
             </div>
           </div>
       </div>
