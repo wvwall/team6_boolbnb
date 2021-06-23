@@ -18,11 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/apartments', 'ApartmentController@database');
-// Route::get('/apartments/{id}',function ($id)
-// {
-//   $appartamento = DB::table('apartments')
-//                  ->where('id', '=', $id)
-//                  ->get();
-//                  console.log($id);
-// });
+
+// Route::get('/', 'ApartmentController@indexdb');
+// Route::get('/apartments/{slug}', 'ApartmentController@showdb');

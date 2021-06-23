@@ -160,4 +160,12 @@ class ApartmentController extends Controller
       }
         return $slug;
   }
+  // public function get_coordinate(Apartment $apartment)
+  // {
+  //   $coordinate = [$apartment->lat, $apartment->long];
+  //   return response()->json([
+  //     'data' => $coordinate,
+  //     'success' => true,
+  //   ]);
+  // }
 }

@@ -17,7 +17,7 @@
           @endif
       </div>
       <div class="col-md-8">
-        <form class="crea" action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data">
+        <form class="crea" action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data" @click="dati">
           @csrf
           @method('POST')
           <div class="mb-3">
@@ -30,7 +30,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">City</label>
-            <input type="text" class="form-control @error('city') is-invalid @enderror" name="city"></input>
+            <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" v-model="ins_citta"></input>
             @error('city')
               <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -38,7 +38,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"></input>
+            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" v-model="ins_indirizzo"></input>
             @error('address')
               <small class="text-danger">{{ $message }}</small>
             @enderror

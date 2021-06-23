@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<div id="root">
-
-
   <div class="jumbo py-4">
     <div class="justify-content-center">
       <div class="justify-content-center" style="display: flex">
@@ -44,34 +41,4 @@
         </div>
       </div>
   </div>
-</div>
-@endsection
-<!-- @section('foot-script')
-<script type="text/javascript">
-let app = new Vue({
-  el: '#root',
-  data:{
-    id: null ,
-    apartments: [],
-  },
-  created(){
-    axios.get('http://localhost:8001/api/apartments').then((response)=>{
-      this.apartments = response.data.data;
-    });
-  },
-  methods:{
-    get_id:function(index) {
-      this.id = this.index;
-      console.log(this.id);
-      return this.id;
-    }
-  },
-});
-</script>
-@endsection -->
-
-
-@section('head')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 @endsection
