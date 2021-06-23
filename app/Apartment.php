@@ -30,5 +30,14 @@ class Apartment extends Model
 
     
     return $this->hasMany('App\Message');
-}
+  }
+
+  public function promotion() {
+
+    return $this->belongsToMany('App\Promotion');
+  }
+  public function service() {
+
+    return $this->belongsToMany('App\Service');
+  }
 }
