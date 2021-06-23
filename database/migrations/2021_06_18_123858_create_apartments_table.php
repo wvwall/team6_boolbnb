@@ -18,8 +18,8 @@ class CreateApartmentsTable extends Migration
             $table->string('title')->unique();
             $table->string('city');
             $table->string('address');
-            $table->float('lat', 15, 10)->default(10);
-            $table->float('long', 15, 10)->default(10);
+            $table->float('lat', 15, 10);
+            $table->float('long', 15, 10);
             $table->smallInteger('n_rooms');
             $table->smallInteger('n_beds');
             $table->smallInteger('n_bathrooms');

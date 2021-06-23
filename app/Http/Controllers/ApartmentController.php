@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
-  public function index()
+    public function index()
     {
       $apartments = Apartment::all();
       return view('guests.apartments.index', compact('apartments'));
     }
-    public function database()
+    public function indexdb()
     {
       $apartments = Apartment::all();
       return response()->json([
@@ -21,9 +21,20 @@ class ApartmentController extends Controller
         'success' => true,
       ]);
     }
+
     public function show(string $slug)
     {
       $apartment = Apartment::where('slug', '=', $slug)->first();
       return view('guests.apartments.show', compact('apartment'));
+    }
+
+
+    public function showdb(Apartment $apartment, $slug)
+    {
+      $apartment = Apartment::where('slug', '=', $slug);
+      return response()->json([
+        'data' => $apartment,
+        'success' => true,
+      ]);
     }
 }
