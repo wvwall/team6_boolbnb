@@ -17,7 +17,7 @@
           @endif
       </div>
       <div class="col-md-8">
-        <form class="crea" action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data" @click="dati">
+        <form class="crea" action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('POST')
           <div class="mb-3">
@@ -129,9 +129,10 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
           <button type="submit" name="button">Save</button>
+          <button type="button" name="button"  @click="dati">calc long lat</button>
         </form>
+
       </div>
     </div>
 </div>

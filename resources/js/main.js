@@ -24,6 +24,7 @@ let app1 = new Vue({
         .then((response) => {
         console.log(response);
         });
+        
     }
   },
 });
