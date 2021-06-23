@@ -11017,6 +11017,10 @@ $colorP : #7F7F7F;
   margin-top: -1.5rem;
 }
 
+.jumbo img {
+  height: 250px;
+}
+
 .apartment-card {
   background-color: white;
   width: 25%;
@@ -11036,5 +11040,21 @@ $colorP : #7F7F7F;
 
 .show-card {
   border: 2px solid #71a6b0;
+}
+
+.navbar-expand-md .container .navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-expand-md .container .navbar-brand img {
+  height: 80px;
+  padding-right: 10px;
+}
+
+.navbar-expand-md .container .navbar-brand h2 {
+  color: #ff6147;
+  padding-top: 10px;
 }
 
