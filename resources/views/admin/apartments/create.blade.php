@@ -105,12 +105,12 @@
           </div>
           <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
 
-          <!-- <div class="mb-3">
-            <div class="bootstrap-switch-square">
-              <input type="checkbox" name="visibility" id="visibility" checked>
-              <label for="">Visibility</label>
-            </div>
-          </div> -->
+          <div class="form-group card-header card-header-custom">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches" name="visibility">
+                <label class="custom-control-label" for="customSwitches">Visibilità annuncio</label>
+                </div>
+          </div>
 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Square Meters</label>
