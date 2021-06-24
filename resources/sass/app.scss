@@ -4,6 +4,9 @@
 // Variables
 @import 'variables';
 
+// Mixin
+@import 'partials/_mixins.scss';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -12,3 +15,5 @@
 @import 'partials/_searchbar.scss';
 @import 'partials/_jumbo.scss';
 @import 'partials/_card.scss';
+
+@import 'partials/_header.scss';

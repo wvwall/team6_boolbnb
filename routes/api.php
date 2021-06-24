@@ -20,7 +20,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // Route::get('/', 'ApartmentController@indexdb');
-// Route::get('/apartments/{slug}', 'ApartmentController@showdb');
+ // Route::get('/apartments/{indirizzo}/{citta}/{chiave}', function ()
+ // {
+ //   axios.get('https://api.tomtom.com/search/2/structuredGeocode.json?countryCode=IT&streetName=[$indirizzo]&municipality=[$citta]&key=[$chiave]').then((response) => {
+ //     $response = response.data;
+ //     return response()->json([
+ //          'data' => $response,
+ //          'success' => true,
+ //       ]);
+ //   });
+ // });
 // Route::get('https://api.tomtom.com/search/2/structuredGeocode.json?countryCode=IT&streetName={indirizzo}&municipality={citta}&key={key}', function()
 // {
 //   return  response()->json([

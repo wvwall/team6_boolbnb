@@ -1,0 +1,15 @@
+.navbar-expand-md {
+  .container {
+    .navbar-brand {
+      @include center-flex;
+      img {
+        height: 80px;
+        padding-right: 10px;
+      }
+      h2 {
+        color: $pal_red;
+        padding-top: 10px;
+      }
+    }
+  }
+}
