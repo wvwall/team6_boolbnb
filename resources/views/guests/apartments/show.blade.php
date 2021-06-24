@@ -7,7 +7,7 @@
       </div>
       <div class="col-md-12">
           <div class="card show-card">
-            <img src="{{ asset('storage/' . $apartment->thumb) }}" width="500" style="margin: 0 auto; padding: 20px">
+            <img src="{{ asset('storage/' . $apartment->thumb) }}" width="500" style="margin: 0 auto; padding: 20px" alt="immagine non disponibile">
             <div class="card-body">
               <h5 class="card-title">{{$apartment->title}}</h5>
               <p class="card-text"><b>{{$apartment->city}}</b> - <i>{{$apartment->address}}</i></p>
@@ -18,12 +18,7 @@
             </div>
           </div>
       </div>
+
     </div>
 </div>
-@endsection
-
-
-@section('head')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 @endsection
