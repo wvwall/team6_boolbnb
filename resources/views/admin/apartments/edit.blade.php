@@ -17,7 +17,7 @@
           @endif
       </div>
       <div class="col-md-8">
-        <form class="crea" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data">
+        <form class="crea" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" @click="dati">
           @csrf
           @method('PATCH')
           <div class="mb-3">
@@ -30,7 +30,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">City</label>
-            <input type="text" class="form-control @error('city') is-invalid @enderror" value="{{ old('city', $apartment->city) }}" name="city" ></input>
+            <input type="text" class="form-control @error('city') is-invalid @enderror" value="{{ old('city', $apartment->city) }}" name="city" v-model="ins_citta"></input>
             @error('city')
               <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -38,7 +38,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address', $apartment->address) }}" name="address" ></input>
+            <input type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address', $apartment->address) }}" name="address" v-model="ins_indirizzo"></input>
             @error('address')
               <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -91,6 +91,16 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="coordinate" v-for="risp in risposta">
+            <div class="form-group card-custom">
+              <input type="text"  id="long" name="long"  :value="`${risp.position.lon}`">
+            </div>
+            <div class="form-group card-custom">
+              <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
+            </div>
+          </div>
+
           <button type="submit" name="button">Save</button>
         </form>
       </div>
