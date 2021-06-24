@@ -14,6 +14,7 @@ class CreateApartmentPromotionTable extends Migration
     public function up()
     {
         Schema::create('apartment_promotion', function (Blueprint $table) {
+            
             $table->id();
             $table->unsignedBigInteger('id_apartment');
             $table->foreign('id_apartment')->references('id')->on('apartments');

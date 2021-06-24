@@ -21,3 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Route::get('/', 'ApartmentController@indexdb');
 // Route::get('/apartments/{slug}', 'ApartmentController@showdb');
+// Route::get('https://api.tomtom.com/search/2/structuredGeocode.json?countryCode=IT&streetName={indirizzo}&municipality={citta}&key={key}', function()
+// {
+//   return  response()->json([
+//     'data' => 'response',
+//     'success' => true,
+//   ]);
+// });

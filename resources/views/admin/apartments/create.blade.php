@@ -129,9 +129,10 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
           <button type="submit" name="button">Save</button>
+          <button type="button" name="button"  @click="dati">calc long lat</button>
         </form>
+
       </div>
     </div>
 </div>
