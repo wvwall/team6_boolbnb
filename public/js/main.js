@@ -2119,7 +2119,9 @@ var app1 = new Vue({
     ins_citta: '',
     ins_lon: '',
     ins_lat: '',
-    risposta: []
+    risposta: [],
+    longitudine: 0,
+    latitudine: 0
   },
   mounted: function mounted() {},
   methods: {
@@ -2135,6 +2137,21 @@ var app1 = new Vue({
         console.log(_this.risposta);
       });
       return this.risposta;
+    },
+    getmap: function getmap(_long, lat) {
+      this.longitudine = _long;
+      this.latitudine = lat;
+      var coordinate = [_long, lat];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key: this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 14
+      });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
     }
   }
 });

@@ -13,6 +13,8 @@ let app1 = new Vue({
     ins_lon: '',
     ins_lat: '',
     risposta: [],
+    longitudine: 0,
+    latitudine: 0,
   },
   mounted(){
 
@@ -29,5 +31,20 @@ let app1 = new Vue({
          });
          return this.risposta;
     },
+    getmap:function(long, lat) {
+      this.longitudine = long;
+      this.latitudine = lat;
+      var coordinate = [long, lat];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key : this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 14,
+      });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+    }
   }
 });
