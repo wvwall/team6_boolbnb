@@ -15,17 +15,7 @@ let app1 = new Vue({
     risposta: [],
   },
   mounted(){
-    // var coordinate = [apartment['long'], apartment['lat']];
-    // this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
-    // var map = tt.map({
-    //   key : this.key,
-    //   container: 'mymap',
-    //   center: coordinate,
-    //   zoom: 14,
-    // });
-    // var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
-    // map.addControl(new tt.FullscreenControl());
-    // map.addControl(new tt.NavigationControl());
+
   },
   methods:{
     dati:function() {
@@ -41,13 +31,3 @@ let app1 = new Vue({
     },
   }
 });
-<script type="text/javascript">
-  var coordinate = [apartment['long'], apartment['lat']];
-  var map = tt.map({
-    key : api,
-    container: 'mymap',
-    center: coordinate,
-    zoom: 14,
-  });
-
-</script>
