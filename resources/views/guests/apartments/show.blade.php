@@ -18,6 +18,12 @@
             </div>
           </div>
       </div>
+      <div class="col-md-12">
+        <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})">mappa</button>
+        <div id="mymap" style="height: 300px;">
+          <h3>My map</h3>
+        </div>
+      </div>
     </div>
 </div>
 @endsection
