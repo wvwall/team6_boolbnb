@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-3">
             <div class="card" style="width: 18rem;">
-              <img src="" class="card-img-top" alt="immagine non disponibile">
+              <img src="{{ asset('storage/' . $apartment->thumb) }}" class="card-img-top" alt="immagine non disponibile">
               <div class="card-body">
                 <h5 class="card-title">Title: {{$apartment->title}}</h5>
                 <p class="card-text">City: {{$apartment->city}}</p>
