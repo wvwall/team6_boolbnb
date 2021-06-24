@@ -11012,9 +11012,12 @@ $colorP : #7F7F7F;
 }
 
 .jumbo {
-  background-color: #fdd7d0;
+  background-image: url("/img/dolomites.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   border-bottom: 5px solid #121611;
   margin-top: -1.5rem;
+  height: 100vh;
 }
 
 .jumbo img {
