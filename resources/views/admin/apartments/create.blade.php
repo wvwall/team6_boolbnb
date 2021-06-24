@@ -44,44 +44,6 @@
             @enderror
           </div>
 
-          <!-- <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Rooms</label>
-            <select type="number" class="form-control @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms">
-              <option value="">Select</option>
-              @for($i=0; $i<5; $i++)
-                <option value="">{{$i}}</option>
-              @endfor
-            </select>
-            @error('n_rooms')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Beds</label>
-            <select type="number" class="form-control @error('n_rooms') is-invalid @enderror" id="n_beds" name="n_beds">
-              <option value="">Select</option>
-              @for($j=0; $j<4; $j++)
-                <option value="">{{$j}}</option>
-              @endfor
-            </select>
-            @error('n_beds')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Bathrooms</label>
-            <select type="number" class="form-control @error('n_bathrooms') is-invalid @enderror" id="n_bathrooms" name="n_bathrooms">
-              <option value="">Select</option>
-              @for($k=0; $k<4; $k++)
-                <option value="">{{$k}}</option>
-              @endfor
-            </select>
-            @error('n_bathrooms')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div> -->
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Rooms</label>
             <input type="number" class="form-control-file @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms" value="">
@@ -105,14 +67,14 @@
           </div>
           <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
 
-          <div class="form-group card-header card-header-custom">
+          <!-- <div class="form-group card-header card-header-custom">
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitches" name="visibility">
                 <label class="custom-control-label" for="customSwitches">Visibilità annuncio</label>
                 </div>
-          </div>
+          </div> -->
 
-          <div class="mb-3">
+          <div class="mb-3" @click="dati">
             <label for="exampleFormControlInput1" class="form-label">Square Meters</label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" value="">
             <span>m2</span>
@@ -129,8 +91,17 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="coordinate" v-for="risp in risposta">
+            <div class="form-group card-custom">
+              <input type="text"  id="long" name="long"  :value="`${risp.position.lon}`">
+            </div>
+            <div class="form-group card-custom">
+              <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
+            </div>
+          </div>
+
           <button type="submit" name="button">Save</button>
-          <button type="button" name="button"  @click="dati">calc long lat</button>
         </form>
 
       </div>

@@ -54,7 +54,7 @@ class ApartmentController extends Controller
             'n_beds' => 'numeric',
             'n_bathrooms' => 'required|numeric',
             'square_meters' => 'required|numeric',
-            'thumb' =>   'image|max:6000',
+            'thumb' =>   'nullable|image|max:6000',
             'visibility' => 'nullable|boolean',
             'users_id' => 'exists:users,id|nullable'
           ]);
@@ -168,5 +168,5 @@ class ApartmentController extends Controller
   //     'success' => true,
   //   ]);
   // }
-  
+
 }

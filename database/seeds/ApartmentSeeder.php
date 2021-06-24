@@ -23,12 +23,11 @@ class ApartmentSeeder extends Seeder
         $new_apartment->n_beds = $faker->numberBetween(1, 5);
         $new_apartment->user_id = User::all()->random()->id;
         $new_apartment->n_bathrooms = $faker->numberBetween(1, 5);
-        $new_apartment->lat = $faker->latitude(-90, 90);
-        $new_apartment->long = $faker->longitude(-180, 180);
+        $new_apartment->lat = $faker->latitude();
+        $new_apartment->long = $faker->longitude();
         $new_apartment->slug = Str::slug($new_apartment->title, '-');
         $new_apartment->square_meters = $faker->numberBetween(50, 120);
         $new_apartment->visibility = $faker->boolean();
-
         $new_apartment->save();
       }
     }

@@ -30,7 +30,7 @@
         @foreach($apartments as $apartment)
             <div class="card apartment-card">
               <div class="card-body">
-                <img src="{{ asset('storage/' . $apartment->thumb) }}" width="200">
+                <img src="{{ asset('storage/' . $apartment->thumb) }}" width="200" alt="immagine non disponibile">
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 <p>{{$apartment->id}}</p>
                 <p class="card-text">{{$apartment->city}} - {{$apartment->address}}</p>
