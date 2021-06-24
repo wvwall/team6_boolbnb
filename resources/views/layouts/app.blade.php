@@ -31,7 +31,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                   <img src="../img/icon-escape.png" alt="icon-escape">
-                  <h2>Escape Home</h2>
+                  <h2>BoolBnB</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
