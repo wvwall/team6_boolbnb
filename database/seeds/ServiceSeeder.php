@@ -14,7 +14,7 @@ class ServiceSeeder extends Seeder
     public function run()
     {
         $services = ['wifi','car','pool','concierge','sauna'];
-        
+
         for ($i=0; $i < count($services) ; $i++) { 
             $new_service = new Service();
             $new_service->name = $services[$i];
