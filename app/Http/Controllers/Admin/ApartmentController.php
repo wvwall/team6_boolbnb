@@ -21,6 +21,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+
       $apartments = DB::table('apartments')
                     ->where('user_id', '=',  Auth::user()->id)
                     ->get();
@@ -33,6 +34,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
+
         return view('admin.apartments.create');
     }
 
@@ -55,15 +57,14 @@ class ApartmentController extends Controller
             'n_bathrooms' => 'required|numeric',
             'square_meters' => 'required|numeric',
             'thumb' =>   'nullable|image|max:6000',
-            'visibility' => 'nullable|boolean',
             'users_id' => 'exists:users,id|nullable'
           ]);
-
           $data = $request->all();
-          // $apartment->visibility = ($request->visibility) ? '1' : '0';
+
           if (array_key_exists('thumb', $data)) {
               $thumb = Storage::put('uploads', $data['thumb']);
           }
+        
 
           $apartment = new Apartment();
           $apartment->fill($data);
@@ -85,6 +86,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        $this->authorize('view', $apartment);
         return view('admin.apartments.show', compact('apartment'));
     }
 
@@ -96,6 +98,7 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+        $this->authorize('restore', $apartment);
         return view('admin.apartments.edit', compact('apartment'));
     }
 
@@ -122,6 +125,7 @@ class ApartmentController extends Controller
           'visibility' => 'nullable|boolean',
           'users_id' => 'exists:users,id|nullable'
         ]);
+        $this->authorize('restore', $apartment);
           $data = $request->all();
             $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
             if (array_key_exists('thumb', $data)) {
@@ -141,6 +145,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        $this->authorize('delete', $apartment);
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index');
@@ -160,13 +165,6 @@ class ApartmentController extends Controller
       }
         return $slug;
   }
-  // public function get_coordinate(Apartment $apartment)
-  // {
-  //   $coordinate = [$apartment->lat, $apartment->long];
-  //   return response()->json([
-  //     'data' => $coordinate,
-  //     'success' => true,
-  //   ]);
-  // }
+
 
 }

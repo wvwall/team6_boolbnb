@@ -25,7 +25,7 @@ let app1 = new Vue({
       this.indirizzo = this.ins_indirizzo;
       this.citta = this.ins_citta;
       console.log(this.key, this.indirizzo, this.citta);
-      axios.get(`https://api.tomtom.com/search/2/search/${this.indirizzo}${this.citta}.json?limit=1&key=${this.key}`).then((response) => {
+      axios.get(`https://api.tomtom.com/search/2/search/${this.indirizzo}${this.citta}.json?key=${this.key}`).then((response) => {
               this.risposta = response.data.results;
               console.log(this.risposta);
          });

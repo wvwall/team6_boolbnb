@@ -25,7 +25,7 @@ class CreateApartmentsTable extends Migration
             $table->smallInteger('n_bathrooms');
             $table->smallInteger('square_meters');
             $table->string('thumb')->nullable();
-            $table->boolean('visibility')->default(true);
+            $table->boolean('visibility')->default(false);
             $table->string('slug')->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
