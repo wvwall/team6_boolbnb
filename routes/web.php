@@ -27,6 +27,7 @@ Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.sh
 
 
 
+
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
   ->group(function () {
     Route::get('/', 'HomeController@index')->name('index');

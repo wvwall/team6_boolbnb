@@ -2133,7 +2133,7 @@ var app1 = new Vue({
       this.indirizzo = this.ins_indirizzo;
       this.citta = this.ins_citta;
       console.log(this.key, this.indirizzo, this.citta);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.indirizzo).concat(this.citta, ".json?limit=1&key=").concat(this.key)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.indirizzo).concat(this.citta, ".json?key=").concat(this.key)).then(function (response) {
         _this.risposta = response.data.results;
         console.log(_this.risposta);
       });
@@ -2169,7 +2169,11 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+=======
+module.exports = __webpack_require__(/*! /Users/alessandrobenigni/Desktop/laravel-boolean/team6_boolbnb/resources/js/main.js */"./resources/js/main.js");
+>>>>>>> ec6dc9611b218de970595769f36eb5d921fd1f48
 
 
 /***/ })

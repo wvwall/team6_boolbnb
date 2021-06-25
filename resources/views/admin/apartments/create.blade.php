@@ -67,12 +67,7 @@
           </div>
           <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
 
-          <!-- <div class="form-group card-header card-header-custom">
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitches" name="visibility">
-                <label class="custom-control-label" for="customSwitches">Visibilità annuncio</label>
-                </div>
-          </div> -->
+          <input type="checkbox" name="visibility" class="switch-input" value="1" {{ old('visibility') ? 'checked="checked"' : '' }}/>
 
           <div class="mb-3" @click="dati">
             <label for="exampleFormControlInput1" class="form-label">Square Meters</label>
