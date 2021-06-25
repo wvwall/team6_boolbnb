@@ -10967,6 +10967,10 @@ $colorP : #7F7F7F;
   color: #121611;
 }
 
+.custom-control-label {
+  margin-right: 50px;
+}
+
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;

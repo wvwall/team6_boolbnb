@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Apartment;
+use App\Service;
 use Illuminate\Support\Facades\DB;
 
 
@@ -30,4 +31,5 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
   ->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('apartments', 'ApartmentController');
+    Route::resource('services', 'ServiceController');
   });

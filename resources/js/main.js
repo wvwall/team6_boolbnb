@@ -15,6 +15,8 @@ let app1 = new Vue({
     risposta: [],
     longitudine: 0,
     latitudine: 0,
+    service_index : 0,
+   
   },
   mounted(){
 
@@ -45,6 +47,9 @@ let app1 = new Vue({
       var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
       map.addControl(new tt.FullscreenControl());
       map.addControl(new tt.NavigationControl());
+    },
+    selected:function(index) {
+      this.service_index = index;
     }
   }
 });

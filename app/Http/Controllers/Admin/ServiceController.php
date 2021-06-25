@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Service;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,9 +16,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+       /*  $services = Service::all();
 
-        return view('admin.appartments.index', compact('apartments'));
+        return view('admin.apartments.create', compact('services')); */
     }
 
     /**

@@ -82,7 +82,16 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
+          <!-- @foreach($services as $service)
+          <div class="mb-3" @click="dati">
+            <label for="exampleFormControlInput1" class="form-label">{{$service->name}}</label>
+            
+              <select name="service" id="service" v-model="allowMultiple">
+              <option v-for="option in options" :value="option.value">@{{option.text}}</option>
+              </select>
+          </div>
+          @endforeach   --> 
+          
           <div class="mb-3">
             <label for="thumb" class="form-label">Thumb</label>
             <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
@@ -100,10 +109,10 @@
               <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
             </div>
           </div>
-
+         
           <button type="submit" name="button">Save</button>
         </form>
-
+         
       </div>
     </div>
 </div>
