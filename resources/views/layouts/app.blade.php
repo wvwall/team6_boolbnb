@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-md">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                  <img src= "{{ asset('img/icon-escape.png') }}" alt="icon-escape">
+                  <img src= "{{ asset('img/icon.png') }}" alt="icon">
                   <h2>BoolBnB</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
