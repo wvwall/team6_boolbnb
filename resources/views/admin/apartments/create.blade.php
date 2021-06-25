@@ -66,7 +66,7 @@
             @enderror
           </div>
           <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
-
+            <span>Visible</span>
           <input type="checkbox" name="visibility" class="switch-input" value="1" {{ old('visibility') ? 'checked="checked"' : '' }}/>
 
           <div class="mb-3" @click="dati">
@@ -77,15 +77,16 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-          <!-- @foreach($services as $service)
+           @foreach($services as $service)
           <div class="mb-3" @click="dati">
             <label for="exampleFormControlInput1" class="form-label">{{$service->name}}</label>
             
-              <select name="service" id="service" v-model="allowMultiple">
-              <option v-for="option in options" :value="option.value">@{{option.text}}</option>
+              <select name="{{$service->name}}" id="service" >
+                <option  value="1">Yes</option>
+                <option  value="0">No</option>
               </select>
           </div>
-          @endforeach   --> 
+          @endforeach  
           
           <div class="mb-3">
             <label for="thumb" class="form-label">Thumb</label>

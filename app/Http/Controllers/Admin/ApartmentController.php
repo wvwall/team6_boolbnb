@@ -34,16 +34,11 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-<<<<<<< HEAD
     {   
        $services = Service::all();
         return view('admin.apartments.create',compact('services'));
-=======
-    {
-
-        return view('admin.apartments.create');
->>>>>>> ec6dc9611b218de970595769f36eb5d921fd1f48
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -64,7 +59,8 @@ class ApartmentController extends Controller
             'n_bathrooms' => 'required|numeric',
             'square_meters' => 'required|numeric',
             'thumb' =>   'nullable|image|max:6000',
-            'users_id' => 'exists:users,id|nullable'
+            'users_id' => 'exists:users,id|nullable',
+            'id_services.*'=> 'exists:services,id'
           ]);
           $data = $request->all();
 
@@ -79,6 +75,10 @@ class ApartmentController extends Controller
           $apartment->slug = $this->generateSlug($apartment->title);
           $apartment->thumb = $thumb;
           $apartment->save();
+
+          if (array_key_exists('id_services', $data)) {
+            $apartment->services()->attach($data['id_services']);
+          }
 
 
 
@@ -105,8 +105,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+      $services = Service::all();
         $this->authorize('restore', $apartment);
-        return view('admin.apartments.edit', compact('apartment'));
+        return view('admin.apartments.edit', compact('apartment','service'));
     }
 
     /**
@@ -130,7 +131,8 @@ class ApartmentController extends Controller
           'square_meters' => 'required|numeric',
           'thumb' =>   'image|max:6000',
           'visibility' => 'nullable|boolean',
-          'users_id' => 'exists:users,id|nullable'
+          'users_id' => 'exists:users,id|nullable',
+          'id_services.*'=> 'exists:services,id'
         ]);
         $this->authorize('restore', $apartment);
           $data = $request->all();
@@ -140,6 +142,13 @@ class ApartmentController extends Controller
             $data['thumb'] = $thumb;
             }
             $apartment->update($data);
+
+           
+            if (array_key_exists('id_services', $data)) {
+              $apartment->services()->sync($data['id_services']);
+            } else {
+              $apartment->services()->detach();
+            }
 
           return redirect()->route('admin.apartments.index');
     }

@@ -16,9 +16,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-       /*  $services = Service::all();
+         $services = Service::all();
 
-        return view('admin.apartments.create', compact('services')); */
+        return view('admin.apartments.create', compact('services')); 
     }
 
     /**
@@ -45,11 +45,10 @@ class ServiceController extends Controller
     
           $data = $request->all();
           $service = new Service();
-          $data = $request->all();
-          $service = new Service();
           
     
           $service->create($data);
+          
     }
 
     /**
@@ -81,9 +80,19 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Service $service)
     {
-        //
+        
+        $request->validate([
+            'name' => 'required|string|max:255'
+          ]);
+    
+          $data = $request->all();
+          
+          
+    
+          $service->update($data);
+          
     }
 
     /**
