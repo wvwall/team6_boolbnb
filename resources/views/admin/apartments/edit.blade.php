@@ -83,7 +83,12 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
+          @foreach($services as $service)
+          <div class="mb-3" @click="dati">
+            <label for="">{{$service->name}}</label>
+            <input type="checkbox" name="service_ids" class="switch-input" value="1" {{ old('service') ? 'checked="checked"' : '' }}/>
+          </div>
+          @endforeach
           <div class="mb-3">
             <label for="thumb" class="form-label">Thumb</label>
             <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">

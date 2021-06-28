@@ -107,7 +107,7 @@ class ApartmentController extends Controller
     {
       $services = Service::all();
         $this->authorize('restore', $apartment);
-        return view('admin.apartments.edit', compact('apartment','service'));
+        return view('admin.apartments.edit', compact('apartment','services'));
     }
 
     /**
