@@ -77,6 +77,7 @@ class ApartmentController extends Controller
           $apartment->save();
 
           if (array_key_exists('service_ids', $data)) {
+           
             $apartment->services()->attach($data['service_ids']);
           }
 
@@ -144,6 +145,7 @@ class ApartmentController extends Controller
             $apartment->update($data);
 
             if (array_key_exists('service_ids', $data)) {
+              
               $apartment->services()->sync($data['service_ids']);
             } else {
               $apartment->services()->detach();
