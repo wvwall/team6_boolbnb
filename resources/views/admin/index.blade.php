@@ -18,7 +18,8 @@
             </div>
         </div>
         <div class="col-md-8 justify-content-center" style="display: flex">
-          <a href="{{route('admin.apartments.index')}}">Your apartments</a>
+          <a href="{{route('admin.apartments.index')}}">Your apartments - </a>
+          <a href="{{route('admin.messages.index')}}">Your messages</a>
         </div>
       </div>
   </div>
