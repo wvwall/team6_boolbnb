@@ -64,6 +64,8 @@ class ApartmentController extends Controller
           ]);
           $data = $request->all();
 
+
+
           if (array_key_exists('thumb', $data)) {
               $thumb = Storage::put('uploads', $data['thumb']);
           }
@@ -137,6 +139,10 @@ class ApartmentController extends Controller
         ]);
         $this->authorize('restore', $apartment);
           $data = $request->all();
+
+
+          dd($data);
+
             $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
             if (array_key_exists('thumb', $data)) {
             $thumb = Storage::put('uploads', $data['thumb']);

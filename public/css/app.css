@@ -10956,11 +10956,20 @@ $colorP : #7F7F7F;
 
  */
 
+ul,
+li {
+  list-style: none;
+}
+
 .bg-main {
   background: #ff6147;
   background: linear-gradient(347deg, rgba(255, 97, 71, 0.8099614846) 7%, #c4e0e2 45%, #71a6b0 94%);
   min-height: 100vh;
   height: 100%;
+}
+
+.bg-footer {
+  background-color: #000;
 }
 
 .generic-page-link {
@@ -10969,6 +10978,22 @@ $colorP : #7F7F7F;
 
 .custom-control-label {
   margin-right: 50px;
+}
+
+.btn-primary {
+  background-color: #ff6147;
+  border-color: #ff6147;
+  border-radius: 20px;
+}
+
+.btn.btn-primary:hover {
+  background-color: #fff;
+  color: #ff6147;
+  border-color: #ff6147;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .searchbar {
@@ -11045,8 +11070,25 @@ $colorP : #7F7F7F;
   justify-content: space-between;
 }
 
+.card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .show-card {
   border: 2px solid #71a6b0;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete {
+  margin-left: 10px;
 }
 
 .navbar-expand-md .container .navbar-brand {
@@ -11063,5 +11105,39 @@ $colorP : #7F7F7F;
 .navbar-expand-md .container .navbar-brand h2 {
   color: #ff6147;
   padding-top: 10px;
+}
+
+.nav-item {
+  font-size: 15px;
+}
+
+.nav-item .nav-link {
+  color: #ff6147;
+}
+
+footer {
+  color: #fff;
+}
+
+footer .line-bottom {
+  border-bottom: 1px solid grey;
+}
+
+footer .line-bottom .box-footer {
+  width: calc(100% / 3 - 60px);
+  margin: 0 30px;
+}
+
+footer .line-bottom .box-footer p {
+  margin: 15px 0;
+}
+
+footer .line-bottom .box-footer li {
+  margin: 10px 0;
+}
+
+footer .line-bottom .box-footer li a {
+  color: #fff;
+  font-size: 18px;
 }
 

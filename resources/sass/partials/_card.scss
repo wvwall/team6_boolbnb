@@ -13,6 +13,17 @@
   justify-content: space-between;
 }
 
+.card-wrap {
+  @include flex-wrap;
+}
 .show-card{
   border: 2px solid $pal_blue;
+}
+
+.card-body {
+  @include center-flex-col;
+}
+
+.delete {
+  margin-left: 10px;
 }

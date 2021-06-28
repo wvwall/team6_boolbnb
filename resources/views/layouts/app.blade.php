@@ -52,7 +52,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un Host') }}</a>
                                 </li>
                             @endif
                         @else
@@ -68,7 +68,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">{{ Auth::user()->name }} Dashboard</a>
+                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">{{ Auth::user()->name }} , visualizza i tuoi appartamenti</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -84,6 +84,43 @@
         <main class="py-4 bg-main">
             @yield('content')
         </main>
+        <footer class="bg-footer">
+          <div class="line-bottom">
+            <div class="container py-100">
+                <div class="card-wrap">
+                  <div class="box-footer text-center">
+                    <!-- <img src="./assets/img/logo-footer.png" alt="logo-footer"> -->
+                    <p>Vestibulum, curabitur eu sem nibh ultrices sit nulla adipiscing. Nisl sit fames amet senectus eget sed duis vehicula. Tristique.</p>
+                    <ul class="flex-spacear">
+                      <li><a href="#"><i>Ciao</i></a></li>
+                    </ul>
+
+                  </div>
+                  <div class="box-footer text-center">
+                    <h2 class="text-uppercase">Recent Posts</h2>
+                    <ul>
+                      <li><a href="#">The best protein shake </i></a></li>
+                      <li><a href="#">Ultimate cardio workout</a></li>
+                      <li><a href="#">New juices available now</i></a></li>
+                      <li><a href="#">Tips to find training partners</i></a></li>
+                      <li><a href="#">20 best healthy recipes</i></a></li>
+                    </ul>
+
+                  </div>
+                  <div class="box-footer text-center">
+                    <h2 class="text-uppercase">Contact Informations</h2>
+                    <p>4746 Tipple Road Michigan 48449</p>
+                    <p>Mobile : 1.800.000.0000</p>
+                    <p>Email : info@your-company.com</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="copyright container text-center py-50">
+              <p>© Copyright 2020 - 2021 | BoolBnB by Team6 | All Rights Reserved | Powered by WordPress</p>
+            </div>
+        </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>

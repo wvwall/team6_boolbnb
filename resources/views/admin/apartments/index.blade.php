@@ -12,7 +12,7 @@
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
             <div
             class="card apartment-card">
-              <div class="card-body col-12 mx-2">
+              <div class="card-body col-12">
                 <img class="" src="{{ asset('storage/' . $apartment->thumb) }}" width="200" alt="immagine non disponibile">
                 <h5 class="card-title text-center">{{$apartment->title}}</h5>
                 <p class="card-text text-center">{{$apartment->city}} - {{$apartment->address}}</p>

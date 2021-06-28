@@ -1,3 +1,7 @@
+ul, li {
+  list-style: none;
+}
+
 .bg-main{
   background: rgb(255,97,71);
 background: linear-gradient(347deg, rgba(255,97,71,0.8099614845938375) 7%, rgba(196,224,226,1) 45%, rgba(113,166,176,1) 94%);
@@ -5,9 +9,30 @@ background: linear-gradient(347deg, rgba(255,97,71,0.8099614845938375) 7%, rgba(
   height: 100%;
 }
 
+.bg-footer {
+  background-color: #000;
+}
+
 .generic-page-link{
   color: $pal_dark;
 }
 .custom-control-label {
   margin-right: 50px;
+}
+
+.btn-primary {
+  background-color: $pal_red;
+  border-color: $pal_red;
+  border-radius: 20px;
+}
+
+.btn.btn-primary:hover {
+  background-color: #fff;
+  color: $pal_red;
+  border-color: $pal_red;
+  // border-width: medium;
+}
+
+.text-center {
+  text-align: center;
 }

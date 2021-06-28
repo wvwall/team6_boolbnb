@@ -1,0 +1,22 @@
+footer {
+  color: #fff;
+  .line-bottom {
+    border-bottom: 1px solid grey;
+    .box-footer {
+      width: calc(100% / 3 - 60px);
+      margin: 0 30px;
+      // padding: 30px 10px;
+      p {
+        margin: 15px 0;
+      }
+      li {
+        margin: 10px 0;
+        & a {
+          color: #fff;
+          font-size: 18px;
+
+        }
+      }
+    }
+  }
+}
