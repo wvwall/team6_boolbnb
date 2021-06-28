@@ -14,12 +14,12 @@ class CreateApartmentServiceTable extends Migration
     public function up()
     {
         Schema::create('apartment_service', function (Blueprint $table) {
-            
 
-            $table->unsignedBigInteger('id_apartment');
-            $table->foreign('id_apartment')->references('id')->on('apartments');
-            $table->unsignedBigInteger('id_service');
-            $table->foreign('id_service')->references('id')->on('services');
+
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services');
 
         });
     }

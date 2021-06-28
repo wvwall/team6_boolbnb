@@ -79,15 +79,11 @@
           </div>
            @foreach($services as $service)
           <div class="mb-3" @click="dati">
-            <label for="exampleFormControlInput1" class="form-label">{{$service->name}}</label>
-            
-              <select name="{{$service->name}}" id="service" >
-                <option  value="1">Yes</option>
-                <option  value="0">No</option>
-              </select>
+            <label for="">{{$service->name}}</label>
+            <input type="checkbox" name="service_ids" class="switch-input" value="1" {{ old('service') ? 'checked="checked"' : '' }}/>
           </div>
-          @endforeach  
-          
+          @endforeach
+
           <div class="mb-3">
             <label for="thumb" class="form-label">Thumb</label>
             <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
@@ -105,10 +101,10 @@
               <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
             </div>
           </div>
-         
+
           <button type="submit" name="button">Save</button>
         </form>
-         
+
       </div>
     </div>
 </div>

@@ -16,9 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-         $services = Service::all();
-
-        return view('admin.apartments.create', compact('services')); 
+        $services = Service::all();
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -42,13 +41,13 @@ class ServiceController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
           ]);
-    
+
           $data = $request->all();
           $service = new Service();
-          
-    
+
+
           $service->create($data);
-          
+
     }
 
     /**
@@ -68,9 +67,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        return view('admin.apartments.edit', compact('apartments'));
+        return view('admin.apartments.edit', compact('service'));
     }
 
     /**
@@ -82,17 +81,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        
+
         $request->validate([
             'name' => 'required|string|max:255'
           ]);
-    
           $data = $request->all();
-          
-          
-    
           $service->update($data);
-          
+
     }
 
     /**
@@ -101,8 +96,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+      $service->delete();
+      return redirect()->route('admin.tags.index');
     }
 }

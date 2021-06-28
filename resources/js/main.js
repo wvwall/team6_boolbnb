@@ -16,13 +16,13 @@ let app1 = new Vue({
     longitudine: 0,
     latitudine: 0,
     service_index : 0,
-   
+
   },
   mounted(){
 
   },
   methods:{
-    dati:function() {
+    dati: function() {
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
       this.indirizzo = this.ins_indirizzo;
       this.citta = this.ins_citta;

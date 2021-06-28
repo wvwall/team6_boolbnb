@@ -34,7 +34,7 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
        $services = Service::all();
         return view('admin.apartments.create',compact('services'));
     }
@@ -60,14 +60,14 @@ class ApartmentController extends Controller
             'square_meters' => 'required|numeric',
             'thumb' =>   'nullable|image|max:6000',
             'users_id' => 'exists:users,id|nullable',
-            'id_services.*'=> 'exists:services,id'
+            'service_ids.*' => 'exists:services,id',
           ]);
           $data = $request->all();
 
           if (array_key_exists('thumb', $data)) {
               $thumb = Storage::put('uploads', $data['thumb']);
           }
-        
+
 
           $apartment = new Apartment();
           $apartment->fill($data);
@@ -76,8 +76,8 @@ class ApartmentController extends Controller
           $apartment->thumb = $thumb;
           $apartment->save();
 
-          if (array_key_exists('id_services', $data)) {
-            $apartment->services()->attach($data['id_services']);
+          if (array_key_exists('service_ids', $data)) {
+            $apartment->services()->attach($data['service_ids']);
           }
 
 
@@ -132,7 +132,7 @@ class ApartmentController extends Controller
           'thumb' =>   'image|max:6000',
           'visibility' => 'nullable|boolean',
           'users_id' => 'exists:users,id|nullable',
-          'id_services.*'=> 'exists:services,id'
+          'services_ids.*'=> 'exists:services,id'
         ]);
         $this->authorize('restore', $apartment);
           $data = $request->all();
@@ -143,9 +143,8 @@ class ApartmentController extends Controller
             }
             $apartment->update($data);
 
-           
-            if (array_key_exists('id_services', $data)) {
-              $apartment->services()->sync($data['id_services']);
+            if (array_key_exists('service_ids', $data)) {
+              $apartment->services()->sync($data['service_ids']);
             } else {
               $apartment->services()->detach();
             }
