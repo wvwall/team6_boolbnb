@@ -16,7 +16,7 @@
                 
                 <h2 class="card-title text-center">{{$message->sender}}</h2>
                 <h4 class="card-title text-center"> {{$message->object}}</h4>
-                <p class="card-text text-center">{{$message->text}}</p>
+                <p class="card-text text-center">{{$message->content}}</p>
                 <div class="commands" style="display:flex;">
                  
                   <form class="delete" action="{{route('admin.messages.destroy', ['message'=>$message->id])}}" method="post">

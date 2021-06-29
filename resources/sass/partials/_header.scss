@@ -3,7 +3,7 @@
     .navbar-brand {
       @include center-flex;
       img {
-        height: 80px;
+        height: 50px;
         padding-right: 10px;
       }
       h2 {
@@ -18,5 +18,7 @@
   font-size: 15px;
   .nav-link {
     color: $pal_red;
+    text-transform: uppercase;
+    font-weight: 500;
   }
 }

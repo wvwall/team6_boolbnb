@@ -26,7 +26,7 @@
           <div id="mymap" style="height: 300px;">
             <h3>My map</h3>
           </div>
-          <div class="container">
+    <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12 justify-content-center" style="display: flex">
         <h4>Contatta Proprietario</h4>

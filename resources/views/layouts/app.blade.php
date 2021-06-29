@@ -15,7 +15,9 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
@@ -68,8 +70,9 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">{{ Auth::user()->name }} , visualizza i tuoi appartamenti</a>
-
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}">{{ Auth::user()->name }} - Dashboard</a>
+                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">Appartamenti</a>
+                                    <a class="dropdown-item" href="{{ route('admin.messages.index') }}">Messagi</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -87,38 +90,14 @@
         <footer class="bg-footer">
           <div class="line-bottom">
             <div class="container py-100">
-                <div class="card-wrap">
-                  <div class="box-footer text-center">
-                    <!-- <img src="./assets/img/logo-footer.png" alt="logo-footer"> -->
-                    <p>Vestibulum, curabitur eu sem nibh ultrices sit nulla adipiscing. Nisl sit fames amet senectus eget sed duis vehicula. Tristique.</p>
-                    <ul class="flex-spacear">
-                      <li><a href="#"><i>Ciao</i></a></li>
-                    </ul>
-
-                  </div>
-                  <div class="box-footer text-center">
-                    <h2 class="text-uppercase">Recent Posts</h2>
-                    <ul>
-                      <li><a href="#">The best protein shake </i></a></li>
-                      <li><a href="#">Ultimate cardio workout</a></li>
-                      <li><a href="#">New juices available now</i></a></li>
-                      <li><a href="#">Tips to find training partners</i></a></li>
-                      <li><a href="#">20 best healthy recipes</i></a></li>
-                    </ul>
-
-                  </div>
-                  <div class="box-footer text-center">
-                    <h2 class="text-uppercase">Contact Informations</h2>
-                    <p>4746 Tipple Road Michigan 48449</p>
-                    <p>Mobile : 1.800.000.0000</p>
-                    <p>Email : info@your-company.com</p>
-                  </div>
+               
+                 
 
                 </div>
               </div>
             </div>
             <div class="copyright container text-center py-50">
-              <p>© Copyright 2020 - 2021 | BoolBnB by Team6 | All Rights Reserved | Powered by WordPress</p>
+              <p>Progetto Finale Boolean Careers | BoolBnB by Team6 </p>
             </div>
         </footer>
     </div>

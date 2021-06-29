@@ -23,22 +23,23 @@
       <div class="row justify-content-center">
 
         <div class="col-md-12 justify-content-center mt-4" style="display: flex">
-          <h3>In Evidenza</h3>
+          <h3>Appartamenti in evidenza</h3>
         </div>
 
         <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
             <div class="card apartment-card">
               <div class="card-body">
-                <img src="{{ asset('storage/' . $apartment->thumb) }}" width="200" alt="immagine non disponibile">
+                <img src="{{ asset('storage/' . $apartment->thumb) }}" width="300" alt="immagine non disponibile">
                 <h5 class="card-title">{{$apartment->title}}</h5>
-                <p>{{$apartment->id}}</p>
+                
                 <p class="card-text">{{$apartment->city}} - {{$apartment->address}}</p>
                 <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show More</a>
               </div>
           </div>
         @endforeach
         </div>
+        
       </div>
   </div>
 @endsection

@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Poppins", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6407,7 +6407,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6532,7 +6532,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -11003,10 +11003,11 @@ li {
   background-color: #121611;
   border-radius: 30px;
   padding: 10px;
+  background-color: #fff;
 }
 
 .search_input {
-  color: white;
+  color: #000;
   border: 0;
   outline: 0;
   background: none;
@@ -11036,12 +11037,12 @@ li {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: white;
+  color: #000;
   text-decoration: none;
 }
 
 .jumbo {
-  background-image: url("/img/dolomites.jpg");
+  background-image: url("/img/rome.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   border-bottom: 5px solid #121611;
@@ -11050,12 +11051,12 @@ li {
 }
 
 .jumbo img {
-  height: 250px;
+  height: 200px;
 }
 
 .apartment-card {
   background-color: white;
-  width: 25%;
+  width: 300px;
   margin: 30px;
 }
 
@@ -11067,7 +11068,7 @@ li {
 .card-container-index {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .card-wrap {
@@ -11085,6 +11086,7 @@ li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0;
 }
 
 .delete {
@@ -11098,7 +11100,7 @@ li {
 }
 
 .navbar-expand-md .container .navbar-brand img {
-  height: 80px;
+  height: 50px;
   padding-right: 10px;
 }
 
@@ -11113,6 +11115,8 @@ li {
 
 .nav-item .nav-link {
   color: #ff6147;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 footer {
