@@ -23,6 +23,8 @@ let app1 = new Vue({
     addressChecked: false,
     show: false,
     toggleMap: false,
+    old_indirizzo: '',
+    old_citta: ''
   },
   mounted(){
 

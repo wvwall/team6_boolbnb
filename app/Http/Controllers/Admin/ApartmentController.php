@@ -26,6 +26,7 @@ class ApartmentController extends Controller
       $apartments = DB::table('apartments')
                     ->where('user_id', '=',  Auth::user()->id)
                     ->get();
+
       return view('admin.apartments.index', compact('apartments'));
     }
     /**
@@ -79,7 +80,7 @@ class ApartmentController extends Controller
           $apartment->save();
 
           if (array_key_exists('service_ids', $data)) {
-           
+
             $apartment->services()->attach($data['service_ids']);
           }
 
@@ -139,25 +140,20 @@ class ApartmentController extends Controller
         ]);
         $this->authorize('restore', $apartment);
           $data = $request->all();
+          $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
+          if (array_key_exists('thumb', $data)) {
+          $thumb = Storage::put('uploads', $data['thumb']);
+          $data['thumb'] = $thumb;
+          }
+          $apartment->update($data);
 
+          if (array_key_exists('service_ids', $data)) {
+            $apartment->services()->sync($data['service_ids']);
+          } else {
+            $apartment->services()->detach();
+          }
 
-          dd($data);
-
-            $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
-            if (array_key_exists('thumb', $data)) {
-            $thumb = Storage::put('uploads', $data['thumb']);
-            $data['thumb'] = $thumb;
-            }
-            $apartment->update($data);
-
-            if (array_key_exists('service_ids', $data)) {
-              
-              $apartment->services()->sync($data['service_ids']);
-            } else {
-              $apartment->services()->detach();
-            }
-
-          return redirect()->route('admin.apartments.index');
+          return redirect()->route('admin.apartments.index', compact('apartment'));
     }
 
     /**
@@ -168,7 +164,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        $this->authorize('delete', $apartment);
+        $apartment->services()->detach();
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index');

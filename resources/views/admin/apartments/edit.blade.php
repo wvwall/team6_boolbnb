@@ -39,13 +39,13 @@
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" v-model="ins_indirizzo" value="{{ old('city', $apartment->address) }}"></input>
+            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"  value="{{ old('city', $apartment->address) }}" v-model="ins_indirizzo"></input>
             @error('address')
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
-          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta), step2">validate address</button>
+          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">validate address</button>
           <ul>
             <li class="form-control" @click="saveAddress(addressEl)" class="address-suggestion" v-for="(addressEl, i) in validAddresses" v-if="validAddresses!=[]">
                @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.streetName }} - @{{ addressEl.address.municipality }}
@@ -87,7 +87,7 @@
               <label for="">Visibility</label>
             </div>
           </div> -->
-          <div class="mb-3">
+          <div class="mb-3" @click="dati">
             <label for="exampleFormControlInput1" class="form-label">Square Meters</label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" placeholder="{{ old('square_meters', $apartment->square_meters) }}" value="{{ old('square_meters', $apartment->square_meters) }}">
             <span>m2</span>

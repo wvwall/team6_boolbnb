@@ -2129,7 +2129,9 @@ var app1 = new Vue({
     mapDisp: false,
     addressChecked: false,
     show: false,
-    toggleMap: false
+    toggleMap: false,
+    old_indirizzo: '',
+    old_citta: ''
   },
   mounted: function mounted() {},
   methods: {
@@ -2209,11 +2211,7 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\tom\Desktop\B\Boolean-esercizi-git\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
->>>>>>> f7be5b361054a1d05bd886352f33377abedc8868
+module.exports = __webpack_require__(/*! /Users/alessandrobenigni/Desktop/laravel-boolean/team6_boolbnb/resources/js/main.js */"./resources/js/main.js");
 
 
 /***/ })

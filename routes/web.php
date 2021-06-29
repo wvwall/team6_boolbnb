@@ -24,6 +24,7 @@ Auth::routes();
 // Route::get('/', 'HomeController@index')->name('index');
 Route::get('/', 'ApartmentController@index')->name('apartments.index');
 Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.show');
+Route::get('services/{id}', 'ServiceController@index')->name('service.index');
 
 
 
