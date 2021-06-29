@@ -4,14 +4,18 @@
   <div class="jumbo py-4">
     <div class="justify-content-center">
       <div class="justify-content-center" style="display: flex">
-        <img src="../img/logo-completo.png" alt="logo-completo">
+      <div class="container">
+        <h1 class="titolone">Le città sono sempre state come le persone, esse mostrano le loro diverse personalità al viaggiatore.</h1>
+      </div>
+      
+        <!-- <img src="../img/logo-completo.png"  alt="logo-completo"> -->
       </div>
 
       <div class="container h-100 my-4 col-xs-8">
         <div class="d-flex justify-content-center h-100">
           <div class="searchbar">
             <input class="search_input" type="text" name="" placeholder="Search...">
-            <a href="#" class="search_icon"><i class="fas fa-key"></i></a>
+            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
         </div>
       </div>

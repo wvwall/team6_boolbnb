@@ -41,7 +41,7 @@ class MessageController extends Controller
             'sender' => 'required|string|max:255',
             'object' => 'required|string|max:255',
             'content' => 'required|string|min:3|max:1000',
-            'id_apartment' => 'exists:apartments,id',
+            'apartment_id' => 'exists:apartments,id',
           ]);
 
           $data = $request->all();
@@ -49,7 +49,7 @@ class MessageController extends Controller
 
 
           $message->create($data);
-          return redirect()->route('admin.apartments.index');
+          
     }
     
 
