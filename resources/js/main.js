@@ -16,7 +16,13 @@ let app1 = new Vue({
     longitudine: 0,
     latitudine: 0,
     service_index : 0,
-
+    userAddress: '',
+    userCity: '',
+    validAddresses: [],
+    mapDisp: false,
+    addressChecked: false,
+    show: false,
+    toggleMap: false,
   },
   mounted(){
 
@@ -34,9 +40,43 @@ let app1 = new Vue({
          return this.risposta;
     },
     getmap:function(long, lat) {
-      this.longitudine = long;
-      this.latitudine = lat;
       var coordinate = [long, lat];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key : this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 13,
+      });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+      this.toggleMap = false;
+    },
+    selected:function(index) {
+      this.service_index = index;
+    },
+    addressSugg:function(address, city) {
+      this.userAddress = address;
+      this.userCity = city;
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      axios.get(`https://api.tomtom.com/search/2/search/${this.userAddress}%20${this.userCity}.json?key=${this.key}`).then((response) => {
+              this.validAddresses = response.data.results;
+              console.log(this.userAddress);
+              console.log(this.validAddresses);
+         });
+         return this.validAddresses;
+    },
+    saveAddress:function(address){
+      this.ins_indirizzo = address.address.freeformAddress;
+      this.validAddresses = [];
+      this.latitudine = address.position.lat;
+      this.longitudine = address.position.lon;
+      this.addressChecked=this.ins_indirizzo;
+      // console.log(this.ins_lat);
+      // console.log(this.ins_lon);
+
+      var coordinate = [this.longitudine, this.latitudine];
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
       var map = tt.map({
         key : this.key,
@@ -47,9 +87,8 @@ let app1 = new Vue({
       var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
       map.addControl(new tt.FullscreenControl());
       map.addControl(new tt.NavigationControl());
+
+      this.mapDisp = true;
     },
-    selected:function(index) {
-      this.service_index = index;
-    }
   }
 });

@@ -2122,7 +2122,14 @@ var app1 = new Vue({
     risposta: [],
     longitudine: 0,
     latitudine: 0,
-    service_index: 0
+    service_index: 0,
+    userAddress: '',
+    userCity: '',
+    validAddresses: [],
+    mapDisp: false,
+    addressChecked: false,
+    show: false,
+    toggleMap: false
   },
   mounted: function mounted() {},
   methods: {
@@ -2140,9 +2147,44 @@ var app1 = new Vue({
       return this.risposta;
     },
     getmap: function getmap(_long, lat) {
-      this.longitudine = _long;
-      this.latitudine = lat;
       var coordinate = [_long, lat];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key: this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 13
+      });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+      this.toggleMap = false;
+    },
+    selected: function selected(index) {
+      this.service_index = index;
+    },
+    addressSugg: function addressSugg(address, city) {
+      var _this2 = this;
+
+      this.userAddress = address;
+      this.userCity = city;
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.userAddress, "%20").concat(this.userCity, ".json?key=").concat(this.key)).then(function (response) {
+        _this2.validAddresses = response.data.results;
+        console.log(_this2.userAddress);
+        console.log(_this2.validAddresses);
+      });
+      return this.validAddresses;
+    },
+    saveAddress: function saveAddress(address) {
+      this.ins_indirizzo = address.address.freeformAddress;
+      this.validAddresses = [];
+      this.latitudine = address.position.lat;
+      this.longitudine = address.position.lon;
+      this.addressChecked = this.ins_indirizzo; // console.log(this.ins_lat);
+      // console.log(this.ins_lon);
+
+      var coordinate = [this.longitudine, this.latitudine];
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
       var map = tt.map({
         key: this.key,
@@ -2153,9 +2195,7 @@ var app1 = new Vue({
       var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
       map.addControl(new tt.FullscreenControl());
       map.addControl(new tt.NavigationControl());
-    },
-    selected: function selected(index) {
-      this.service_index = index;
+      this.mapDisp = true;
     }
   }
 });
@@ -2169,7 +2209,11 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\tom\Desktop\B\Boolean-esercizi-git\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+>>>>>>> f7be5b361054a1d05bd886352f33377abedc8868
 
 
 /***/ })
