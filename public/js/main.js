@@ -2129,7 +2129,9 @@ var app1 = new Vue({
     mapDisp: false,
     addressChecked: false,
     show: false,
-    toggleMap: false
+    toggleMap: false,
+    old_indirizzo: '',
+    old_citta: ''
   },
   mounted: function mounted() {},
   methods: {

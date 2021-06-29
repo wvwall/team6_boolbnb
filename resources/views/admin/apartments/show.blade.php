@@ -18,7 +18,10 @@
               <p class="card-text"><b>{{$apartment->n_bathrooms}}</b> Bathrooms</p>
               <p class="card-text">{{$apartment->square_meters}} &#13217;</p>
             </div>
-            <button  type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Open Map</button>
+            @foreach($apartment->services as $service )
+             <p class="card-text"><a href="{{route('service.index', ['id'=>$service->id])}}">#{{ $service->name }}</a></p>
+            @endforeach
+            <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Open Map</button>
           </div>
       </div>
       <div class="col-md-12 my-4">
@@ -70,16 +73,6 @@
                     <small class="text-danger">{{ $message }}</small>
                   @enderror
                 </div>
-
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">apartment_id</label>
-                  <input type="number" class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}">
-                  @error('apartment_id')
-                    <small class="text-danger">{{ $message }}</small>
-                  @enderror
-                </div>
-
-
                 <button type="submit" name="button">Save</button>
               </form>
 
