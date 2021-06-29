@@ -17,7 +17,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
@@ -36,7 +36,7 @@
                   <h2>BoolBnB</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -89,16 +89,53 @@
         </main>
         <footer class="bg-footer">
           <div class="line-bottom">
+            <h1>Team 6</h1>
             <div class="container py-100">
-               
-                 
+              <div class="card-wrap">
+                <div class="box-footer text-center">
+                  <img src="./img/icon-profile.jpg" alt="profile">
+                  <h4>
+                    Alessandro Benigni
+                  </h4>
+                  <p>Ancona</p>
+                  <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
+
+                </div>
+                <div class="box-footer text-center">
+                  <img src="./img/icon-profile.jpg" alt="profile">
+                  <h4>
+                    Roy Naim
+                  </h4>
+                  <p>Roma</p>
+                  <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
+
+                </div>
+                <div class="box-footer text-center">
+                  <img src="./img/icon-profile.jpg" alt="profile">
+                  <h4>
+                    Tommaso Scocciolini
+                  </h4>
+                  <p>Perugia</p>
+                  <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
+
+                </div>
+
+                <div class="box-footer text-center">
+                  <img src="./img/icon-profile.jpg" alt="profile">
+                  <h4>
+                    Walter Velardo
+                  </h4>
+                  <p>Torino</p>
+                  <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
 
                 </div>
               </div>
+
             </div>
-            <div class="copyright container text-center py-50">
-              <p>Progetto Finale Boolean Careers | BoolBnB by Team6 </p>
-            </div>
+          </div>
+          <div class="copyright container text-center py-50">
+            <p>Progetto Finale Boolean Careers | BoolBnB by Team6 </p>
+          </div>
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
