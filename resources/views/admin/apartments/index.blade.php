@@ -12,11 +12,13 @@
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
             <div
             class="card apartment-card">
+            <img class="" src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
               <div class="card-body col-12">
-                <img class="" src="{{ asset('storage/' . $apartment->thumb) }}" width="200" alt="immagine non disponibile">
+               
                 <h5 class="card-title text-center">{{$apartment->title}}</h5>
-                <p class="card-text text-center">{{$apartment->city}} - {{$apartment->address}}</p>
-                <div class="commands" style="display:flex;">
+                <h5 class="card-text text-center">{{$apartment->city}}</h5>
+               
+                <div class="commands" >
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-primary">Edit</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">
                     @csrf

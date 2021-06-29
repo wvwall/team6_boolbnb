@@ -11054,21 +11054,44 @@ li {
   height: 200px;
 }
 
-.apartment-card {
-  background-color: white;
-  width: 300px;
-  margin: 30px;
-}
-
-.apartment-card h5,
-.apartment-card p {
-  color: #121611;
-}
-
 .card-container-index {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.card-container-index .apartment-card {
+  background-color: white;
+  width: 300px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.card-container-index .apartment-card img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-container-index .apartment-card .card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+}
+
+.card-container-index .apartment-card .card-body h5 {
+  margin: 10px 0;
+}
+
+.card-container-index .apartment-card .card-body a {
+  margin: 10px 0;
+}
+
+.card-container-index .apartment-card .card-body .commands {
+  display: flex;
+  align-items: center;
 }
 
 .card-wrap {
@@ -11079,14 +11102,6 @@ li {
 
 .show-card {
   border: 2px solid #71a6b0;
-}
-
-.card-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 0;
 }
 
 .delete {

@@ -28,12 +28,14 @@
 
         <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
-            <div class="card apartment-card">
+          <div class="card apartment-card">
+            <img src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
               <div class="card-body">
-                <img src="{{ asset('storage/' . $apartment->thumb) }}" width="300" alt="immagine non disponibile">
+               
                 <h5 class="card-title">{{$apartment->title}}</h5>
                 
-                <p class="card-text">{{$apartment->city}} - {{$apartment->address}}</p>
+                <h5 class="card-text">{{$apartment->city}} </h5>
+               
                 <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show More</a>
               </div>
           </div>

@@ -141,7 +141,7 @@ class ApartmentController extends Controller
           $data = $request->all();
 
 
-          dd($data);
+          
 
             $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
             if (array_key_exists('thumb', $data)) {

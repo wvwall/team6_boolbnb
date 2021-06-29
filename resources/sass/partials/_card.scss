@@ -1,18 +1,39 @@
-.apartment-card{
-  background-color: white;
-  width: 300px;
-  margin: 30px;
-
-  h5, p{
-    color: $pal_dark;
-  }
-}
-
 .card-container-index{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  .apartment-card{
+    background-color: white;
+    width: 300px;
+    margin: 30px;
+    border-radius: 10px;
+    
+    img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .card-body {
+      @include center-flex-col;
+      padding: 0;
+      h5 {
+        margin: 10px 0;
+      }
+      a {
+        margin: 10px 0;
+      }
+      .commands {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }
+
+
+
+
 
 .card-wrap {
   @include flex-wrap;
@@ -21,10 +42,7 @@
   border: 2px solid $pal_blue;
 }
 
-.card-body {
-  @include center-flex-col;
-  padding: 0;
-}
+
 
 .delete {
   margin-left: 10px;
