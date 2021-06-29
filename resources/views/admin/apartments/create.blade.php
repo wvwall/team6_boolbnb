@@ -17,9 +17,11 @@
           @endif
       </div>
       <div class="col-md-8">
-        <form class="crea" action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data" @click="dati">
+        <form class="crea" action="{{route('admin.apartments.store')}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('POST')
+
+
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Title</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="">
@@ -44,23 +46,53 @@
             @enderror
           </div>
 
-          <div class="mb-3">
+          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">validate address</button>
+          <ul>
+            <li class="form-control" @click="saveAddress(addressEl)" class="address-suggestion" v-for="(addressEl, i) in validAddresses" v-if="validAddresses!=[]">
+               @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.streetName }} - @{{ addressEl.address.municipality }}
+
+             </li>
+          </ul>
+
+          <div id="mymap" style="height: 300px;">
+            <h3>Location</h3>
+          </div>
+
+          <div class="coordinate" v-if="addressChecked" hidden>
+            <div class="form-group card-custom">
+              <input type="text" id="long" name="long" v-bind="longitudine" v-model="longitudine">
+            </div>
+            <div class="form-group card-custom">
+              <input type="text"  id="lat" name="lat" v-bind="latitudine" v-model="latitudine">
+            </div>
+          </div>
+
+
+
+          <!-- s -->
+          <button class="btn" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
+
+        <div class="" v-if="show">
+
+
+
+          <div class="mb-3" >
             <label for="exampleFormControlInput1" class="form-label">Rooms</label>
-            <input type="number" class="form-control-file @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms" value="">
+            <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms" value="">
             @error('n_rooms')
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Beds</label>
-            <input type="number" class="form-control-file @error('n_beds') is-invalid @enderror" id="n_beds" name="n_beds" value="">
+            <input type="number" class="form-control @error('n_beds') is-invalid @enderror" id="n_beds" name="n_beds" value="">
             @error('n_beds')
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">n_bathrooms</label>
-            <input type="number" class="form-control-file @error('n_bathrooms') is-invalid @enderror" id="n_bathrooms" name="n_bathrooms" value="">
+            <input type="number" class="form-control @error('n_bathrooms') is-invalid @enderror" id="n_bathrooms" name="n_bathrooms" value="">
             @error('n_bathrooms')
               <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -77,7 +109,7 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-           @foreach($services as $service)
+          @foreach($services as $service)
           <div class="mb-3" @click="dati">
             <label for="">{{$service->name}}</label>
             <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ old('service') ? 'checked="checked"' : '' }}/>
@@ -85,24 +117,25 @@
           @endforeach
 
           <div class="mb-3">
-            <label for="thumb" class="form-label">Thumb</label>
-            <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
-            <span>Upload Main Image</span>
+            <label for="thumb" class="form-label"><b>Upload Main Image</b></label>
+            <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="" style="">
+            <!-- <span>Upload Main Image</span> -->
             @error('thumb')
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
-          <div class="coordinate" v-for="risp in risposta">
+          <!-- <div class="coordinate" v-for="risp in risposta">
             <div class="form-group card-custom">
               <input type="text"  id="long" name="long"  :value="`${risp.position.lon}`">
             </div>
             <div class="form-group card-custom">
               <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
             </div>
-          </div>
+          </div> -->
 
-          <button type="submit" name="button">Save</button>
+          <button type="submit" name="button" class="btn btn-primary">Save</button>
+        </div>
         </form>
 
       </div>

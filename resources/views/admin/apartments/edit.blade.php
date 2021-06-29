@@ -39,10 +39,22 @@
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="{{ old('address', $apartment->address) }}" value="{{ old('address', $apartment->address) }}" name="address" v-model="ins_indirizzo"></input>
+            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" v-model="ins_indirizzo" value="{{ old('city', $apartment->address) }}"></input>
             @error('address')
               <small class="text-danger">{{ $message }}</small>
             @enderror
+          </div>
+
+          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta), step2">validate address</button>
+          <ul>
+            <li class="form-control" @click="saveAddress(addressEl)" class="address-suggestion" v-for="(addressEl, i) in validAddresses" v-if="validAddresses!=[]">
+               @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.streetName }} - @{{ addressEl.address.municipality }}
+
+             </li>
+          </ul>
+
+          <div id="mymap" style="height: 300px;">
+            <h3>Location</h3>
           </div>
 
 
@@ -98,7 +110,7 @@
             @enderror
           </div>
 
-          <div class="coordinate" v-for="risp in risposta">
+          <div class="coordinate" v-for="risp in risposta" hidden>
             <div class="form-group card-custom">
               <input type="text"  id="long" name="long"  :value="`${risp.position.lon}`">
             </div>
