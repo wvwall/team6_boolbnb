@@ -11089,7 +11089,7 @@ li {
 }
 
 .jumbo h1 {
-  margin: 150px 100px 0;
+  margin: 150px 0 100px 0;
   color: #ff6147;
   background-color: #fff;
   border-radius: 10px;
@@ -11102,6 +11102,7 @@ li {
 @media screen and (max-width: 768px) {
   .jumbo h1 {
     font-size: 1.2rem;
+    text-align: center;
   }
 }
 
@@ -11296,6 +11297,11 @@ li {
 
 #new_ap {
   padding-top: 70px;
+}
+
+#edit {
+  padding-top: 70px;
+  padding-bottom: 50px;
 }
 
 #cont {
