@@ -13,7 +13,7 @@
     </div>
     <div id="msg">  
       <div class="row justify-content-center">
-            <div class="col-md-12 justify-content-center tit" style="display: flex">
+            <div id="cont" class="col-md-12 justify-content-center tit" style="display: flex">
               <h4>Contatta Proprietario</h4>
             </div>
             <div class="col-md-8 justify-content-center">
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Object</label>
+                  <label for="exampleFormControlTextarea1" class="form-label">Oggetto</label>
                   <input type="text" class="form-control @error('Object') is-invalid @enderror" name="object"></input>
                   @error('object')
                     <small class="text-danger">{{ $message }}</small>
@@ -48,20 +48,20 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                  <label for="exampleFormControlTextarea1" class="form-label">Testo</label>
                   <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content" ></textarea>
                   @error('content')
                     <small class="text-danger">{{ $message }}</small>
                   @enderror
                 </div>
                 <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">apartment_id</label>
-                <input type="number"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}">
+                <label for="exampleFormControlInput1" class="form-label"></label>
+                <input type="hidden"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}">
                 @error('apartment_id')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
-                <button type="submit" name="button">Invia</button>
+                <button class="btn btn-primary" type="submit" name="button">Contatta</button>
               </form>
              
 
@@ -90,7 +90,7 @@
     </div>
    <div id="map">
      <div class="container">
-        <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Open Map</button>
+        <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Mappa</button>
         <div class="col-md-12 my-4">
         <div id="mymap" style="height: 400px;">
           

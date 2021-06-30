@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-12 justify-content-center" style="display: flex">
+      <div id="new_ap" class="col-md-12 justify-content-center " style="display: flex">
         <h4>Nuovo appartamento</h4>
       </div>
       <div class="col-md-8 justify-content-center">
@@ -55,7 +55,7 @@
           </ul>
 
           <div id="mymap" style="height: 300px;">
-            <h3>Location</h3>
+            <h3>Mappa</h3>
           </div>
 
           <div class="coordinate" v-if="addressChecked" hidden>

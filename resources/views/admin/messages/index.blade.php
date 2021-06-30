@@ -3,7 +3,7 @@
 <div id="root">
   <div class="container">
     <div class="row justify-content-center">
-      <div class=" mex col-md-12 justify-content-center" style="display: flex">
+      <div class=" mex1 col-md-12 " style="display: flex">
         <h1>Messaggi ricevuti</h1>
       </div>
       @foreach($messages as $message)

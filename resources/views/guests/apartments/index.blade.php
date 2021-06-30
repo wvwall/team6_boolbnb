@@ -23,10 +23,10 @@
   </div>
 
 
-  <div class="container">
+  <div class="container ap_ev">
       <div class="row justify-content-center">
 
-        <div class="col-md-12 justify-content-center mt-4" style="display: flex">
+        <div class="col-md-12  mt-4" style="display: flex">
           <h3>Appartamenti in evidenza</h3>
         </div>
 
@@ -40,7 +40,7 @@
                 
                 <h5 class="card-text">{{$apartment->city}} </h5>
                
-                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show More</a>
+                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
               </div>
           </div>
         @endforeach

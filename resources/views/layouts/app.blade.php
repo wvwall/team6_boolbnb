@@ -32,11 +32,11 @@
         <nav class="navbar navbar-expand-md">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                  <img src= "{{ asset('img/icon.png') }}" alt="icon">
+                  <img src= "{{ asset('img/logo-white.png') }}" alt="icon">
                   <h2>BoolBnB</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,7 +63,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="text-transform: uppercase;">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -72,7 +72,7 @@
 
                                     <a class="dropdown-item" href="{{ route('admin.index') }}">{{ Auth::user()->name }} - Dashboard</a>
                                     <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">Appartamenti</a>
-                                    <a class="dropdown-item" href="{{ route('admin.messages.index') }}">Messagi</a>
+                                    <a class="dropdown-item" href="{{ route('admin.messages.index') }}">Messaggi</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -84,47 +84,47 @@
             </div>
         </nav>
 
-        <main class="py-4 bg-main">
+        <main class=" bg-main">
             @yield('content')
         </main>
         <footer class="bg-footer">
           <div class="line-bottom">
-            <h1>Team 6</h1>
-            <div class="container py-100">
+           <!--  <h1>Team 6</h1> -->
+            <div class="container ">
               <div class="card-wrap">
                 <div class="box-footer text-center">
-                  <img src="./img/icon-profile.jpg" alt="profile">
-                  <h4>
+                  <img src="{{ asset('img/icon-profile.jpg') }}" alt="profile">
+                  <h6>
                     Alessandro Benigni
-                  </h4>
+                  </h6>
                   <p>Ancona</p>
                   <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
 
                 </div>
                 <div class="box-footer text-center">
-                  <img src="./img/icon-profile.jpg" alt="profile">
-                  <h4>
+                  <img src="{{ asset('img/icon-profile.jpg') }}" alt="profile">
+                  <h6>
                     Roy Naim
-                  </h4>
+                  </h6>
                   <p>Roma</p>
                   <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
 
                 </div>
                 <div class="box-footer text-center">
-                  <img src="./img/icon-profile.jpg" alt="profile">
-                  <h4>
+                  <img src="{{ asset('img/icon-profile.jpg') }}" alt="profile">
+                  <h6>
                     Tommaso Scocciolini
-                  </h4>
+                  </h6>
                   <p>Perugia</p>
                   <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
 
                 </div>
 
                 <div class="box-footer text-center">
-                  <img src="./img/icon-profile.jpg" alt="profile">
-                  <h4>
+                  <img src="{{ asset('img/profiloo.jpg') }}" alt="profile">
+                  <h6>
                     Walter Velardo
-                  </h4>
+                  </h6>
                   <p>Torino</p>
                   <p><a href="#">Bio <i class="fas fa-chevron-right"></i></a></p>
 
@@ -134,7 +134,7 @@
             </div>
           </div>
           <div class="copyright container text-center py-50">
-            <p>Progetto Finale Boolean Careers | BoolBnB by Team6 </p>
+            <span>Progetto Finale Boolean Careers | BoolBnB by Team6 </span>
           </div>
         </footer>
     </div>

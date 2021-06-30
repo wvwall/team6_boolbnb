@@ -2,11 +2,11 @@
 @section('content')
 <div id="root">
   <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-12 justify-content-center" style="display: flex">
-          <h1>APARTMENTS</h1>
+      <div id="apa" class=" row justify-content-center">
+        <div class="col-md-12 " style="display: flex">
+          <h1>I tuoi appartamenti</h1>
         </div>
-        <a class="col-12 text-center my-4" href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
+        <a class=" btn btn-primary" href="{{route('admin.apartments.create')}}">Aggiunti appartamento</a>
         <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
@@ -19,11 +19,11 @@
                 <h5 class="card-text text-center">{{$apartment->city}}</h5>
                
                 <div class="commands" >
-                  <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-primary">Edit</a>
+                  <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-second">Modifica</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
+                    <input type="submit" class="btn btn-primary" name="Delete" value="Elimina">
                   </form>
                 </div>
               </div>
