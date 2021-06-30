@@ -26,7 +26,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -49,9 +49,10 @@ class MessageController extends Controller
 
 
           $message->create($data);
-          
+
+          return redirect()->route('apartments.index');
     }
-    
+
 
     /**
      * Display the specified resource.

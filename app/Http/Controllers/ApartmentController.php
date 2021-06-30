@@ -8,10 +8,25 @@ use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
       $apartments = Apartment::all();
       return view('guests.apartments.index', compact('apartments'));
+
+      // $apartments = Apartment::where([
+      //   ['title', '!=', Null],
+      //   [function ($query) use ($request) {
+      //     if(($term = $request->term)) {
+      //       $query->orWhere('title', 'LIKE', '%' . $term . '%')->get();
+      //       $query->orWhere('city', 'LIKE', '%' . $term . '%')->get();
+      //     }
+      //   }]
+      // ])
+      // ->orderBy('id', 'desc')
+      // ->paginate(10);
+      //
+      // return view('guests.apartments.index', compact('apartments'))
+      // ->with('i', (request()->input('page', 1) -1)* 5);
     }
     public function indexdb()
     {
@@ -37,4 +52,12 @@ class ApartmentController extends Controller
         'success' => true,
       ]);
     }
+
+    public function indexAll(Request $response)
+    {
+      $apartments = Apartment::all()->toJson();
+      return view('guests.apartments.search')->with('apartments', json_decode($apartments, true));
+    }
+
+
 }

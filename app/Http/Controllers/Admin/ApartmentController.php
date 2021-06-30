@@ -86,7 +86,7 @@ class ApartmentController extends Controller
 
 
 
-          return redirect()->route('admin.apartments.index');
+          return redirect()->route('admin.apartments.index')->with('status', 'Annuncio pubblicato con successo');;
     }
 
     /**
@@ -147,13 +147,21 @@ class ApartmentController extends Controller
           }
           $apartment->update($data);
 
-          if (array_key_exists('service_ids', $data)) {
-            $apartment->services()->sync($data['service_ids']);
-          } else {
-            $apartment->services()->detach();
-          }
+            $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
+            if (array_key_exists('thumb', $data)) {
+            $thumb = Storage::put('uploads', $data['thumb']);
+            $data['thumb'] = $thumb;
+            }
+            $apartment->update($data);
 
-          return redirect()->route('admin.apartments.index', compact('apartment'));
+            if (array_key_exists('service_ids', $data)) {
+
+              $apartment->services()->sync($data['service_ids']);
+            } else {
+              $apartment->services()->detach();
+            }
+
+          return redirect()->route('admin.apartments.index');
     }
 
     /**
