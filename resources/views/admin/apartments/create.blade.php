@@ -115,6 +115,18 @@
             <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ old('service') ? 'checked="checked"' : '' }}/>
           </div>
           @endforeach
+          <!-- <form class="crea" action="{{route('admin.services.store')}}" method="post">
+           @csrf
+           @method('POST')
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name service</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="title" name="name" value="">
+            @error('name')
+              <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+          <button type="submit" name="button">Save</button>
+          </form> -->
 
           <div class="mb-3">
             <label for="thumb" class="form-label"><b>Upload Main Image</b></label>
@@ -124,6 +136,8 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+
 
           <!-- <div class="coordinate" v-for="risp in risposta">
             <div class="form-group card-custom">

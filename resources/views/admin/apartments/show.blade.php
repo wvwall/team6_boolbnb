@@ -11,7 +11,7 @@
     <div id="thumb">
      <img src="{{ asset('storage/' . $apartment->thumb) }}" class="card-img-top" alt="immagine non disponibile">
     </div>
-    <div id="msg">  
+    <div id="msg">
       <div class="row justify-content-center">
             <div class="col-md-12 justify-content-center tit" style="display: flex">
               <h4>Contatta Proprietario</h4>
@@ -56,14 +56,14 @@
                 </div>
                 <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">apartment_id</label>
-                <input type="number"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}">
+                <input type="number"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}" disabled>
                 @error('apartment_id')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
                 <button type="submit" name="button">Invia</button>
               </form>
-             
+
 
             </div>
           </div>
@@ -73,7 +73,7 @@
     <div class="container info">
       <h4>Informazioni e Servizi</h4>
       <div class="list">
-          <div class="left"> 
+          <div class="left">
             <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->address}}</p>
             <p class="card-text"><i class="fas fa-door-open"></i>  Stanze  <b>{{$apartment->n_rooms}}</b></p>
             <p class="card-text"> <i class="fas fa-bed"></i> Letti <b>{{$apartment->n_beds}}</b> </p>
@@ -86,14 +86,14 @@
             @endforeach
           </div>
       </div>
-      
+
     </div>
    <div id="map">
      <div class="container">
         <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Open Map</button>
         <div class="col-md-12 my-4">
         <div id="mymap" style="height: 400px;">
-          
+
         </div>
       </div>
      </div>
@@ -128,7 +128,7 @@
       </div>
       <div class="col-md-12 my-4">
         <div id="mymap" style="height: 200px;">
-          
+
         </div>
       </div>
       <div class="col-md-12 my-4">

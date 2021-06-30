@@ -47,7 +47,6 @@ class ServiceController extends Controller
 
 
           $service->create($data);
-
     }
 
     /**
