@@ -46,7 +46,7 @@
             @enderror
           </div>
 
-          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">validate address</button>
+          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">Valida Indirizzo</button>
           <ul>
             <li class="form-control" @click="saveAddress(addressEl)" class="address-suggestion" v-for="(addressEl, i) in validAddresses" v-if="validAddresses!=[]">
                @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.streetName }} - @{{ addressEl.address.municipality }}
@@ -55,7 +55,7 @@
           </ul>
 
           <div id="mymap" style="height: 300px;">
-            <h3>Mappa</h3>
+            <h3></h3>
           </div>
 
           <div class="coordinate" v-if="addressChecked" hidden>
