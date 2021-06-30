@@ -98,7 +98,7 @@
           @foreach($services as $service)
           <div class="mb-3" @click="dati">
             <label for="">{{$service->name}}</label>
-            <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ old('service') ? 'checked="checked"' : '' }}/>
+            <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ $apartment->services->contains($service->id) ? 'checked="checked"' : '' }}/>
           </div>
           @endforeach
           <div class="mb-3">
