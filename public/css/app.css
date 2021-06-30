@@ -11313,6 +11313,19 @@ li {
   border: 1px solid #ff6147;
 }
 
+#search {
+  display: flex;
+}
+
+#search .left {
+  width: 60%;
+}
+
+#search .right {
+  width: 40%;
+  background-color: greenyellow;
+}
+
 .navbar-expand-md {
   background: #ff6147;
   background: linear-gradient(90deg, #ff6147 48%, #ff7147 100%);

@@ -124,3 +124,14 @@
         border: 1px solid $pal_red;
     }
 }
+
+#search {
+    display: flex;
+    .left {
+        width: 60%;
+    }
+    .right {
+        width: 40%;
+        background-color: greenyellow;
+    }
+}
