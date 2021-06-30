@@ -55,13 +55,8 @@
                   @enderror
                 </div>
                 <div class="mb-3">
-<<<<<<< HEAD
                 <label for="exampleFormControlInput1" class="form-label"></label>
                 <input type="hidden"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}">
-=======
-                <label for="exampleFormControlInput1" class="form-label">apartment_id</label>
-                <input type="number"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}" disabled>
->>>>>>> 758e9bd2cc4d2844aa3e83bbfd866eb28dc2963b
                 @error('apartment_id')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror

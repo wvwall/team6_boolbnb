@@ -27,7 +27,7 @@
                 @endif
             </div>
             <div class="col-md-8">
-              <form class="creamsg" action="{{route('admin.messages.store')}}" method="post" enctype="multipart/form-data" @click="dati">
+              <form class="creamsg" action="{{route('messages.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="mb-3">

@@ -5,6 +5,8 @@ use App\Apartment;
 use App\Service;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Resources\Apartment as ApartmentResource;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,8 @@ Auth::routes();
 Route::get('/', 'ApartmentController@index')->name('apartments.index');
 Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.show');
 Route::get('services/{id}', 'ServiceController@index')->name('service.index');
+
+Route::get('/search', 'SearchController@filter')->name('search.advanced');
 
 
 

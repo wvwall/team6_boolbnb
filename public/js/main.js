@@ -2131,20 +2131,35 @@ var app1 = new Vue({
     show: false,
     toggleMap: false,
     old_indirizzo: '',
-    old_citta: ''
+    old_citta: '',
+    queryApartmentResult: [],
+    nameSearch: '',
+    inputQueryFuz: '',
+    inputQuerySortMeters: '',
+    addressInputSearch: '',
+    roomsInputSearch: '',
+    bathsInputSearch: '',
+    sort: 'sort'
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?sort").then(function (response) {
+      console.log(response.data);
+      _this.queryApartmentResult = response.data.data;
+    });
+  },
   methods: {
     dati: function dati() {
-      var _this = this;
+      var _this2 = this;
 
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
       this.indirizzo = this.ins_indirizzo;
       this.citta = this.ins_citta;
       console.log(this.key, this.indirizzo, this.citta);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.indirizzo).concat(this.citta, ".json?key=").concat(this.key)).then(function (response) {
-        _this.risposta = response.data.results;
-        console.log(_this.risposta);
+        _this2.risposta = response.data.results;
+        console.log(_this2.risposta);
       });
       return this.risposta;
     },
@@ -2166,15 +2181,15 @@ var app1 = new Vue({
       this.service_index = index;
     },
     addressSugg: function addressSugg(address, city) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.userAddress = address;
       this.userCity = city;
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.userAddress, "%20").concat(this.userCity, ".json?key=").concat(this.key)).then(function (response) {
-        _this2.validAddresses = response.data.results;
-        console.log(_this2.userAddress);
-        console.log(_this2.validAddresses);
+        _this3.validAddresses = response.data.results;
+        console.log(_this3.userAddress);
+        console.log(_this3.validAddresses);
       });
       return this.validAddresses;
     },
@@ -2198,6 +2213,82 @@ var app1 = new Vue({
       map.addControl(new tt.FullscreenControl());
       map.addControl(new tt.NavigationControl());
       this.mapDisp = true;
+    },
+    searchApartment: function searchApartment(input) {
+      var _this4 = this;
+
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?s=".concat(this.inputQueryFuz)).then(function (response) {
+          console.log(response.data);
+          _this4.queryApartmentResult = response.data.data;
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
+          console.log(response.data);
+          _this4.queryApartmentResult = response.data.data;
+        });
+      }
+    },
+    searchApartmentAddress: function searchApartmentAddress(input) {
+      var _this5 = this;
+
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?address=".concat(this.inputQueryFuz)).then(function (response) {
+          console.log(response.data);
+          _this5.queryApartmentResult = response.data.data;
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
+          console.log(response.data);
+          _this5.queryApartmentResult = response.data.data;
+        });
+      }
+    },
+    searchApartmentRooms: function searchApartmentRooms(input) {
+      var _this6 = this;
+
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?n_rooms=".concat(this.inputQueryFuz)).then(function (response) {
+          console.log(response.data);
+          _this6.queryApartmentResult = response.data.data;
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
+          console.log(response.data);
+          _this6.queryApartmentResult = response.data.data;
+        });
+      }
+    },
+    searchApartmentBaths: function searchApartmentBaths(input) {
+      var _this7 = this;
+
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?n_bathrooms=".concat(this.inputQueryFuz)).then(function (response) {
+          console.log(response.data);
+          _this7.queryApartmentResult = response.data.data;
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
+          console.log(response.data);
+          _this7.queryApartmentResult = response.data.data;
+        });
+      }
+    },
+    sortMetersApartment: function sortMetersApartment() {
+      var _this8 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?sort").then(function (response) {
+        console.log(response.data);
+        _this8.queryApartmentResult = response.data.data;
+      });
     }
   }
 });
@@ -2211,7 +2302,7 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\Users\tom\Desktop\B\Boolean-esercizi-git\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

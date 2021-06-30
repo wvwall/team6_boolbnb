@@ -14,10 +14,10 @@
             class="card apartment-card">
             <img class="" src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
               <div class="card-body col-12">
-               
+
                 <h5 class="card-title text-center">{{$apartment->title}}</h5>
                 <h5 class="card-text text-center">{{$apartment->city}}</h5>
-               
+
                 <div class="commands" >
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-second">Modifica</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">

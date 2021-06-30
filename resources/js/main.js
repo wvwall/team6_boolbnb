@@ -24,11 +24,23 @@ let app1 = new Vue({
     show: false,
     toggleMap: false,
     old_indirizzo: '',
-    old_citta: ''
+    old_citta: '',
+    queryApartmentResult: [],
+    nameSearch: '',
+    inputQueryFuz: '',
+    inputQuerySortMeters: '',
+    addressInputSearch: '',
+    roomsInputSearch: '',
+    bathsInputSearch: '',
+    sort: 'sort',
   },
-  mounted(){
-
-  },
+  mounted() {
+    axios.get(`http://localhost:8000/api/apartments/backend?sort`)
+        .then((response) => {
+          console.log(response.data);
+          this.queryApartmentResult = response.data.data;
+        });
+    },
   methods:{
     dati: function() {
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
@@ -92,5 +104,81 @@ let app1 = new Vue({
 
       this.mapDisp = true;
     },
+    searchApartment: function (input) {
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios.get(`http://localhost:8000/api/apartments/backend?s=${this.inputQueryFuz}`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      } else {
+        axios.get(`http://localhost:8000/api/apartments/backend?`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      }
+    },
+    searchApartmentAddress: function (input) {
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios.get(`http://localhost:8000/api/apartments/backend?address=${this.inputQueryFuz}`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      } else {
+        axios.get(`http://localhost:8000/api/apartments/backend?`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      }
+    },
+    searchApartmentRooms: function (input) {
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios.get(`http://localhost:8000/api/apartments/backend?n_rooms=${this.inputQueryFuz}`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      } else {
+        axios.get(`http://localhost:8000/api/apartments/backend?`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      }
+    },
+    searchApartmentBaths: function (input) {
+      if (input != '') {
+        this.inputQueryFuz = input;
+        console.log(this.inputQueryFuz);
+        axios.get(`http://localhost:8000/api/apartments/backend?n_bathrooms=${this.inputQueryFuz}`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      } else {
+        axios.get(`http://localhost:8000/api/apartments/backend?`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+      }
+    },
+    sortMetersApartment: function () {
+        axios.get(`http://localhost:8000/api/apartments/backend?sort`)
+            .then((response) => {
+              console.log(response.data);
+              this.queryApartmentResult = response.data.data;
+            });
+    },
+
   }
 });

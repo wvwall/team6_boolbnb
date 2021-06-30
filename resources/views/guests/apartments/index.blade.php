@@ -7,7 +7,7 @@
       <div class="container">
         <h1 class="titolone">Le città sono sempre state come le persone, esse mostrano le loro diverse personalità al viaggiatore.</h1>
       </div>
-      
+
         <!-- <img src="../img/logo-completo.png"  alt="logo-completo"> -->
       </div>
 
@@ -17,16 +17,17 @@
             <input class="search_input" type="text" name="" placeholder="Search...">
             <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
+          <a href="{{ route('search.advanced') }}" class="btn btn-primary">Cerca il tuo alloggio!</a>
         </div>
       </div>
     </div>
   </div>
 
 
-  <div class="container ap_ev">
+  <div class="container">
       <div class="row justify-content-center">
 
-        <div class="col-md-12  mt-4" style="display: flex">
+        <div class="col-md-12 justify-content-center mt-4" style="display: flex">
           <h3>Appartamenti in evidenza</h3>
         </div>
 
@@ -35,17 +36,17 @@
           <div class="card apartment-card">
             <img src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
               <div class="card-body">
-               
+
                 <h5 class="card-title">{{$apartment->title}}</h5>
-                
+
                 <h5 class="card-text">{{$apartment->city}} </h5>
-               
-                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
+
+                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show More</a>
               </div>
           </div>
         @endforeach
         </div>
-         
+
       </div>
   </div>
 @endsection
