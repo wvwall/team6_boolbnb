@@ -54,13 +54,13 @@
                   @enderror
                 </div>
                 <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">apartment_id</label>
-                  <input type="number" class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}" disabled>
-                  @error('apartment_id')
-                    <small class="text-danger">{{ $message }}</small>
-                  @enderror
-                </div>
-                <button type="submit" name="button">Invia</button>
+                <label for="exampleFormControlInput1" class="form-label"></label>
+                <input type="hidden"  class="form-control-file @error('apartment_id') is-invalid @enderror" id="apartment_id" name="apartment_id" value="{{$apartment->id}}">
+                @error('apartment_id')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+                <button class="btn btn-primary" type="submit" name="button">Contatta</button>
               </form>
 
             </div>
