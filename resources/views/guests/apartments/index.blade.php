@@ -17,7 +17,7 @@
             <input class="search_input" type="text" name="" placeholder="Search...">
             <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
-          <a href="{{ route('search.advanced') }}" class="btn btn-primary">Cerca il tuo alloggio!</a>
+          <!-- <a href="{{ route('search.advanced') }}" class="btn btn-primary">Cerca il tuo alloggio!</a> -->
         </div>
       </div>
     </div>
