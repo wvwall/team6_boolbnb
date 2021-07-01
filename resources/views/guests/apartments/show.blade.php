@@ -12,7 +12,7 @@
     </div>
     <div id="msg">
       <div class="row justify-content-center">
-            <div class="col-md-12 justify-content-center tit" style="display: flex">
+            <div class="  col-md-12 justify-content-center tit" style="display: flex">
               <h4>CONTATTA PROPRIETARIO</h4>
             </div>
             <div class="col-md-8 justify-content-center">
@@ -27,7 +27,7 @@
                 @endif
             </div>
             <div class="col-md-8">
-              <form class="creamsg" action="{{route('messages.store')}}" method="post" enctype="multipart/form-data">
+              <form class="creamsg mt-20" action="{{route('messages.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="mb-3">
@@ -86,7 +86,16 @@
       </div>
 
     </div>
+    <div id="map">
+     <div class="container">
+        <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Mappa</button>
+        <div class="col-md-12 my-4">
+        <div id="mymap" style="height: 400px;">
 
+        </div>
+      </div>
+     </div>
+   </div>
   </div>
    <!--  <div class="row justify-content-center">
       <div class="col-md-12 justify-content-center" style="display: flex">
