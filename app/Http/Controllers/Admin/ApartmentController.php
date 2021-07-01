@@ -136,9 +136,8 @@ class ApartmentController extends Controller
           'thumb' =>   'image|max:6000',
           'visibility' => 'nullable|boolean',
           'users_id' => 'exists:users,id|nullable',
-          'services_ids.*'=> 'exists:services,id'
         ]);
-        $this->authorize('restore', $apartment);
+          $this->authorize('restore', $apartment);
           $data = $request->all();
           $data['slug'] = $this->generateSlug($data['title'], $apartment->title != $data['title'], $apartment->slug);
           if (array_key_exists('thumb', $data)) {
@@ -154,14 +153,7 @@ class ApartmentController extends Controller
             }
             $apartment->update($data);
 
-            if (array_key_exists('service_ids', $data)) {
-
-              $apartment->services()->sync($data['service_ids']);
-            } else {
-              $apartment->services()->detach();
-            }
-
-          return redirect()->route('admin.apartments.index');
+          return redirect()->route('admin.apartments.index', compact('apartment'));
     }
 
     /**

@@ -39,4 +39,5 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
     Route::resource('apartments', 'ApartmentController');
     Route::resource('services', 'ServiceController');
     Route::resource('messages', 'MessageController');
+    Route::resource('promotions', 'PromotionController');
   });
