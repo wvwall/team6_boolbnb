@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class=" mex1 col-md-12 " style="display: flex">
-        <h1>Messaggi ricevuti</h1>
+        <h1>MESSAGGI RICEVUTI</h1>
       </div>
       @foreach($messages as $message)
       <div class="mex ">

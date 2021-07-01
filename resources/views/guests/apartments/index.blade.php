@@ -28,7 +28,7 @@
       <div class="row justify-content-center">
 
         <div class="col-md-12 justify-content-center mt-4" style="display: flex">
-          <h3>Appartamenti in evidenza</h3>
+          <h3>IN EVIDENZA</h3>
         </div>
 
         <div class="col-12 card-container-index">

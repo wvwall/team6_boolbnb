@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
       <div id="edit" class="col-md-12 justify-content-center" style="display: flex">
-        <h4>Modifica appartamento</h4>
+        <h4>MODIFICA APPARTAMENTO</h4>
       </div>
       <div class="col-md-8 justify-content-center">
         @if ($errors->any())
@@ -18,7 +18,7 @@
       </div>
       <div class="col-md-8">
       <img src="{{ asset('storage/' . $apartment->thumb) }}" class="card-img-top" style="width: 250px;" style="border-radius: 10px;" alt="immagine non disponibile">
-        <form class="crea" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" @click="dati">
+        <form class="crea creamsg" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" @click="dati">
           @csrf
           @method('PATCH')
           <div class="mb-3">
@@ -54,7 +54,7 @@
           </ul>
 
           <div id="mymap" style="height: 300px;">
-            <h3>Location</h3>
+            
           </div>
 
 

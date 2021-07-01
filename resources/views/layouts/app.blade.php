@@ -57,7 +57,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Diventa un Host') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
@@ -66,18 +66,19 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="text-transform: uppercase;">
+                                <div class=" icon dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="text-transform: uppercase;">
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}"><i class="fas fa-desktop"></i> {{ Auth::user()->name }} - Dashboard</a>
+                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}"> <i class="fas fa-home"></i> Appartamenti</a>
+                                    <a class="dropdown-item" href="{{ route('admin.messages.index') }}"><i class="fas fa-envelope-open"></i> Messaggi</a>
+
+                                    <a class="dropdown-item" href="{{ route('search.advanced') }}"><i class="fas fa-search-plus"></i> Adv Search</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('admin.index') }}">{{ Auth::user()->name }} - Dashboard</a>
-                                    <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">Appartamenti</a>
-                                    <a class="dropdown-item" href="{{ route('admin.messages.index') }}">Messaggi</a>
-
-                                    <a class="dropdown-item" href="{{ route('search.advanced') }}">Adv Search</a>
+                                   
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

@@ -13,7 +13,7 @@
     <div id="msg">
       <div class="row justify-content-center">
             <div class="col-md-12 justify-content-center tit" style="display: flex">
-              <h4>Contatta Proprietario</h4>
+              <h4>CONTATTA PROPRIETARIO</h4>
             </div>
             <div class="col-md-8 justify-content-center">
               @if ($errors->any())
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Object</label>
+                  <label for="exampleFormControlTextarea1" class="form-label">Oggetto</label>
                   <input type="text" class="form-control @error('Object') is-invalid @enderror" name="object"></input>
                   @error('object')
                     <small class="text-danger">{{ $message }}</small>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                  <label for="exampleFormControlTextarea1" class="form-label">Messaggio</label>
                   <textarea type="text" class="form-control @error('content') is-invalid @enderror" name="content" ></textarea>
                   @error('content')
                     <small class="text-danger">{{ $message }}</small>

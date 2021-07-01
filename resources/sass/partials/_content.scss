@@ -135,3 +135,21 @@
         background-color: greenyellow;
     }
 }
+
+#dash {
+    margin-top: 100px;
+    margin-bottom: 50px;
+   color: $pal_red;
+   font-weight: 600;
+}
+
+.btn-dash {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        
+    }
+}
