@@ -25,21 +25,21 @@
 
 
   <div class="container">
-      <div class="row justify-content-center">
+      <div class=" pt-20 row justify-content-center">
 
-        <div class="col-md-12 justify-content-center mt-4" style="display: flex">
+        <div class="pt-20 col-md-12 justify-content-center mt-4" style="display: flex">
           <h3>IN EVIDENZA</h3>
         </div>
 
-        <div class="col-12 card-container-index">
+        <div class=" pt-20 col-12 card-container-index">
         @foreach($apartments as $apartment)
           <div class="card apartment-card">
             <img src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
               <div class="card-body">
 
-                <h5 class="card-title">{{$apartment->title}}</h5>
+                <h5 class="pt-20 card-title"><i class="fas fa-home"></i> {{$apartment->title}}</h5>
 
-                <h5 class="card-text">{{$apartment->city}} </h5>
+                <h5 class="pt-20 card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}} </h5>
 
                 <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
               </div>

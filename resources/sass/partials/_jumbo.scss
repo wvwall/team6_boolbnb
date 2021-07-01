@@ -5,11 +5,12 @@
   margin-top: -1.5rem;
   height: 100vh;
   h1 {
-    margin: 150px 0 100px 0;
+    text-align: center;
+    margin: 150px 0 50px 0;
     color: $pal_red;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    padding: 20px;
+    padding: 35px 25px;
     font-weight: 600;
     font-size: 2rem;
     box-shadow:

@@ -18,9 +18,9 @@
             </div>
         </div>
         <div class=" btn-dash" style="display: flex">
-          <a class="btn btn-second" href="{{route('admin.apartments.index')}}"> I tuoi appartamenti </a>
-          <a class="btn btn-primary" href="{{route('admin.apartments.create')}}"><i class="fas fa-plus"></i> Appartamento</a>
-          <a class="btn btn-second" href="{{route('admin.messages.index')}}">I tuoi messaggi</a>
+          <a class="mt-20 btn btn-second" href="{{route('admin.apartments.index')}}"> I tuoi appartamenti </a>
+          <a class="mt-20 btn btn-primary" href="{{route('admin.apartments.create')}}"><i class="fas fa-plus"></i> Appartamento</a>
+          <a class="mt-20 btn btn-second" href="{{route('admin.messages.index')}}">I tuoi messaggi</a>
         </div>
       </div>
   </div>

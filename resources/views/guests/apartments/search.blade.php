@@ -6,39 +6,39 @@
 
 <div class="container h-100 my-4 col-xs-8">
 
-  <div class="d-flex justify-content-center h-100">
+  <div class="filter justify-content-center h-100">
     <!-- <form action="/search" method="GET" role="search"> -->
-    <div class="searchbar">
-      <input class="search_input" type="text" placeholder="Search..." v-model="nameSearch" @keyup.enter="searchApartment(nameSearch)">
-      <a @click="searchApartment(nameSearch)" class="search_icon"><i class="fas fa-key"></i></a>Filtra per Città
+    <div class="mt-20">
+      <input  type="text" placeholder="Filtra per Città" v-model="nameSearch" @keyup.enter="searchApartment(nameSearch)">
+      <a @click="searchApartment(nameSearch)" class="search_icon"><i class="fas fa-search"></i></a>
     </div>
-    <div class="searchbar">
-      <input class="search_input" type="text" placeholder="Search..." v-model="addressInputSearch" @keyup.enter="searchApartmentAddress(addressInputSearch)">
-      <a @click="searchApartmentAddress(addressInputSearch)" class="search_icon"><i class="fas fa-key"></i></a>Filtra per Indirizzo
+    <div class="mt-20">
+      <input  type="text" placeholder="Filtra per Indirizzo" v-model="addressInputSearch" @keyup.enter="searchApartmentAddress(addressInputSearch)">
+      <a @click="searchApartmentAddress(addressInputSearch)" class="search_icon"><i class="fas fa-search"></i></a>
     </div>
     <!-- </form> -->
   </div>
 
 
-  <div class="d-flex justify-content-center h-100">
+  <div class="filter justify-content-center h-100">
     <!-- <form action="/search" method="GET" role="search"> -->
 
-    <div class="searchbar">
-      <input class="" type="number" placeholder="Search..." v-model="bathsInputSearch" @keyup.enter="searchApartmentBaths(bathsInputSearch)">
+    <div class="">
+      <input class="mt-20 mrl-10" type="number" placeholder="N.Bagni" v-model="bathsInputSearch" @keyup.enter="searchApartmentBaths(bathsInputSearch)">
       <!-- <a @click="searchApartmentBaths(bathsInputSearch)" class="search_icon"><i class="fas fa-key"></i></a> -->
-      Bagni
+      
     </div>
-    <div class="searchbar">
-      <input class="" type="number" placeholder="Search..." v-model="roomsInputSearch" @keyup.enter="searchApartmentRooms(roomsInputSearch)">
+    <div class="">
+      <input class="mt-20 mrl-10" type="number" placeholder="N.Stanze" v-model="roomsInputSearch" @keyup.enter="searchApartmentRooms(roomsInputSearch)">
       <!-- <a @click="searchApartmentRooms(roomsInputSearch)" class="search_icon"><i class="fas fa-key"></i></a> -->
-      Stanze
+      
     </div>
-    <div class="searchbar">
-      <input class="" type="number" placeholder="Search..." v-model="bedsInputSearch" @keyup.enter="">
+    <div class="">
+      <input class="mt-20 mrl-10" type="number" placeholder="N.Letti" v-model="bedsInputSearch" @keyup.enter="">
       <!-- <a @click="searchApartmentBaths(bathsInputSearch)" class="search_icon"><i class="fas fa-key"></i></a> -->
-      Letti
+     
     </div>
-    <button type="button" name="button" class="btn btn-primary" @click="applyFilters(bedsInputSearch,bathsInputSearch,roomsInputSearch);">Filtra</button>
+    <button type="button " name="button" class="mt-20 btn btn-primary" @click="applyFilters(bedsInputSearch,bathsInputSearch,roomsInputSearch);">Filtra</button>
     <!-- </form> -->
   </div>
 
@@ -124,17 +124,17 @@
   <div class="right">
 
 
-  <div id="map">
-     <div class="container">
+    <div id="map">
+      <div class="container">
         <button type="button" name="button" @click="searchApartmentMaps()">Mappa</button>
         <div class="col-md-12 my-4">
           <div id="firstMap" style="height: 400px;">
 
 
           </div>
+        </div>
       </div>
-     </div>
-   </div>
+    </div>
   </div>
 </div>
 

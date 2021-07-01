@@ -16,15 +16,15 @@
             </a>
               <div class="card-body col-12">
 
-                <h5 class="card-title ">{{$apartment->title}}</h5>
-                <h5 class="card-text ">{{$apartment->city}}</h5>
+                <h5 class="card-title "><i class="fas fa-home"></i> {{$apartment->title}}</h5>
+                <h5 class="card-text "><i class="fas fa-map-marker-alt"></i> {{$apartment->city}}</h5>
 
                 <div class="commands" >
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-second">Modifica</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" class="btn btn-primary" name="Delete" value="Elimina">
+                    <input type="submit" class="btn btn-third" name="Delete" value="Elimina">
                   </form>
                 </div>
               </div>
