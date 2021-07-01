@@ -37,6 +37,6 @@ class PromotionController extends Controller
     $promotion = DB::table('promotions')
                   ->where('id','=', $data['id'])
                   ->first();
-    $apartment->->promotions()->attach($data['id']);
+    $apartment->promotions()->attach($data['id']);
   }
 }

@@ -6,8 +6,8 @@
         <div class="col-md-12 " style="display: flex">
           <h1>I TUOI APPARTAMENTI</h1>
         </div>
-        <a class="col-12 text-center my-4" href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
-        <a class="col-12 text-center my-4" href="{{route('admin.promotions.index')}}">Sponsorizza un appartamento</a>
+        <a class=" btn btn-primary" style="margin: 50px 0;" href="{{route('admin.apartments.create')}}"><i class="fas fa-plus"></i> Appartamento</a>
+        <a class="col-12 text-center my-4" href="{{route('admin.promotions.index')}}"><i class="fas fa-ad"></i> Sponsorizza Appartamento</a>
         <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
