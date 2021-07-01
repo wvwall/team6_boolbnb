@@ -11315,12 +11315,21 @@ li {
 
 @media screen and (max-width: 768px) {
   .mex {
+    width: 85%;
+    margin: 0 auto;
     flex-direction: column;
+    margin-bottom: 10px;
   }
 }
 
 .mex .casella {
   width: calc(100% / 5);
+}
+
+@media screen and (max-width: 768px) {
+  .mex .casella {
+    width: 100%;
+  }
 }
 
 .mex .casella.commands {
