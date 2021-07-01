@@ -76,6 +76,9 @@
                                     <a class="dropdown-item" href="{{ route('admin.index') }}">{{ Auth::user()->name }} - Dashboard</a>
                                     <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">Appartamenti</a>
                                     <a class="dropdown-item" href="{{ route('admin.messages.index') }}">Messaggi</a>
+
+                                    <a class="dropdown-item" href="{{ route('search.advanced') }}">Adv Search</a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
