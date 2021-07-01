@@ -2135,11 +2135,17 @@ var app1 = new Vue({
     queryApartmentResult: [],
     nameSearch: '',
     inputQueryFuz: '',
+    inputQueryRooms: '',
+    inputQueryBaths: '',
+    inputQueryBeds: '',
     inputQuerySortMeters: '',
     addressInputSearch: '',
     roomsInputSearch: '',
     bathsInputSearch: '',
-    sort: 'sort'
+    bedsInputSearch: '',
+    apartmentToMap: [],
+    sort: 'sort',
+    inputQueryFuz1: ''
   },
   mounted: function mounted() {
     var _this = this;
@@ -2282,12 +2288,40 @@ var app1 = new Vue({
         });
       }
     },
-    sortMetersApartment: function sortMetersApartment() {
+    searchApartmentMaps: function searchApartmentMaps() {
       var _this8 = this;
+
+      //console.log(this.inputQueryFuz);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
+        console.log(response.data);
+        _this8.apartmentToMap = [response.data.data];
+      });
+    },
+    applyFilters: function applyFilters(input2, input1, input) {
+      var _this9 = this;
+
+      this.inputQueryBeds = input2;
+      this.inputQueryBaths = input1;
+      this.inputQueryRooms = input;
+      console.log(this.inputQueryBaths, this.inputQueryRooms, this.inputQueryBeds);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?n_bathrooms=".concat(this.inputQueryBaths, "&n_rooms=").concat(this.inputQueryRooms, "&n_beds=").concat(this.inputQueryBeds)).then(function (response) {
+        //console.log(response.data);
+        // var searchResApartment = response.data.results;
+        _this9.queryApartmentResult = response.data.data; // this.inputQueryFuz = input;
+        // console.log(this.inputQueryFuz);
+        // axios.get(`http://localhost:8000/api/apartments/backend?n_rooms=${this.inputQueryFuz}`)
+        //     .then((response) => {
+        //       console.log(response.data);
+        //       this.queryApartmentResult = [...this.queryApartmentResult, ...response.data.data];
+        //     });
+      });
+    },
+    sortMetersApartment: function sortMetersApartment() {
+      var _this10 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?sort").then(function (response) {
         console.log(response.data);
-        _this8.queryApartmentResult = response.data.data;
+        _this10.queryApartmentResult = response.data.data;
       });
     }
   }
@@ -2302,7 +2336,7 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\Users\tom\Desktop\B\Boolean-esercizi-git\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

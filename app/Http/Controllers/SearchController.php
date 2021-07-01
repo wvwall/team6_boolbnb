@@ -16,6 +16,25 @@ use Illuminate\Http\Request;
       }
 
       public function backend(Request $request){
+
+        // $results = new ClientProfile::when(request()->has('service-provider'), function($q){
+        //     $q->where('jobsc_id', request('service-provider'));
+        // })
+        // ->when(request()->has('product'), function($q){
+        //     $q->where('product_id', request('product'));
+        // })
+        // ->when(request()->has('city'), function($q){
+        //     $q->where('divsec_id', request('city'));
+        // })
+        // ->when(count($request->all()) === 0, function($q){
+        //     $q->searched();
+        // })
+        // ->where('profile_state', 'active')->paginate(10)->appends([
+        //     'service-provider' => request('service-provider'),
+        //     'product' => request('product'),
+        //     'city' => request('city'),
+        // ]);
+
         $query = Apartment::query();
 
         if ($s = $request->input('s')) {
@@ -36,8 +55,12 @@ use Illuminate\Http\Request;
           $query->whereRaw("n_bathrooms = " . $nBath . "");
         }
 
+        if ($nBeds = $request->input('n_beds')) {
+          $query->whereRaw("n_beds = " . $nBeds . "");
+        }
+
         if ($sort = $request->input('sort')) {
-          $query->sortByDesc("square_meters");
+          $query->sort("square_meters");
         }
 
         $perPage = 25;

@@ -28,11 +28,17 @@ let app1 = new Vue({
     queryApartmentResult: [],
     nameSearch: '',
     inputQueryFuz: '',
+    inputQueryRooms: '',
+    inputQueryBaths: '',
+    inputQueryBeds: '',
     inputQuerySortMeters: '',
     addressInputSearch: '',
     roomsInputSearch: '',
     bathsInputSearch: '',
+    bedsInputSearch: '',
+    apartmentToMap: [],
     sort: 'sort',
+    inputQueryFuz1: '',
   },
   mounted() {
     axios.get(`http://localhost:8000/api/apartments/backend?sort`)
@@ -171,6 +177,35 @@ let app1 = new Vue({
               this.queryApartmentResult = response.data.data;
             });
       }
+    },
+    searchApartmentMaps: function () {
+    //console.log(this.inputQueryFuz);
+    axios.get(`http://localhost:8000/api/apartments/backend?`)
+        .then((response) => {
+          console.log(response.data);
+          this.apartmentToMap = [response.data.data];
+        });
+
+    },
+    applyFilters: function(input2,input1,input) {
+        this.inputQueryBeds = input2;
+        this.inputQueryBaths = input1;
+        this.inputQueryRooms = input;
+        console.log(this.inputQueryBaths, this.inputQueryRooms, this.inputQueryBeds);
+        axios.get(`http://localhost:8000/api/apartments/backend?n_bathrooms=${this.inputQueryBaths}&n_rooms=${this.inputQueryRooms}&n_beds=${this.inputQueryBeds}`)
+            .then((response) => {
+              //console.log(response.data);
+              // var searchResApartment = response.data.results;
+              this.queryApartmentResult = response.data.data;
+
+              // this.inputQueryFuz = input;
+              // console.log(this.inputQueryFuz);
+              // axios.get(`http://localhost:8000/api/apartments/backend?n_rooms=${this.inputQueryFuz}`)
+              //     .then((response) => {
+              //       console.log(response.data);
+              //       this.queryApartmentResult = [...this.queryApartmentResult, ...response.data.data];
+              //     });
+            });
     },
     sortMetersApartment: function () {
         axios.get(`http://localhost:8000/api/apartments/backend?sort`)
