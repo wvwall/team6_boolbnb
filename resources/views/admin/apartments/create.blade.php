@@ -130,7 +130,7 @@
 
           <div class="mb-3">
             <label for="thumb" class="form-label"><b>Upload Main Image</b></label>
-            <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="" style="">
+            <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="" >
             <!-- <span>Upload Main Image</span> -->
             @error('thumb')
               <small class="text-danger">{{ $message }}</small>

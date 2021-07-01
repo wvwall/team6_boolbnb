@@ -40,7 +40,7 @@
           <form class="delete" action="{{route('admin.messages.destroy', ['message'=>$message->id])}}" method="post">
             @csrf
             @method('DELETE')
-            <input type="submit" class="btn btn-primary" name="Delete" value="Delete">
+            <input type="submit" class="btn btn-primary" name="Delete" value="Elimina">
           </form>
          
         </div>

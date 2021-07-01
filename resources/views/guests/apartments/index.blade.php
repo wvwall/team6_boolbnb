@@ -41,7 +41,7 @@
 
                 <h5 class="card-text">{{$apartment->city}} </h5>
 
-                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Show More</a>
+                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
               </div>
           </div>
         @endforeach

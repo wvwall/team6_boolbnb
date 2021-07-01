@@ -29,7 +29,7 @@ Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.sh
 Route::get('services/{id}', 'ServiceController@index')->name('service.index');
 
 Route::get('/search', 'SearchController@filter')->name('search.advanced');
-
+Route::post('store', 'MessageController@store')->name("messages.store");
 
 
 

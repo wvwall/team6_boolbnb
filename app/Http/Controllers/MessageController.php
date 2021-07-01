@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Message;
 use App\Http\Controllers\Controller;
@@ -15,8 +15,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
-        return view('admin.messages.index', compact('messages'));
+       
     }
 
     /**
