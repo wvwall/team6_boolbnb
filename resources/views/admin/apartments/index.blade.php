@@ -6,7 +6,8 @@
         <div class="col-md-12 " style="display: flex">
           <h1>I TUOI APPARTAMENTI</h1>
         </div>
-        <a class=" btn btn-primary" style="margin: 50px 0;" href="{{route('admin.apartments.create')}}"><i class="fas fa-plus"></i> Appartamento</a>
+        <a class="col-12 text-center my-4" href="{{route('admin.apartments.create')}}">Crea nuovo appartamento</a>
+        <a class="col-12 text-center my-4" href="{{route('admin.promotions.index')}}">Sponsorizza un appartamento</a>
         <div class="col-12 card-container-index">
         @foreach($apartments as $apartment)
           <a href="{{route('admin.apartments.show', ['apartment'=>$apartment->id])}}">
@@ -15,10 +16,10 @@
             <img class="" src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
             </a>
               <div class="card-body col-12">
-
-                <h5 class="card-title "><i class="fas fa-home"></i> {{$apartment->title}}</h5>
-                <h5 class="card-text "><i class="fas fa-map-marker-alt"></i> {{$apartment->city}}</h5>
-
+               
+                <h5 class="card-title text-center">{{$apartment->title}}</h5>
+                <h5 class="card-text text-center">{{$apartment->city}}</h5>
+               
                 <div class="commands" >
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-second">Modifica</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">

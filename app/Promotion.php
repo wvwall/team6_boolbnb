@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    public function apartment() {
-        
-        return $this->belongsToMany('App\Apartment');
-        
-      }
+  protected $fillable = [
+        'name',
+        'price',
+        'duration'
+    ];
+  public function apartments() {
+
+      return $this->belongsToMany('App\Apartment');
+
+  }
 }

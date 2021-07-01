@@ -17,6 +17,7 @@ class CreatePromotionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
+            $table->integer('duration');
             $table->timestamps();
         });
     }
