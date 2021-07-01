@@ -26,6 +26,5 @@ class PromotionSeeder extends Seeder
       $promotion24hours->save();
       $promotion72hours->save();
       $promotion144hours->save();
-      
     }
 }
