@@ -13,7 +13,7 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        $services = ['wifi','car','pool','concierge','sauna'];
+        $services = ['Wifi','Posto auto','Piscina','Portineria','Sauna'];
 
         for ($i=0; $i < count($services) ; $i++) { 
             $new_service = new Service();

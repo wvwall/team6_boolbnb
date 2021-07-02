@@ -17,10 +17,10 @@
             </a>
               <div class="card-body col-12">
                
-                <h5 class="card-title text-center">{{$apartment->title}}</h5>
-                <h5 class="card-text text-center">{{$apartment->city}}</h5>
+                <h5 class="card-title text-center"><i class="fas fa-home"></i> {{$apartment->title}}</h5>
+                <h5 class="card-text text-center"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}}</h5>
                
-                <div class="commands" >
+                <div class="commands mt-20" >
                   <a href="{{route('admin.apartments.edit', ['apartment'=>$apartment->id])}}" class="btn btn-second">Modifica</a>
                   <form class="delete" action="{{route('admin.apartments.destroy', ['apartment'=>$apartment->id])}}" method="post">
                     @csrf

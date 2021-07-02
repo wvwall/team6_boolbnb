@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Apartment;
 use App\Service;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\UserController;
-use App\User;
 use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
@@ -96,7 +96,8 @@ class ApartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Apartment $apartment)
-    {
+    {  
+      
         $this->authorize('view', $apartment);
         return view('admin.apartments.show', compact('apartment'));
     }
@@ -109,7 +110,7 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-      $services = Service::all();
+        $services = Service::all();
         $this->authorize('restore', $apartment);
         return view('admin.apartments.edit', compact('apartment','services'));
     }

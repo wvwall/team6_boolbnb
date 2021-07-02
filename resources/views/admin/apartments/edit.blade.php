@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row mt-20 justify-content-center">
       <div id="edit" class="col-md-12 justify-content-center" style="display: flex">
         <h4>MODIFICA APPARTAMENTO</h4>
       </div>
@@ -21,7 +21,7 @@
         <form class="crea creamsg" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" @click="dati">
           @csrf
           @method('PATCH')
-          <div class="mb-3">
+          <div class="mb-3 mt-20">
             <label for="exampleFormControlInput1" class="form-label">Titolo</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"  placeholder="{{ old('title', $apartment->title) }}" value="{{ old('title', $apartment->title) }}">
             @error('title')
@@ -119,7 +119,7 @@
             </div>
           </div>
 
-          <button class="btn btn-primary" type="submit" name="button">Aggiungi</button>
+          <button class="btn btn-primary" type="submit" name="button">Modifica</button>
         </form>
       </div>
     </div>

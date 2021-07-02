@@ -3,8 +3,8 @@
 
 <div id="root">
   <div class="container desc">
-    <h5 class="title">{{$apartment->title}} </h5>
-    <h5 class="city">- {{$apartment->city}} </h5>
+    <h5 class="title"><i class="fas fa-home"></i> {{$apartment->title}} </h5>
+    <h5 class="city"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}} </h5>
   </div>
 
   <div class="container foto">
@@ -61,6 +61,7 @@
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
+              
                 <button class="btn btn-primary" type="submit" name="button">Contatta</button>
               </form>
 
@@ -71,7 +72,7 @@
   </div>
   <div id="info">
     <div class="container info">
-      <h4>Informazioni e Servizi</h4>
+      <h4>INFORMAZIONE E SERVIZI</h4>
       <div class="list">
           <div class="left">
             <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->address}}</p>

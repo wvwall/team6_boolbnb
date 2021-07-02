@@ -11070,6 +11070,18 @@ li {
   margin: 20px 10px 40px 10px;
 }
 
+.card-header {
+  color: #5a6268;
+  font-weight: 600;
+  /*  background: rgb(255,33,71);
+   background: linear-gradient(90deg, rgba(255,33,71,1) 82%, rgba(255,81,71,1) 100%); */
+  background-color: #c4e0e2;
+}
+
+form {
+  font-weight: 500;
+}
+
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;
@@ -11257,7 +11269,7 @@ li {
 }
 
 .info .list .left {
-  width: 30%;
+  width: 50%;
 }
 
 @media screen and (max-width: 768px) {

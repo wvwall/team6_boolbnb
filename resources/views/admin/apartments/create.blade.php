@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="mt-20 row justify-content-center">
       <div id="new_ap" class="col-md-12 justify-content-center " style="display: flex">
         <h4>NUOVO APPARTAMENTO</h4>
       </div>
-      <div class="col-md-8 justify-content-center">
+      <div class="mt-20 col-md-8 justify-content-center">
         @if ($errors->any())
             <div class="alert alert-danger">
               <ul>
