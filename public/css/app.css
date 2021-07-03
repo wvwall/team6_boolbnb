@@ -10969,6 +10969,14 @@ li {
   padding-bottom: 70px;
 }
 
+.bg-dash {
+  height: 100vh;
+  background-image: url("/img/desk.jpg");
+  background-size: cover;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
 .card-img-top {
   border-radius: 10px;
 }
