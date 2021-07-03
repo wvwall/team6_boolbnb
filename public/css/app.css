@@ -11282,6 +11282,8 @@ form {
 
 .info .list {
   display: flex;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
@@ -11292,6 +11294,11 @@ form {
 
 .info .list .left {
   width: 50%;
+}
+
+.info .list .left b {
+  color: #ff6147;
+  margin-left: 15px;
 }
 
 @media screen and (max-width: 768px) {

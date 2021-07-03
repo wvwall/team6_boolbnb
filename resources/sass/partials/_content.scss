@@ -33,11 +33,17 @@
     }
     .list {
         display: flex;
+        font-size: 1rem;
+        font-weight: 500;
         @media screen and (max-width: 768px) {
             flex-direction: column;
         }
         .left {
             width: 50%;
+            b {
+                color: $pal_red;
+                margin-left: 15px;
+            }
             @media screen and (max-width: 768px) {
                 width: 100%;
                 margin-bottom: 30px;
