@@ -10969,6 +10969,28 @@ li {
   padding-bottom: 70px;
 }
 
+.card-img-top {
+  border-radius: 10px;
+}
+
+.service {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.bg-create {
+  margin-top: 50px;
+  border-radius: 10px;
+  background-image: url("/img/bg-create2.jpg");
+  background-size: cover;
+  color: #fff;
+}
+
 .bg-footer {
   background: #ff2147;
   background: linear-gradient(90deg, #ff2147 82%, #ff5147 100%);

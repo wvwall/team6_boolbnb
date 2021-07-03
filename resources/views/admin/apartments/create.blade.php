@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="mt-20 row justify-content-center">
+    <div class=" row justify-content-center bg-create">
       <div id="new_ap" class="col-md-12 justify-content-center " style="display: flex">
         <h4>NUOVO APPARTAMENTO</h4>
       </div>
@@ -70,13 +70,13 @@
 
 
           <!-- s -->
-          <button class="btn" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
+          <button class=" mt-20 mb-20 btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
 
         <div class="" v-if="show">
 
 
 
-          <div class="mb-3" >
+          <div class="mt-20 mb-3" >
             <label for="exampleFormControlInput1" class="form-label">Stanze</label>
             <input type="number" class="form-control @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms" value="">
             @error('n_rooms')
@@ -102,19 +102,21 @@
           <input type="checkbox" name="visibility" class="switch-input" value="1" {{ old('visibility') ? 'checked="checked"' : '' }}/>
 
           <div class="mb-3" @click="dati">
-            <label for="exampleFormControlInput1" class="form-label">Metratura</label>
+            <label for="exampleFormControlInput1" class="form-label"></label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" value="">
-            <span>m2</span>
+            <span>Metratura</span>
             @error('square_meters')
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+          <div class="service">
           @foreach($services as $service)
           <div class="mb-3" @click="dati">
             <label for="">{{$service->name}}</label>
             <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ old('service') ? 'checked="checked"' : '' }}/>
           </div>
           @endforeach
+          </div>
           <!-- <form class="crea" action="{{route('admin.services.store')}}" method="post">
            @csrf
            @method('POST')
@@ -148,7 +150,7 @@
             </div>
           </div> -->
 
-          <button type="submit" name="button" class="btn btn-primary">Save</button>
+          <button type="submit" name="button" class=" mb-20 btn btn-primary">Save</button>
         </div>
         </form>
 

@@ -17,7 +17,7 @@
           @endif
       </div>
       <div class="col-md-8">
-      <img src="{{ asset('storage/' . $apartment->thumb) }}" class="card-img-top" style="width: 250px;" style="border-radius: 10px;" alt="immagine non disponibile">
+      <img src="{{ asset('storage/' . $apartment->thumb) }}" class="card-img-top" style="width: 300px;" style="border-radius: 10px;" alt="immagine non disponibile">
         <form class="crea creamsg" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" @click="dati">
           @csrf
           @method('PATCH')
@@ -88,19 +88,21 @@
             </div>
           </div> -->
           <div class="mb-3" @click="dati">
-            <label for="exampleFormControlInput1" class="form-label">Metri quadrati</label>
+            <label for="exampleFormControlInput1" class="form-label">Metratura</label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" placeholder="{{ old('square_meters', $apartment->square_meters) }}" value="{{ old('square_meters', $apartment->square_meters) }}">
-            <span>m2</span>
+            <span></span>
             @error('square_meters')
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+          <div class="service">
           @foreach($services as $service)
-          <div class="mb-3" @click="dati">
+          <div class="mb-3 " @click="dati">
             <label for="">{{$service->name}}</label>
             <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ $apartment->services->contains($service->id) ? 'checked="checked"' : '' }}/>
           </div>
           @endforeach
+          </div>
           <div class="mb-3">
             <label for="thumb" class="form-label">Foto</label>
             <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
