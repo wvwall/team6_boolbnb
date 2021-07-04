@@ -6,6 +6,7 @@ use App\Message;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class MessageController extends Controller
 {
     /**
@@ -61,7 +62,7 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
-    {
+    {    
         return view('admin.messages.show', compact('message'));
     }
 
@@ -90,6 +91,7 @@ class MessageController extends Controller
             'object' => 'required|string|max:255',
             'content' => 'required|string|min:3|max:1000',
             'id_apartment' => 'exists:apartments,id',
+            'user_id_apartment'=>'required|numeric'
           ]);
 
           $data = $request->all();

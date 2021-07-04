@@ -150,7 +150,7 @@
             </div>
           </div> -->
 
-          <button type="submit" name="button" class=" mb-20 btn btn-primary">Save</button>
+          <button type="submit" name="button" class=" mb-20 btn btn-primary">Aggiungi</button>
         </div>
         </form>
 

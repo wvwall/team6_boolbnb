@@ -27,17 +27,19 @@
           @endif
         </div>
         <div class="col-md-8">
+         
           <form class="creamsg mt-20" action="{{route('messages.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
+            
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">La tua Email</label>
-              <input type="text" class="form-control @error('Sender') is-invalid @enderror" id="sender" name="sender" value="">
+              <input type="text" class="form-control @error('Sender') is-invalid @enderror" id="sender" name="sender" value="{{Auth::user() ? Auth::user()->email : ''}}">
               @error('sender')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-
+            
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Oggetto</label>
               <input type="text" class="form-control @error('Object') is-invalid @enderror" name="object"></input>
@@ -64,6 +66,13 @@
               <label for="exampleFormControlInput1" class="form-label"></label>
               <input type="hidden" class="form-control-file @error('apartment_title') is-invalid @enderror" id="apartment_title" name="apartment_title" value="{{$apartment->title}}">
               @error('apartment_title')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"></label>
+              <input type="hidden" class="form-control-file @error('user_id_apartment') is-invalid @enderror" id="user_id_apartment" name="user_id_apartment" value="{{$apartment->user_id}}">
+              @error('user_id_apartment')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>

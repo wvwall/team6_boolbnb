@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Message;
+use App\Apartament;
+use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $messages = Message::all()->where('user_id_apartment','=', Auth::user()->id );
         return view('admin.messages.index', compact('messages'));
     }
 
@@ -42,7 +44,8 @@ class MessageController extends Controller
             'object' => 'required|string|max:255',
             'content' => 'required|string|min:3|max:1000',
             'apartment_id' => 'exists:apartments,id',
-            'apartment_title'=>'required|string|max:255'
+            'apartment_title'=>'required|string|max:255',
+            'user_id_apartment'=>'required|numeric'
           ]);
 
           $data = $request->all();

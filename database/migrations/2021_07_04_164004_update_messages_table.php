@@ -15,6 +15,7 @@ class UpdateMessagesTable extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             $table->string('apartment_title');
+            
         });
     }
 

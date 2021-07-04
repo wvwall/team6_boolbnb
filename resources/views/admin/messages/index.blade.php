@@ -3,11 +3,11 @@
 <div id="root">
   <div class="container">
     <div class="row justify-content-center">
-      <div class=" mex1 col-md-12 " style="display: flex">
-        <h1>MESSAGGI RICEVUTI</h1>
+      <div class=" mex1 col-md-12 "  style="text-align: center;">
+        <h3>MESSAGGI RICEVUTI</h3>
       </div>
       @foreach($messages as $message)
-      <div class="mex ">
+      <div class="mex " style="border-radius: 10px;">
 
         <div class="casella">
           <div class="red">Mittente</div>
@@ -31,6 +31,7 @@
           <div class="red">Appartamento</div>
           <div>
             <h6 class="card-title text-center">{{$message->apartment_title}}</h6>
+            <small>{{$message->apartment_id}}</small>
           </div>
         </div>
 
@@ -40,7 +41,7 @@
           <form class="delete" action="{{route('admin.messages.destroy', ['message'=>$message->id])}}" method="post">
             @csrf
             @method('DELETE')
-            <input type="submit" class="btn btn-third" name="Delete" value="Elimina">
+            <input type="submit" class=" mt-20 mb-20 btn btn-third" name="Delete" value="Elimina">
           </form>
 
         </div>

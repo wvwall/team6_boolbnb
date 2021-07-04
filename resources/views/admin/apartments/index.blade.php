@@ -3,8 +3,8 @@
 <div id="root">
   <div class="container">
       <div id="apa" class=" row justify-content-center">
-        <div class="col-md-12 " style="display: flex">
-          <h1>I TUOI APPARTAMENTI</h1>
+        <div class="col-md-12" style="text-align: center;">
+          <h3 >I TUOI APPARTAMENTI</h3>
         </div>
         <a class=" btn btn-primary" style="margin: 50px 0;" href="{{route('admin.apartments.create')}}"><i class="fas fa-plus"></i> Appartamento</a>
         <a class="col-12 text-center my-4" href="{{route('admin.promotions.index')}}"><i class="fas fa-ad"></i> Sponsorizza Appartamento</a>
