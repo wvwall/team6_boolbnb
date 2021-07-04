@@ -41,6 +41,7 @@ class MessageController extends Controller
             'object' => 'required|string|max:255',
             'content' => 'required|string|min:3|max:1000',
             'apartment_id' => 'exists:apartments,id',
+            'apartment_title'=>'required|string|max:255'
           ]);
 
           $data = $request->all();

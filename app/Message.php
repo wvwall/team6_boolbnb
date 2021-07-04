@@ -11,6 +11,7 @@ class Message extends Model
         'object',
         'content',
         'apartment_id',
+        'apartment_title'
       ];
     public function apartment()
   {

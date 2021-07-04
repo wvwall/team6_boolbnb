@@ -15,7 +15,7 @@
         <div class="d-flex justify-content-center h-100">
           <div class="searchbar">
             <input class="search_input" type="text" name="" placeholder="Search...">
-            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            <a href="{{ route('search.advanced') }}" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
           <!-- <a href="{{ route('search.advanced') }}" class="btn btn-primary">Cerca il tuo alloggio!</a> -->
         </div>

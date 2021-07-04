@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    {{ __('Benvenuto, ora sei un utente registrato.') }}
+                    {{ __('Benvenuto!') }}
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@
         <div class="casella">
           <div class="red">Appartamento</div>
           <div>
-            <h6 class="card-title text-center">{{$message->apartment_id}}</h6>
+            <h6 class="card-title text-center">{{$message->apartment_title}}</h6>
           </div>
         </div>
 

@@ -109,19 +109,19 @@
     <div class="flip-card" v-for="apart in queryApartmentResult" :key='apart.id'>
       <div class="card apartment-card">
         <!-- visualizzare immagine? -->
-        <img src="{{ @apart['thumb'] }}" alt="immagine non disponibile">
+        <img class="mt-20 mb-20" src="{{ @apart['thumb'] }}" alt="immagine non disponibile">
         <div class="card-body">
           <h5 class="card-title">@{{apart['title']}}</h5>
           <p class="card-text">@{{apart['city']}} - @{{apart['address']}} - <b>Stanze</b> @{{apart['n_rooms']}} - <b>Bagni</b> @{{apart['n_bathrooms']}} - <b>Letti</b> @{{apart['n_beds']}}</p>
 
           <!-- route show  -->
-          <a @click="get_id(apart['id'])" href="{{route('apartments.show', ['slug'=>@apart['slug']])}}" class="btn btn-primary">Mostra</a>
+          <a @click="get_id(apart['id'])" href="{{route('apartments.show', ['slug'=>@apart['slug']])}}" class="mb-20 btn btn-primary">Mostra</a>
 
         </div>
       </div>
     </div>
   </div>
-  <div class="right">
+  <!-- <div class="right">
 
 
     <div id="map">
@@ -135,7 +135,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 
