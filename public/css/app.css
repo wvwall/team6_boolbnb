@@ -10977,6 +10977,24 @@ li {
   margin-top: 50px;
 }
 
+.bg-promo {
+  height: 100vh;
+  background-image: url("/img/sponsor.jpg");
+  background-size: cover;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+}
+
+.center2 {
+  display: flex;
+  justify-content: center;
+}
+
 .card-img-top {
   border-radius: 10px;
 }

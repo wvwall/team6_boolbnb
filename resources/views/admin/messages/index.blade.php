@@ -31,7 +31,7 @@
           <div class="red">Appartamento</div>
           <div>
             <h6 class="card-title text-center">{{$message->apartment_title}}</h6>
-            <small>{{$message->apartment_id}}</small>
+            
           </div>
         </div>
 
