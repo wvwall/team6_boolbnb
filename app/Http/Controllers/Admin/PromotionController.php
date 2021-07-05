@@ -36,7 +36,7 @@ class PromotionController extends Controller
     $promotion = Promotion::findOrFail($data['promotion_id']);
     $promotionId = $promotion->id;
     $now = Carbon::now();
-    $end_promotion = $now->addDays(5);
+    $end_promotion = $now->addDays($promotion->duration);
     if($apartment->promotions()->exists($apartmentId)) {
       return redirect()->route('admin.sponsors.index');
     } else {
