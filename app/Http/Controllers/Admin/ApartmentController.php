@@ -186,6 +186,6 @@ class ApartmentController extends Controller
       }
         return $slug;
   }
-  
+
 
 }
