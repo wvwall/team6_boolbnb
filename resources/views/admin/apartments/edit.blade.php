@@ -88,7 +88,7 @@
             </div>
           </div> -->
           <div class="mb-3" @click="dati">
-            <label for="exampleFormControlInput1" class="form-label">Metratura</label>
+            <label for="exampleFormControlInput1" class="form-label">Metratura(m2)</label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" placeholder="{{ old('square_meters', $apartment->square_meters) }}" value="{{ old('square_meters', $apartment->square_meters) }}">
             <span></span>
             @error('square_meters')

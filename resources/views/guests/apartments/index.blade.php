@@ -39,7 +39,7 @@
 
                 <h5 class="pt-20 card-title"><i class="fas fa-home"></i> {{$apartment->title}}</h5>
 
-                <h5 class="pt-20 card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}} </h5>
+                <h5 class=" card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}} </h5>
 
                 <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
               </div>

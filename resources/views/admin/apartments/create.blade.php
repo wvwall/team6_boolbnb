@@ -104,7 +104,7 @@
           <div class="mb-3" @click="dati">
             <label for="exampleFormControlInput1" class="form-label"></label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" value="">
-            <span>Metratura</span>
+            <span>Metratura(m2)</span>
             @error('square_meters')
               <small class="text-danger">{{ $message }}</small>
             @enderror
