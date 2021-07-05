@@ -16,7 +16,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
@@ -63,7 +63,7 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
-    {    
+    {
         return view('admin.messages.show', compact('message'));
     }
 

@@ -11,9 +11,8 @@ class Promotion extends Model
         'price',
         'duration'
     ];
-  public function apartments() {
-
-      return $this->belongsToMany('App\Apartment');
-
+  public function apartments()
+  {
+    return $this->belongsToMany('App\Apartment');
   }
 }

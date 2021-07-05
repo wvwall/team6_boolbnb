@@ -28,17 +28,17 @@ class Apartment extends Model
 
   public function messages() {
 
-    
+
     return $this->hasMany('App\Message');
   }
 
-  public function promotions() {
-
-    return $this->belongsToMany('App\Promotion');
-  }
   public function services() {
 
     return $this->belongsToMany('App\Service');
+  }
+  public function promotions() {
+
+    return $this->belongsToMany('App\Promotion');
   }
   public function views()
   {
