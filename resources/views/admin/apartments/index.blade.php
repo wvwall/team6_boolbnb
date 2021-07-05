@@ -30,11 +30,10 @@
                 </div>
               </div>
             </div>
-          
+
           @endforeach
         </div>
       </div>
   </div>
 </div>
 @endsection
-@section('foot-script')

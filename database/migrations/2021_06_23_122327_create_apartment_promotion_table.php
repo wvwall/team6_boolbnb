@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateApartmentPromotionTable extends Migration
 {
@@ -14,14 +15,14 @@ class CreateApartmentPromotionTable extends Migration
     public function up()
     {
         Schema::create('apartment_promotion', function (Blueprint $table) {
-            
+
             $table->id();
-            $table->unsignedBigInteger('id_apartment');
-            $table->foreign('id_apartment')->references('id')->on('apartments');
-            $table->unsignedBigInteger('id_promotion');
-            $table->foreign('id_promotion')->references('id')->on('promotions');
-            $table->date('start_promotion');
-            $table->date('end_promotion');
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->unsignedBigInteger('promotion_id');
+            $table->foreign('promotion_id')->references('id')->on('promotions');
+            $table->date('start_promotion')->default(Carbon::now());
+            $table->timestamp('end_promotion');
             $table->timestamps();
         });
     }

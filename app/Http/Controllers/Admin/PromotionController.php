@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\UserController;
 use App\User;
 use Illuminate\Support\Facades\Storage;
-
+use Carbon\Carbon;
 use App\Promotion;
 use App\Apartment;
 
@@ -28,15 +28,23 @@ class PromotionController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-        'id'=>'exists:promotions,id'
+      'promotion_id' => 'required'
     ]);
     $data = $request->all();
-    $apartment = DB::table('apartments')
-                  ->where('id', '=', $data['id_apartment'])
-                  ->get();
-    $promotion = DB::table('promotions')
-                  ->where('id','=', $data['id'])
-                  ->first();
-    $apartment->promotions()->attach($data['id']);
+    $apartment = Apartment::findOrFail($data['apartment_id']);
+    $apartmentId = $apartment->id;
+    $promotion = Promotion::findOrFail($data['promotion_id']);
+    $promotionId = $promotion->id;
+    $now = Carbon::now();
+    $end_promotion = $now->addDays(5);
+    if($apartment->promotions()->exists($apartmentId)) {
+      return redirect()->route('admin.sponsors.index');
+    } else {
+      $apartment->promotions()->attach($data['promotion_id'], ['end_promotion'=> $end_promotion]);
+    }
+
+
+
+    return redirect()->route('admin.apartments.index');
   }
 }

@@ -20,7 +20,7 @@ class PromotionSeeder extends Seeder
       $promotion72hours->name = 'special(72ore)';
       $promotion72hours->price = 5.99;
       $promotion72hours->duration =  3;
-      $promotion144hours->name = 'premium(24ore)';
+      $promotion144hours->name = 'premium(144ore)';
       $promotion144hours->price = 9.99;
       $promotion144hours->duration =  6;
       $promotion24hours->save();
