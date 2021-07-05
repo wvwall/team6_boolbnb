@@ -40,4 +40,8 @@ class Apartment extends Model
 
     return $this->belongsToMany('App\Service');
   }
+  public function views()
+  {
+    return $this->hasMany(View::class);
+  }
 }

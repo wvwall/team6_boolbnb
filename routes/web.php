@@ -31,7 +31,7 @@ Route::get('services/{id}', 'ServiceController@index')->name('service.index');
 Route::get('/search', 'SearchController@filter')->name('search.advanced');
 Route::post('store', 'MessageController@store')->name("messages.store");
 
-
+Route::post('/views/{apartment}', 'ViewController@store')->name('views.store');
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
   ->group(function () {

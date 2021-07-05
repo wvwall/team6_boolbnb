@@ -33,7 +33,10 @@
 
         <div class=" pt-20 col-12 card-container-index">
         @foreach($apartments as $apartment)
-          <div class="card apartment-card">
+        <form id='{{$apartment->id}}' action="{{route('views.store', ['apartment'=>$apartment->id])}}" method="post" style="display: flex; justify-content: center;">
+            @csrf
+            @method('POST')
+          <div  class="card apartment-card">
             <img src="{{ asset('storage/' . $apartment->thumb) }}"  alt="immagine non disponibile">
               <div class="card-body">
 
@@ -41,9 +44,11 @@
 
                 <h5 class=" card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}} </h5>
 
-                <a @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
+                <a   @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
               </div>
+             <!--  onclick="event.preventDefault(); document.getElementById('{{$apartment->id}}').submit()" -->
           </div>
+        </form>
         @endforeach
         </div>
 
