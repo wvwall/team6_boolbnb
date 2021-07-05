@@ -16,7 +16,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
@@ -42,7 +42,8 @@ class MessageController extends Controller
             'object' => 'required|string|max:255',
             'content' => 'required|string|min:3|max:1000',
             'apartment_id' => 'exists:apartments,id',
-            'apartment_title'=>'required|string|max:255'
+            'apartment_title'=>'required|string|max:255',
+            'user_id_apartment'=>'required|numeric'
           ]);
 
           $data = $request->all();
@@ -62,7 +63,7 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
-    {    
+    {
         return view('admin.messages.show', compact('message'));
     }
 
