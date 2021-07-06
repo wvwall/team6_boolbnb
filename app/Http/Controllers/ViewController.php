@@ -11,12 +11,11 @@ class ViewController extends Controller
     {
         $data = $request->all();
         $view = new View();
-        
+
         $view->fill($data);
         $view->ip_address = $_SERVER['REMOTE_ADDR'];
         $view->save();
-        
-        
-        
+
+        return redirect()->route('guests.show', ['apartment'=> $apartment]);
     }
 }

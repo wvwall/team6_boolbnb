@@ -23,21 +23,29 @@ use App\Http\Resources\Apartment as ApartmentResource;
 
 Auth::routes();
 
-// Route::get('/', 'HomeController@index')->name('index');
 Route::get('/', 'ApartmentController@index')->name('apartments.index');
 Route::get('apartments/{slug}', 'ApartmentController@show')->name('apartments.show');
-Route::get('services/{id}', 'ServiceController@index')->name('service.index');
 
-Route::get('/search', 'SearchController@filter')->name('search.advanced');
+Route::get('services/{apartment}', 'ServiceController@index')->name('service.index');
+
+// Route::resource('apartments', 'ApartmentController');
+
+Route::get('/search/{input}', 'SearchController@filter')->name('search.advanced');
+Route::get('/search/', 'SearchController@querySearch')->name('search.advanced');
+
 Route::post('store', 'MessageController@store')->name("messages.store");
 
 Route::post('/views/{apartment}', 'ViewController@store')->name('views.store');
 
-Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')
-  ->group(function () {
+Route::middleware('auth')
+->namespace('Admin')
+->prefix('admin')
+->name('admin.')
+->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('apartments', 'ApartmentController');
     Route::resource('services', 'ServiceController');
     Route::resource('messages', 'MessageController');
     Route::resource('promotions', 'PromotionController');
+
   });

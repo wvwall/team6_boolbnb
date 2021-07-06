@@ -45,83 +45,86 @@
             @enderror
           </div>
 
-          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">Valida indirizzo</button>
+          <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">Valida Indirizzo</button>
           <ul>
             <li class="form-control" @click="saveAddress(addressEl)" class="address-suggestion" v-for="(addressEl, i) in validAddresses" v-if="validAddresses!=[]">
-               @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.streetName }} - @{{ addressEl.address.municipality }}
-
+               @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.municipality }}
              </li>
           </ul>
 
           <div id="mymap" style="height: 300px;">
-            
           </div>
 
-
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Stanze</label>
-            <input type="number" class="form-control-file @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms" placeholder="{{ old('n_rooms', $apartment->n_rooms) }}" value="{{ old('n_rooms', $apartment->n_rooms) }}">
-            @error('n_rooms')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Letti</label>
-            <input type="number" class="form-control-file @error('n_beds') is-invalid @enderror" id="n_beds" name="n_beds" placeholder="{{ old('n_beds', $apartment->n_beds) }}" value="{{ old('n_beds', $apartment->n_beds) }}">
-            @error('n_beds')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Bagni</label>
-            <input type="number" class="form-control-file @error('n_bathrooms') is-invalid @enderror" id="n_bathrooms" name="n_bathrooms" placeholder="{{ old('n_bathrooms', $apartment->n_bathrooms) }}" value="{{ old('n_bathrooms', $apartment->n_bathrooms) }}">
-            @error('n_bathrooms')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-          <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
-
-          <!-- <div class="mb-3">
-            <div class="bootstrap-switch-square">
-              <input type="checkbox" data-toggle="switch" name="visibility" id="visibility" value="True"/>
-              <label for="">Visibility</label>
-            </div>
-          </div> -->
-          <div class="mb-3" @click="dati">
-            <label for="exampleFormControlInput1" class="form-label">Metratura(m2)</label>
-            <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" placeholder="{{ old('square_meters', $apartment->square_meters) }}" value="{{ old('square_meters', $apartment->square_meters) }}">
-            <span></span>
-            @error('square_meters')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-          <div class="service">
-          @foreach($services as $service)
-          <div class="mb-3 " @click="dati">
-            <label for="">{{$service->name}}</label>
-            <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ $apartment->services->contains($service->id) ? 'checked="checked"' : '' }}/>
-          </div>
-          @endforeach
-          </div>
-          <div class="mb-3">
-            <label for="thumb" class="form-label">Foto</label>
-            <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
-            <span>Carica foto principale</span>
-            @error('thumb')
-              <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="coordinate" v-for="risp in risposta" hidden>
+          <div class="coordinate" v-if="addressChecked" hidden>
             <div class="form-group card-custom">
-              <input type="text"  id="long" name="long"  :value="`${risp.position.lon}`">
+              <input type="text" id="long" name="long" v-bind="longitudine" v-model="longitudine">
             </div>
             <div class="form-group card-custom">
-              <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
+              <input type="text"  id="lat" name="lat" v-bind="latitudine" v-model="latitudine">
             </div>
           </div>
 
-          <button class="btn btn-primary" type="submit" name="button">Modifica</button>
+          <button class="btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
+
+          <div class="" v-if="show">
+
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Stanze</label>
+              <input type="number" class="form-control-file @error('n_rooms') is-invalid @enderror" id="n_rooms" name="n_rooms" placeholder="{{ old('n_rooms', $apartment->n_rooms) }}" value="{{ old('n_rooms', $apartment->n_rooms) }}">
+              @error('n_rooms')
+                <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Letti</label>
+              <input type="number" class="form-control-file @error('n_beds') is-invalid @enderror" id="n_beds" name="n_beds" placeholder="{{ old('n_beds', $apartment->n_beds) }}" value="{{ old('n_beds', $apartment->n_beds) }}">
+              @error('n_beds')
+                <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Bagni</label>
+              <input type="number" class="form-control-file @error('n_bathrooms') is-invalid @enderror" id="n_bathrooms" name="n_bathrooms" placeholder="{{ old('n_bathrooms', $apartment->n_bathrooms) }}" value="{{ old('n_bathrooms', $apartment->n_bathrooms) }}">
+              @error('n_bathrooms')
+                <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+            <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
+
+            <!-- <div class="mb-3">
+              <div class="bootstrap-switch-square">
+                <input type="checkbox" data-toggle="switch" name="visibility" id="visibility" value="True"/>
+                <label for="">Visibility</label>
+              </div>
+            </div> -->
+
+            <div class="mb-3" @click="dati">
+              <label for="exampleFormControlInput1" class="form-label">Metri quadrati</label>
+              <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" placeholder="{{ old('square_meters', $apartment->square_meters) }}" value="{{ old('square_meters', $apartment->square_meters) }}">
+              <span>m2</span>
+              @error('square_meters')
+                <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+            @foreach($services as $service)
+            <div class="mb-3" @click="dati">
+              <label for="">{{$service->name}}</label>
+              <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ $apartment->services->contains($service->id) ? 'checked="checked"' : '' }}/>
+            </div>
+            @endforeach
+            <div class="mb-3">
+              <label for="thumb" class="form-label">Foto</label>
+              <input type="file" class="form-control-file @error('thumb') is-invalid @enderror" id="thumb" name="thumb" value="">
+              <span>Carica foto principale</span>
+              @error('thumb')
+                <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+
+            <button class="btn btn-primary" type="submit" name="button">Aggiungi</button>
+          </div>
         </form>
       </div>
     </div>

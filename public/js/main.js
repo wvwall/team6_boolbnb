@@ -2119,7 +2119,7 @@ var app1 = new Vue({
     ins_citta: '',
     ins_lon: '',
     ins_lat: '',
-    risposta: [],
+    results: [],
     longitudine: 0,
     latitudine: 0,
     service_index: 0,
@@ -2129,8 +2129,10 @@ var app1 = new Vue({
     mapDisp: false,
     addressChecked: false,
     show: false,
-    toggleMap: false,
+    toggleMap: true,
     old_indirizzo: '',
+    old_latitude: '',
+    old_longitudine: '',
     old_citta: '',
     queryApartmentResult: [],
     nameSearch: '',
@@ -2138,36 +2140,183 @@ var app1 = new Vue({
     inputQueryRooms: '',
     inputQueryBaths: '',
     inputQueryBeds: '',
-    inputQuerySortMeters: '',
     addressInputSearch: '',
     roomsInputSearch: '',
     bathsInputSearch: '',
     bedsInputSearch: '',
     apartmentToMap: [],
     sort: 'sort',
-    inputQueryFuz1: ''
+    inputQueryFuz1: '',
+    search_generic: '',
+    range: 20,
+    cities: [],
+    actual_loc: []
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?sort").then(function (response) {
-      console.log(response.data);
-      _this.queryApartmentResult = response.data.data;
-    });
+    var path = window.location.pathname;
+    this.search_generic = path.split("/search/")[1];
+    console.log(this.search_generic);
+    this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+
+    if (this.search_generic != null) {
+      //console.log(this.search_generic + '<-url');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.search_generic, ".json?key=").concat(this.key)).then(function (response) {
+        console.log(response.data.results[0].address); //this.queryApartmentResult = response.data;
+
+        var lon = response.data.results[0].position.lon;
+        var lat = response.data.results[0].position.lat;
+        _this.longitudine = lon;
+        _this.latitudine = lat;
+        _this.actual_loc = response.data.results[0]; //console.log(lon, lat);
+
+        if (_this.cities = []) {
+          axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+              if (!_this.cities.includes(response.data[i].city)) {
+                _this.cities.push(response.data[i].city);
+              }
+            }
+          });
+        }
+      });
+      this.queryApartmentResult = [];
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+        console.log(response.data); //this.queryApartmentResult = response.data;
+
+        var coordinate = [response.data[0]["long"], response.data[0].lat];
+        _this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+        var map = tt.map({
+          key: _this.key,
+          container: 'mymap',
+          center: coordinate,
+          zoom: 12
+        });
+
+        for (var i = 0; i < response.data.length; i++) {
+          //console.log(response.data[i].long, response.data[i].lat);
+          var range = parseInt(_this.range);
+          var _lat = _this.latitudine;
+          var _lon = _this.longitudine;
+          var lat2 = response.data[i].lat;
+          var lon2 = response.data[i]["long"];
+          _lon = _lon * Math.PI / 180;
+          lon2 = lon2 * Math.PI / 180;
+          _lat = _lat * Math.PI / 180;
+          lat2 = lat2 * Math.PI / 180; // Haversine formula
+
+          var dlon = lon2 - _lon;
+          var dlat = lat2 - _lat;
+          var a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(_lat) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+          var c = 2 * Math.asin(Math.sqrt(a)); // Radius of earth in kilometers. Use 3956
+          // for miles
+
+          var r = 6371;
+          var distancekm = c * r; //console.log(distancekm);
+
+          console.log(distancekm + 'range: ' + range);
+
+          if (distancekm <= range) {
+            //this.queryApartmentResult[i] = response.data[i];
+            _this.queryApartmentResult.push(response.data[i]);
+
+            console.log('trovato!' + response.data[i] + distancekm);
+          } //console.log(this.queryApartmentResult);
+
+        }
+      });
+    } else {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+        console.log(response.data); // this.queryApartmentResult = response.data;
+
+        var lon = response.data[0]["long"];
+        var lat = response.data[0].lat;
+        _this.longitudine = lon;
+        _this.latitudine = lat;
+        _this.actual_loc = response.data[0];
+        console.log(lon, lat, _this.actual_loc);
+
+        for (var i = 0; i < response.data.length; i++) {
+          if (!_this.cities.includes(response.data[i].city)) {
+            _this.cities.push(response.data[i].city);
+          }
+        }
+
+        var coordinate = [_this.longitudine, _this.latitudine];
+        _this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+        var map = tt.map({
+          key: _this.key,
+          container: 'mymap',
+          center: coordinate,
+          zoom: 12
+        });
+        var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+        map.addControl(new tt.FullscreenControl());
+        map.addControl(new tt.NavigationControl());
+
+        for (var i = 0; i < response.data.length; i++) {
+          //console.log(response.data[i].long, response.data[i].lat);
+          var range = parseInt(_this.range);
+          var _lat2 = _this.latitudine;
+          var _lon2 = _this.longitudine;
+          var lat2 = response.data[i].lat;
+          var lon2 = response.data[i]["long"];
+          _lon2 = _lon2 * Math.PI / 180;
+          lon2 = lon2 * Math.PI / 180;
+          _lat2 = _lat2 * Math.PI / 180;
+          lat2 = lat2 * Math.PI / 180; // Haversine formula
+
+          var dlon = lon2 - _lon2;
+          var dlat = lat2 - _lat2;
+          var a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(_lat2) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+          var c = 2 * Math.asin(Math.sqrt(a)); // Radius of earth in kilometers. Use 3956
+          // for miles
+
+          var r = 6371;
+          var distancekm = c * r; //console.log(distancekm);
+          //console.log(distancekm + 'range: '+ range);
+
+          _this.queryApartmentResult.push(response.data[i]);
+
+          if (distancekm <= range) {//this.queryApartmentResult[i] = response.data[i];
+            //console.log('trovato!' + response.data[i] + distancekm);
+          } //console.log(this.queryApartmentResult);
+
+        }
+      });
+    }
   },
   methods: {
     dati: function dati() {
       var _this2 = this;
 
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
-      this.indirizzo = this.ins_indirizzo;
-      this.citta = this.ins_citta;
-      console.log(this.key, this.indirizzo, this.citta);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.indirizzo).concat(this.citta, ".json?key=").concat(this.key)).then(function (response) {
-        _this2.risposta = response.data.results;
-        console.log(_this2.risposta);
+      this.indirizzo = this.search_generic; //console.log(this.key, this.indirizzo);
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.search_generic, ".json?key=").concat(this.key)).then(function (response) {
+        _this2.results = response.data.results;
+        console.log(_this2.results[0]);
       });
-      return this.risposta;
+      this.latitudine = this.results[0].position.lat;
+      this.longitudine = this.results[0].position.lon;
+      var coordinate = [this.longitudine, this.latitudine];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key: this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 12
+      });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+      return this.results;
+    },
+    getCoordinates: function getCoordinates(latitudine, longitudine) {
+      this.latitudine = latitudine;
+      this.longitudine = longitudine;
+      this.results = [];
     },
     getmap: function getmap(_long, lat) {
       var coordinate = [_long, lat];
@@ -2176,7 +2325,7 @@ var app1 = new Vue({
         key: this.key,
         container: 'mymap',
         center: coordinate,
-        zoom: 13
+        zoom: 12
       });
       var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
       map.addControl(new tt.FullscreenControl());
@@ -2193,18 +2342,19 @@ var app1 = new Vue({
       this.userCity = city;
       this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.userAddress, "%20").concat(this.userCity, ".json?key=").concat(this.key)).then(function (response) {
-        _this3.validAddresses = response.data.results;
-        console.log(_this3.userAddress);
-        console.log(_this3.validAddresses);
+        _this3.validAddresses = response.data.results; // console.log(this.userAddress);
+        // console.log(this.validAddresses);
       });
       return this.validAddresses;
     },
     saveAddress: function saveAddress(address) {
       this.ins_indirizzo = address.address.freeformAddress;
+      this.ins_citta = address.address.municipality;
       this.validAddresses = [];
       this.latitudine = address.position.lat;
       this.longitudine = address.position.lon;
-      this.addressChecked = this.ins_indirizzo; // console.log(this.ins_lat);
+      this.addressChecked = this.ins_indirizzo;
+      this.userCity = address.address.municipality; // console.log(this.ins_lat);
       // console.log(this.ins_lon);
 
       var coordinate = [this.longitudine, this.latitudine];
@@ -2213,7 +2363,7 @@ var app1 = new Vue({
         key: this.key,
         container: 'mymap',
         center: coordinate,
-        zoom: 14
+        zoom: 12
       });
       var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
       map.addControl(new tt.FullscreenControl());
@@ -2226,103 +2376,165 @@ var app1 = new Vue({
       if (input != '') {
         this.inputQueryFuz = input;
         console.log(this.inputQueryFuz);
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?s=".concat(this.inputQueryFuz)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/search/".concat(this.inputQueryFuz)).then(function (response) {
           console.log(response.data);
-          _this4.queryApartmentResult = response.data.data;
+          _this4.queryApartmentResult = response.data;
         });
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
           console.log(response.data);
-          _this4.queryApartmentResult = response.data.data;
+          _this4.queryApartmentResult = response.data;
         });
       }
     },
-    searchApartmentAddress: function searchApartmentAddress(input) {
+    applyFilters: function applyFilters() {
       var _this5 = this;
 
-      if (input != '') {
-        this.inputQueryFuz = input;
-        console.log(this.inputQueryFuz);
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?address=".concat(this.inputQueryFuz)).then(function (response) {
-          console.log(response.data);
-          _this5.queryApartmentResult = response.data.data;
-        });
-      } else {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
-          console.log(response.data);
-          _this5.queryApartmentResult = response.data.data;
-        });
-      }
+      this.queryApartmentResult = [];
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+        //console.log(response.data);
+        //this.queryApartmentResult = response.data;
+        for (var i = 0; i < response.data.length; i++) {
+          //console.log(response.data[i].long, response.data[i].lat);
+          var range = parseInt(_this5.range);
+          var _lat3 = _this5.latitudine;
+          var _lon3 = _this5.longitudine;
+          var lat2 = response.data[i].lat;
+          var lon2 = response.data[i]["long"];
+          _lon3 = _lon3 * Math.PI / 180;
+          lon2 = lon2 * Math.PI / 180;
+          _lat3 = _lat3 * Math.PI / 180;
+          lat2 = lat2 * Math.PI / 180; // Haversine formula
+
+          var dlon = lon2 - _lon3;
+          var dlat = lat2 - _lat3;
+          var a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(_lat3) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+          var c = 2 * Math.asin(Math.sqrt(a)); // Radius of earth in kilometers. Use 3956
+          // for miles
+
+          var r = 6371;
+          var distancekm = c * r; //console.log(distancekm);
+
+          console.log(distancekm + 'range: ' + range);
+
+          if (distancekm <= range) {
+            //this.queryApartmentResult[i] = response.data[i];
+            _this5.queryApartmentResult.push(response.data[i]);
+
+            console.log('trovato!' + response.data[i] + distancekm);
+          } //console.log(this.queryApartmentResult);
+
+        }
+      });
     },
-    searchApartmentRooms: function searchApartmentRooms(input) {
+    resetFilters: function resetFilters() {
       var _this6 = this;
 
-      if (input != '') {
-        this.inputQueryFuz = input;
-        console.log(this.inputQueryFuz);
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?n_rooms=".concat(this.inputQueryFuz)).then(function (response) {
-          console.log(response.data);
-          _this6.queryApartmentResult = response.data.data;
-        });
-      } else {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
-          console.log(response.data);
-          _this6.queryApartmentResult = response.data.data;
-        });
-      }
+      this.range = 20;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+        console.log(response.data);
+        _this6.queryApartmentResult = response.data; // console.log(this.queryApartmentResult);
+      });
+      this.bedsInputSearch = null;
+      this.roomsInputSearch = null;
     },
-    searchApartmentBaths: function searchApartmentBaths(input) {
+    radiusFilter: function radiusFilter() {
       var _this7 = this;
 
-      if (input != '') {
-        this.inputQueryFuz = input;
-        console.log(this.inputQueryFuz);
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?n_bathrooms=".concat(this.inputQueryFuz)).then(function (response) {
-          console.log(response.data);
-          _this7.queryApartmentResult = response.data.data;
-        });
-      } else {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
-          console.log(response.data);
-          _this7.queryApartmentResult = response.data.data;
-        });
-      }
+      this.queryApartmentResult = [];
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+        //console.log(response.data);
+        //this.queryApartmentResult = response.data;
+        for (var i = 0; i < response.data.length; i++) {
+          //console.log(response.data[i].long, response.data[i].lat);
+          var range = parseInt(_this7.range);
+          var _lat4 = _this7.latitudine;
+          var _lon4 = _this7.longitudine;
+          var lat2 = response.data[i].lat;
+          var lon2 = response.data[i]["long"];
+          _lon4 = _lon4 * Math.PI / 180;
+          lon2 = lon2 * Math.PI / 180;
+          _lat4 = _lat4 * Math.PI / 180;
+          lat2 = lat2 * Math.PI / 180; // Haversine formula
+
+          var dlon = lon2 - _lon4;
+          var dlat = lat2 - _lat4;
+          var a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(_lat4) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+          var c = 2 * Math.asin(Math.sqrt(a)); // Radius of earth in kilometers. Use 3956
+          // for miles
+
+          var r = 6371;
+          var distancekm = c * r; //console.log(distancekm);
+
+          if (distancekm <= range) {
+            //this.queryApartmentResult[i] = response.data[i];
+            _this7.queryApartmentResult.push(response.data[i]); //console.log('trovato!' + response.data[i] + distancekm);
+
+          } //console.log(this.queryApartmentResult);
+
+        }
+      });
     },
-    searchApartmentMaps: function searchApartmentMaps() {
+    getShowUrl: function getShowUrl(input) {
+      // this.urlShowSearch = "{{route('apartments.show', ['slug'=>"+input['slug']"])}}";
+      return this.urlShowSearch;
+    },
+    cambiaPosizione: function cambiaPosizione(city) {
       var _this8 = this;
 
-      //console.log(this.inputQueryFuz);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?").then(function (response) {
-        console.log(response.data);
-        _this8.apartmentToMap = [response.data.data];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv'; //console.log(this.key, this.indirizzo);
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(city, ".json?key=").concat(this.key)).then(function (response) {
+        _this8.results = response.data.results;
+        console.log(_this8.results[0]);
+        _this8.latitudine = _this8.results[0].position.lat;
+        _this8.longitudine = _this8.results[0].position.lon;
+        _this8.search_generic = _this8.results[0].address.freeformAddress;
+        _this8.actual_loc_lat = _this8.results[0]; //console.log(this.latitudine + 'long'+this.longitudine + this.search_generic);
       });
+      var coordinate = [this.longitudine, this.latitudine];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key: this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 12
+      });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+      this.search_generic = '';
+      this.results = [];
     },
-    applyFilters: function applyFilters(input2, input1, input) {
+    allApartments: function allApartments() {
       var _this9 = this;
 
-      this.inputQueryBeds = input2;
-      this.inputQueryBaths = input1;
-      this.inputQueryRooms = input;
-      console.log(this.inputQueryBaths, this.inputQueryRooms, this.inputQueryBeds);
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?n_bathrooms=".concat(this.inputQueryBaths, "&n_rooms=").concat(this.inputQueryRooms, "&n_beds=").concat(this.inputQueryBeds)).then(function (response) {
-        //console.log(response.data);
-        // var searchResApartment = response.data.results;
-        _this9.queryApartmentResult = response.data.data; // this.inputQueryFuz = input;
-        // console.log(this.inputQueryFuz);
-        // axios.get(`http://localhost:8000/api/apartments/backend?n_rooms=${this.inputQueryFuz}`)
-        //     .then((response) => {
-        //       console.log(response.data);
-        //       this.queryApartmentResult = [...this.queryApartmentResult, ...response.data.data];
-        //     });
+      this.range = 20;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
+        console.log(response.data + ' workssss');
+        _this9.queryApartmentResult = response.data;
+        _this9.actual_loc = response.data[0]; // console.log(this.queryApartmentResult);
       });
     },
-    sortMetersApartment: function sortMetersApartment() {
-      var _this10 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/backend?sort").then(function (response) {
-        console.log(response.data);
-        _this10.queryApartmentResult = response.data.data;
+    getMapLive: function getMapLive() {
+      //console.log(this.actual_loc);
+      var coordinate = [this.longitudine, this.latitudine];
+      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      var map = tt.map({
+        key: this.key,
+        container: 'mymap',
+        center: coordinate,
+        zoom: 12
       });
+      var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+      map.addControl(new tt.FullscreenControl());
+      map.addControl(new tt.NavigationControl());
+
+      for (var i = 0; i < this.queryApartmentResult.length; i++) {
+        var marker = new tt.Marker({
+          element: element
+        }).setLngLat([lon1, lat1]).addTo(this.$map);
+      }
     }
   }
 });
@@ -2336,7 +2548,7 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\Users\tom\Desktop\B\Boolean-esercizi-git\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

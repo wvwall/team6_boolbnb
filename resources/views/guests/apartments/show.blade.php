@@ -26,12 +26,13 @@
           </div>
           @endif
         </div>
-        <div class="col-md-8">
-         
+
+        <div class="col-md-8"> //MESSAGGI
+
           <form class="creamsg mt-20" action="{{route('messages.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            
+
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">La tua Email</label>
               <input type="text" class="form-control @error('Sender') is-invalid @enderror" id="sender" name="sender" value="{{Auth::user() ? Auth::user()->email : ''}}">
@@ -39,7 +40,7 @@
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-            
+
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Oggetto</label>
               <input type="text" class="form-control @error('Object') is-invalid @enderror" name="object"></input>
@@ -80,6 +81,7 @@
           </form>
 
         </div>
+
       </div>
     </div>
   </div>
@@ -104,7 +106,7 @@
     </div>
     <div id="map">
       <div class="container">
-        <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Mappa</button>
+        <!-- <button type="button" name="button" @click="getmap({{$apartment->long}}, {{$apartment->lat}})" class="btn btn-primary">Mappa</button> -->
         <div class="col-md-12 my-4">
           <div id="mymap" style="height: 400px;">
 

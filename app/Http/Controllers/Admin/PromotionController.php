@@ -18,10 +18,11 @@ class PromotionController extends Controller
 {
   public function index()
   {
-    $promotions = Promotion::all();
     $apartments = DB::table('apartments')
                   ->where('user_id', '=',  Auth::user()->id)
                   ->get();
+    $promotions = Promotion::all();
+    
     return view('admin.promotions.index', compact('promotions', 'apartments'));
   }
 

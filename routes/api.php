@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,18 @@ use App\Http\Controllers\SearchController;
 |
 */
 
+Route::resource('apartments', 'ApiController');
+Route::get('apartments/search/{name}', 'ApiController@search');
+Route::get('apartments/search/rooms/{rooms}', 'ApiController@searchRooms');
+Route::get('apartments/search/baths/{baths}', 'ApiController@searchBaths');
+Route::get('apartments/search/beds/{beds}', 'ApiController@searchBeds');
+
+Route::get('apartments/services', 'ApiController@getServices');
+
+
+// Route::get('apartments/search/{lat}{long}{radius}', 'ApiController@multiSearch');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -22,27 +36,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('apartments/frontend', 'SearchController@frontend');
 Route::get('apartments/backend', 'SearchController@backend');
 
-// Route::get('apartments', function(){
-//   $apartme
-// });
-
-
-
-// Route::get('/', 'ApartmentController@indexdb');
- // Route::get('/apartments/{indirizzo}/{citta}/{chiave}', function ()
- // {
- //   axios.get('https://api.tomtom.com/search/2/structuredGeocode.json?countryCode=IT&streetName=[$indirizzo]&municipality=[$citta]&key=[$chiave]').then((response) => {
- //     $response = response.data;
- //     return response()->json([
- //          'data' => $response,
- //          'success' => true,
- //       ]);
- //   });
- // });
-// Route::get('https://api.tomtom.com/search/2/structuredGeocode.json?countryCode=IT&streetName={indirizzo}&municipality={citta}&key={key}', function()
-// {
-//   return  response()->json([
-//     'data' => 'response',
-//     'success' => true,
-//   ]);
-// });
+// Route::get('/apartments/all', 'ApiController@index');
+// Route::post('/apartments/store', 'ApiController@store');

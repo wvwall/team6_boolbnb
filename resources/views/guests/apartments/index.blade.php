@@ -14,12 +14,25 @@
       <div class="container h-100 my-4 col-xs-8">
         <div class="d-flex justify-content-center h-100">
           <div class="searchbar">
-            <input class="search_input" type="text" name="" placeholder="Search...">
-            <a href="{{ route('search.advanced') }}" class="search_icon"><i class="fas fa-search"></i></a>
+            <input class="search_input" type="search" name="" placeholder="In Quale Città Vuoi Andare?" v-model="search_generic" @input="dati">
           </div>
-          <!-- <a href="{{ route('search.advanced') }}" class="btn btn-primary">Cerca il tuo alloggio!</a> -->
+
         </div>
       </div>
+
+
+      <div class="container h-100 my-4 col-xs-8">
+        <div class="d-flex justify-content-center h-100">
+          <li
+          v-for="result in results.slice(0, 3)"
+          @click="search_generic=result.address.freeformAddress, queryApartmentResult=[]"
+          class="btn btn-primary">
+            <a :href="`/search/${search_generic}`" class="search_icon"><i class="fas fa-search" ></i>@{{result.address.municipality}}</a>
+          </li>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
@@ -44,7 +57,6 @@
 
                 <h5 class=" card-text"><i class="fas fa-map-marker-alt"></i> {{$apartment->city}} </h5>
 
-                <a   @click="get_id(apartment.id)"  href="{{route('apartments.show', ['slug'=>$apartment->slug])}}" class="btn btn-primary">Mostra</a>
               </div>
              <!--  onclick="event.preventDefault(); document.getElementById('{{$apartment->id}}').submit()" -->
           </div>

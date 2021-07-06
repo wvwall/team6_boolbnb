@@ -60,5 +60,4 @@ class ApartmentController extends Controller
       return view('guests.apartments.search')->with('apartments', json_decode($apartments, true));
     }
 
-
 }

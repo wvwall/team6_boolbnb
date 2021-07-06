@@ -27,8 +27,6 @@ class Apartment extends Model
   }
 
   public function messages() {
-
-
     return $this->hasMany('App\Message');
   }
 
@@ -38,10 +36,11 @@ class Apartment extends Model
   }
   public function promotions() {
 
-    return $this->belongsToMany('App\Promotion');
+    return $this->belongsToMany('App\Promotion')->withTimestamps()->withPivot('expiration_date');;
   }
   public function views()
   {
     return $this->hasMany(View::class);
   }
+
 }

@@ -49,8 +49,7 @@
           <button class="btn btn-primary" type="button" name="button" @click="addressSugg(ins_indirizzo, ins_citta)">Valida Indirizzo</button>
           <ul>
             <li class="form-control" @click="saveAddress(addressEl)" class="address-suggestion" v-for="(addressEl, i) in validAddresses" v-if="validAddresses!=[]">
-               @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.streetName }} - @{{ addressEl.address.municipality }}
-
+               @{{ addressEl.address.freeformAddress }} - @{{ addressEl.address.municipality }}
              </li>
           </ul>
 
@@ -66,8 +65,6 @@
               <input type="text"  id="lat" name="lat" v-bind="latitudine" v-model="latitudine">
             </div>
           </div>
-
-
 
           <!-- s -->
           <button class=" mt-20 mb-20 btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
@@ -101,7 +98,7 @@
             <span>Visible</span>
           <input type="checkbox" name="visibility" class="switch-input" value="1" {{ old('visibility') ? 'checked="checked"' : '' }}/>
 
-          <div class="mb-3" @click="dati">
+          <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"></label>
             <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" value="">
             <span>Metratura(m2)</span>
@@ -111,7 +108,7 @@
           </div>
           <div class="service">
           @foreach($services as $service)
-          <div class="mb-3" @click="dati">
+          <div class="mb-3">
             <label for="">{{$service->name}}</label>
             <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ old('service') ? 'checked="checked"' : '' }}/>
           </div>
@@ -138,17 +135,6 @@
               <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
-
-
-          <!-- <div class="coordinate" v-for="risp in risposta">
-            <div class="form-group card-custom">
-              <input type="text"  id="long" name="long"  :value="`${risp.position.lon}`">
-            </div>
-            <div class="form-group card-custom">
-              <input type="text"  id="lat" name="lat" :value="`${risp.position.lat}`">
-            </div>
-          </div> -->
 
           <button type="submit" name="button" class=" mb-20 btn btn-primary">Aggiungi</button>
         </div>

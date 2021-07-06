@@ -7,135 +7,89 @@
 <div class="container h-100 my-4 col-xs-8">
 
   <div class="filter justify-content-center h-100">
-    <!-- <form action="/search" method="GET" role="search"> -->
-    <div class="mt-20">
-      <input  type="text" placeholder="Filtra per Città" v-model="nameSearch" @keyup.enter="searchApartment(nameSearch)">
-      <a @click="searchApartment(nameSearch)" class="search_icon"><i class="fas fa-search"></i></a>
+    <div class="" v-for="city in cities">
+      <a  @click="applyFilters(); cambiaPosizione(city);" class="btn btn-primary">Vai a @{{city}}</a>
     </div>
-    <div class="mt-20">
-      <input  type="text" placeholder="Filtra per Indirizzo" v-model="addressInputSearch" @keyup.enter="searchApartmentAddress(addressInputSearch)">
-      <a @click="searchApartmentAddress(addressInputSearch)" class="search_icon"><i class="fas fa-search"></i></a>
-    </div>
-    <!-- </form> -->
   </div>
-
 
   <div class="filter justify-content-center h-100">
-    <!-- <form action="/search" method="GET" role="search"> -->
 
     <div class="">
-      <input class="mt-20 mrl-10" type="number" placeholder="N.Bagni" v-model="bathsInputSearch" @keyup.enter="searchApartmentBaths(bathsInputSearch)">
-      <!-- <a @click="searchApartmentBaths(bathsInputSearch)" class="search_icon"><i class="fas fa-key"></i></a> -->
-      
+      <input class="mt-20 mrl-10" type="number" name="n_rooms"
+       placeholder="Stanze"  min="1" max="15" v-model="roomsInputSearch">
     </div>
+
     <div class="">
-      <input class="mt-20 mrl-10" type="number" placeholder="N.Stanze" v-model="roomsInputSearch" @keyup.enter="searchApartmentRooms(roomsInputSearch)">
-      <!-- <a @click="searchApartmentRooms(roomsInputSearch)" class="search_icon"><i class="fas fa-key"></i></a> -->
-      
+      <input class="mt-20 mrl-10" type="number" name="n_beds"
+      placeholder="Letti"  min="1" max="15" v-model="bedsInputSearch">
     </div>
-    <div class="">
-      <input class="mt-20 mrl-10" type="number" placeholder="N.Letti" v-model="bedsInputSearch" @keyup.enter="">
-      <!-- <a @click="searchApartmentBaths(bathsInputSearch)" class="search_icon"><i class="fas fa-key"></i></a> -->
-     
+
+    <div class="mt-3">
+      <span>@{{range}} Km</span>
+      <input type="range" v-model="range" name="" id="" min="10" max="100">
+      <span>100 Km</span>
     </div>
-    <button type="button " name="button" class="mt-20 btn btn-primary" @click="applyFilters(bedsInputSearch,bathsInputSearch,roomsInputSearch);">Filtra</button>
-    <!-- </form> -->
   </div>
 
-  <div class="d-flex justify-content-center h-100">
-    <!-- <form action="/search" method="GET" role="search"> -->
-
-    <!-- </form> -->
-  </div>
-
-  <div class="d-flex justify-content-center h-100">
-    <!-- <form action="/search" method="GET" role="search"> -->
-
-    <!-- </form> -->
-  </div>
-
-  <!-- <div class="d-flex justify-content-center h-100">
+  <div class="filter justify-content-center h-100">
     <div class="searchbar">
-        <input class="search_input" type="number"  placeholder="Search..." v-model="" @keyup.enter="searchApartment(nameSearch)">
-        <a @click="searchApartment(nameSearch)" class="search_icon"><i class="fas fa-key"></i>Filtra per Stanze</a>
+      <input class="search_input+" type="search" name="" placeholder="Cerca per indirizzo" v-model="search_generic" @keyup.enter="dati" @input="dati">
+    </div>
+  </div>
+
+  <div class="filter justify-content-center h-100">
+    <button type="button " name="button" class="mt-20 btn btn-primary" @click="applyFilters();">Filtra Per Raggio di @{{range}}Km dalla posizione</button>
+    <button type="button " name="button" class="mt-20 btn btn-primary" @click="resetFilters();" :href="`/search/${search_generic}`">Resetta Filtri</button>
+  </div>
+
+  <!-- <div class="filter justify-content-center h-100">
+    <p>Posizione attuale: @{{actual_loc.address.freeformAddress}}</p>
+  </div> -->
+
+  <!-- <div class="container h-100 my-4 col-xs-8">
+    <div class="d-flex justify-content-center h-100">
+      <li
+      v-for="result in results.slice(0, 1)"
+      @click="search_generic=result.address.freeformAddress, queryApartmentResult=[], applyFilters(), cambiaPosizione(result.address.freeformAddress), getMapLive(actual_loc.long, actual_loc.lat)"
+      class="btn">
+        <p><i class="fas fa-search" ></i>ricerca per @{{result.address.municipality}} @{{result.address.countrySubdivision}}</p>
+      </li>
     </div>
   </div> -->
 
-</div>
-
-
-<!-- <script>
-  var firstMap = tt.map({
-    key : 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv',
-    container: 'mymap',
-    center: [17, -34]
-    zoom: 14,
-  });
-  var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
-  map.addControl(new tt.FullscreenControl());
-  map.addControl(new tt.NavigationControl());
-
-
-    var firstMap = tt.map({
-        key: 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv',
-        container: 'firstMap',
-
-        // dragPan: !isMobileOrTablet(),
-        center: [17, -34],
-    });
-
-    // var secondMap = tt.map({
-    //     key: '<your-tomtom-maps-API-key>',
-    //     container: 'secondMap',
-    //     style: 'tomtom://vector/1/basic-night',
-    //     dragPan: !isMobileOrTablet(),
-    //     center: [4.899431, 52.379189],
-    //     zoom: 12
-    // });
-    // firstMap.addControl(new tt.FullscreenControl({ container: document.querySelector('firstMap') }));
-    // secondMap.addControl(new tt.FullscreenControl({ container: document.querySelector('body') }));
-    // firstMap.addControl(new tt.NavigationControl());
-    // secondMap.addControl(new tt.NavigationControl());
-
-    new tt.Marker().setLngLat([25.856667, -17.924444]).addTo(firstMap);
-    new tt.Marker().setLngLat([23.623112, -19.130979]).addTo(firstMap);
-    new tt.Marker().setLngLat([18.403108, -33.957314]).addTo(firstMap);
-
-    firstMap.fitBounds([[17, -34], [27, -15]], { padding: 100, linear: true });
-</script> -->
-
-<div id="search" class="container ">
-  <div class="left">
-    <div class="flip-card" v-for="apart in queryApartmentResult" :key='apart.id'>
-      <div class="card apartment-card">
-        <!-- visualizzare immagine? -->
-        <img class="mt-20 mb-20" src="{{ @apart['thumb'] }}" alt="immagine non disponibile">
-        <div class="card-body">
-          <h5 class="card-title">@{{apart['title']}}</h5>
-          <p class="card-text">@{{apart['city']}} - @{{apart['address']}} - <b>Stanze</b> @{{apart['n_rooms']}} - <b>Bagni</b> @{{apart['n_bathrooms']}} - <b>Letti</b> @{{apart['n_beds']}}</p>
-
-          <!-- route show  -->
-          <a @click="get_id(apart['id'])" href="{{route('apartments.show', ['slug'=>@apart['slug']])}}" class="mb-20 btn btn-primary">Mostra</a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="right">
-
-
+  <div class=" justify-content-center h-100">
     <div id="map">
       <div class="container">
-        <button type="button" name="button" @click="searchApartmentMaps()">Mappa</button>
-        <div class="col-md-12 my-4">
-          <div id="firstMap" style="height: 400px;">
-
+        <p style="text-align: center;">POSIZIONE ATTUALE</p>
+        <div class="col-md-12">
+          <div id="mymap" style="height: 200px; width: 300px; margin: 0 auto;">
 
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+
+</div>
+
+
+<div id="search" class="container ">
+  <div class="left">
+    <div class="flip-card" v-for="apart, i in queryApartmentResult" :key='apart.id' v-if="apart.n_rooms >= roomsInputSearch && apart.n_beds >= bedsInputSearch">
+      <div class="card apartment-card" :style="`background-image: url(/storage/${apart.thumb})`">
+        <!-- visualizzare immagine? -->
+        <div class="card-body">
+          <a :href="`/apartments/${apart.slug}`">
+            <h5 class="card-title">@{{apart['title']}}</h5>
+            <p class="card-text">@{{apart['city']}} - @{{apart['address']}} - <b>Stanze</b> @{{apart['n_rooms']}} - <b>Bagni</b> @{{apart['n_bathrooms']}} - <b>Letti</b> @{{apart['n_beds']}}</p>
+            <span v-for=""></span>
+            <!-- route show  -->
+          </a>
+          <a  @click="applyFilters(); cambiaPosizione(apart.address); getMapLive(apart.long, apart.lat)" class="btn btn-primary">Spostati qui @{{apart.address}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

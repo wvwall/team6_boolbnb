@@ -17,23 +17,8 @@ use Illuminate\Http\Request;
 
       public function backend(Request $request){
 
-        // $results = new ClientProfile::when(request()->has('service-provider'), function($q){
-        //     $q->where('jobsc_id', request('service-provider'));
-        // })
-        // ->when(request()->has('product'), function($q){
-        //     $q->where('product_id', request('product'));
-        // })
-        // ->when(request()->has('city'), function($q){
-        //     $q->where('divsec_id', request('city'));
-        // })
-        // ->when(count($request->all()) === 0, function($q){
-        //     $q->searched();
-        // })
-        // ->where('profile_state', 'active')->paginate(10)->appends([
-        //     'service-provider' => request('service-provider'),
-        //     'product' => request('product'),
-        //     'city' => request('city'),
-        // ]);
+        $apartments = Apartment::all();
+        $servicesQuery = Service::all();
 
         $query = Apartment::query();
 
@@ -59,9 +44,9 @@ use Illuminate\Http\Request;
           $query->whereRaw("n_beds = " . $nBeds . "");
         }
 
-        if ($sort = $request->input('sort')) {
-          $query->sort("square_meters");
-        }
+        // if ($sort = $request->input('sort')) {
+        //   $query->sort("square_meters");
+        // }
 
         $perPage = 25;
         $page = $request->input('page', 1);
@@ -73,40 +58,26 @@ use Illuminate\Http\Request;
           'data'=> $request,
           'total'=> $total,
           'page'=>$page,
-          'last_page'=>ceil($total/$perPage)
+          'last_page'=>ceil($total/$perPage),
+          'apartments'=>$apartments,
+          'services'=>$services
         ]);
       }
 
-      // public function backend2(Request $request){
-      //
-      //   $conditions = collect([]);
-      //   $conditions->push($request->only(['title', 'address', 'n_beds', 'n_rooms', 'n_bathrooms']));
-      //
-      //   Vehicle::where(function($q) use ($conditions){
-      //     if ($conditions->has('title')) {
-      //       $q->where('title', $conditions->get('title'));
-      //     }
-      //
-      //     return $q;
-      //   })->whereHas('address', function($q) use ($conditions) {
-      //       return $q->where($conditions->toArray());
-      //       })->get();
-      //
-      //   // return response()->json([
-      //   //   'data'=> $request,
-      //   //   'total'=> $total,
-      //   //   'page'=>$page,
-      //   //   'last_page'=>ceil($total/$perPage)
-      //   // ]);
-      // }
+      public function querySearch(Request $request, Apartment $apartment)
+        {
+          // Search for a user based on their name.
+          $services = Service::all();
+          return view('guests.apartments.search', compact('services'));
+          }
 
       public function filter(Request $request, Apartment $apartment)
         {
           // Search for a user based on their name.
-          if (request()->has('title')) {
-              $apartments = Apartment::where('title', request('title'))
-              ->paginate(25)
-              ->appends('title', request('title'));
+          $services = Service::all();
+          if (request()->has('city')) {
+              $apartments = Apartment::where('title', 'like', '%'.$request->city.'%')
+              ->get();
           } else {
             $apartments = Apartment::paginate(25);
           }
