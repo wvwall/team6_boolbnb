@@ -27,7 +27,7 @@
           @endif
         </div>
 
-        <div class="col-md-8"> //MESSAGGI
+        <div class="col-md-8"> <!-- MESSAGGI -->
 
           <form class="creamsg mt-20" action="{{route('messages.store')}}" method="post" enctype="multipart/form-data">
             @csrf

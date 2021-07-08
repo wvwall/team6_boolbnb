@@ -10995,6 +10995,11 @@ li {
   justify-content: center;
 }
 
+.center3 {
+  display: flex;
+  align-items: center;
+}
+
 .card-img-top {
   border-radius: 10px;
 }
@@ -11122,12 +11127,68 @@ li {
   color: #5a6268;
   font-weight: 600;
   /*  background: rgb(255,33,71);
-   background: linear-gradient(90deg, rgba(255,33,71,1) 82%, rgba(255,81,71,1) 100%); */
+  background: linear-gradient(90deg, rgba(255,33,71,1) 82%, rgba(255,81,71,1) 100%); */
   background-color: #c4e0e2;
 }
 
 form {
   font-weight: 500;
+}
+
+.search_icon_2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  background-color: #ff6147;
+  min-width: 150px;
+  min-height: 100px;
+  border-radius: 10px;
+  padding: 12px 18px;
+}
+
+.filter_2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+  .filter_2 {
+    flex-direction: column;
+  }
+}
+
+.filter_2 input,
+.filter_2 textarea {
+  border: 2px solid #ff6147;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.card-ser {
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+input[type=range]::-moz-range-thumb {
+  background-color: #ff6147;
+  border-radius: 0;
+  height: 20px;
+  opacity: 0.6;
+  width: 10px;
+  border: 2px solid #ff6147;
+}
+
+input[type=range]::-moz-range-track {
+  background: #ddd;
+  border: none;
+}
+
+.range {
+  margin: 10px;
+  font-weight: 500;
+  font-size: 0.8rem;
 }
 
 .searchbar {
@@ -11449,9 +11510,15 @@ form {
 
 .filter input,
 .filter textarea {
-  border: 1px solid #ff6147;
+  border: 2px solid #ff6147;
   border-radius: 5px;
   padding: 10px;
+}
+
+.input-ser input {
+  width: 200px;
+  margin: 10px;
+  border: 2px solid #ff6147;
 }
 
 #search {
@@ -11465,7 +11532,7 @@ form {
 }
 
 #search .left {
-  width: 60%;
+  width: 40%;
 }
 
 @media screen and (max-width: 768px) {
@@ -11475,8 +11542,8 @@ form {
 }
 
 #search .right {
-  width: 40%;
-  background-color: greenyellow;
+  width: 60%;
+  height: 400px;
 }
 
 @media screen and (max-width: 768px) {
@@ -11503,6 +11570,14 @@ form {
   .btn-dash {
     flex-direction: column;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  caret-color: #ff6147;
 }
 
 .navbar-expand-md {

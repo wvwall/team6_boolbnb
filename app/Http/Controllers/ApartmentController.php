@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Apartment;
+use App\Promotion;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,12 @@ class ApartmentController extends Controller
 {
     public function index(Request $request)
     {
-      $apartments = Apartment::all();
+      /* $promotions = Promotion::all();
+      foreach($promotions as $promotion) {
+        $apartments = $promotion->apartments()->get();
+      }
+      dd($apartments); */
+      $apartments = Apartment::all()->where('visibility', '=' , '1');
       return view('guests.apartments.index', compact('apartments'));
 
       // $apartments = Apartment::where([

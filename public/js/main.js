@@ -2108,49 +2108,50 @@ __webpack_require__.r(__webpack_exports__);
 Vue.config.devtools = true;
 
 var app1 = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
     apartments: [],
     appartamento: [],
-    key: '',
-    citta: '',
-    indirizzo: '',
-    ins_indirizzo: '',
-    ins_citta: '',
-    ins_lon: '',
-    ins_lat: '',
+    key: "",
+    citta: "",
+    indirizzo: "",
+    ins_indirizzo: "",
+    ins_citta: "",
+    ins_lon: "",
+    ins_lat: "",
     results: [],
     longitudine: 0,
     latitudine: 0,
     service_index: 0,
-    userAddress: '',
-    userCity: '',
+    userAddress: "",
+    userCity: "",
     validAddresses: [],
     mapDisp: false,
     addressChecked: false,
     show: false,
     toggleMap: true,
-    old_indirizzo: '',
-    old_latitude: '',
-    old_longitudine: '',
-    old_citta: '',
+    old_indirizzo: "",
+    old_latitude: "",
+    old_longitudine: "",
+    old_citta: "",
     queryApartmentResult: [],
-    nameSearch: '',
-    inputQueryFuz: '',
-    inputQueryRooms: '',
-    inputQueryBaths: '',
-    inputQueryBeds: '',
-    addressInputSearch: '',
-    roomsInputSearch: '',
-    bathsInputSearch: '',
-    bedsInputSearch: '',
+    nameSearch: "",
+    inputQueryFuz: "",
+    inputQueryRooms: "",
+    inputQueryBaths: "",
+    inputQueryBeds: "",
+    addressInputSearch: "",
+    roomsInputSearch: "",
+    bathsInputSearch: "",
+    bedsInputSearch: "",
     apartmentToMap: [],
-    sort: 'sort',
-    inputQueryFuz1: '',
-    search_generic: '',
+    sort: "sort",
+    inputQueryFuz1: "",
+    search_generic: "",
     range: 20,
     cities: [],
-    actual_loc: []
+    actual_loc: [],
+    services: ["wifi", "auto", "vista", "portineria"]
   },
   mounted: function mounted() {
     var _this = this;
@@ -2158,7 +2159,7 @@ var app1 = new Vue({
     var path = window.location.pathname;
     this.search_generic = path.split("/search/")[1];
     console.log(this.search_generic);
-    this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+    this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
 
     if (this.search_generic != null) {
       //console.log(this.search_generic + '<-url');
@@ -2186,13 +2187,16 @@ var app1 = new Vue({
         console.log(response.data); //this.queryApartmentResult = response.data;
 
         var coordinate = [response.data[0]["long"], response.data[0].lat];
-        _this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+        _this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
         var map = tt.map({
           key: _this.key,
-          container: 'mymap',
+          container: "mymap",
           center: coordinate,
           zoom: 12
         });
+        var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
+        map.addControl(new tt.FullscreenControl());
+        map.addControl(new tt.NavigationControl());
 
         for (var i = 0; i < response.data.length; i++) {
           //console.log(response.data[i].long, response.data[i].lat);
@@ -2215,13 +2219,13 @@ var app1 = new Vue({
           var r = 6371;
           var distancekm = c * r; //console.log(distancekm);
 
-          console.log(distancekm + 'range: ' + range);
+          console.log(distancekm + "range: " + range);
 
           if (distancekm <= range) {
             //this.queryApartmentResult[i] = response.data[i];
             _this.queryApartmentResult.push(response.data[i]);
 
-            console.log('trovato!' + response.data[i] + distancekm);
+            console.log("trovato!" + response.data[i] + distancekm);
           } //console.log(this.queryApartmentResult);
 
         }
@@ -2244,10 +2248,10 @@ var app1 = new Vue({
         }
 
         var coordinate = [_this.longitudine, _this.latitudine];
-        _this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+        _this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
         var map = tt.map({
           key: _this.key,
-          container: 'mymap',
+          container: "mymap",
           center: coordinate,
           zoom: 12
         });
@@ -2291,7 +2295,7 @@ var app1 = new Vue({
     dati: function dati() {
       var _this2 = this;
 
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       this.indirizzo = this.search_generic; //console.log(this.key, this.indirizzo);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.search_generic, ".json?key=").concat(this.key)).then(function (response) {
@@ -2301,10 +2305,10 @@ var app1 = new Vue({
       this.latitudine = this.results[0].position.lat;
       this.longitudine = this.results[0].position.lon;
       var coordinate = [this.longitudine, this.latitudine];
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       var map = tt.map({
         key: this.key,
-        container: 'mymap',
+        container: "mymap",
         center: coordinate,
         zoom: 12
       });
@@ -2320,10 +2324,10 @@ var app1 = new Vue({
     },
     getmap: function getmap(_long, lat) {
       var coordinate = [_long, lat];
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       var map = tt.map({
         key: this.key,
-        container: 'mymap',
+        container: "mymap",
         center: coordinate,
         zoom: 12
       });
@@ -2340,7 +2344,7 @@ var app1 = new Vue({
 
       this.userAddress = address;
       this.userCity = city;
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(this.userAddress, "%20").concat(this.userCity, ".json?key=").concat(this.key)).then(function (response) {
         _this3.validAddresses = response.data.results; // console.log(this.userAddress);
         // console.log(this.validAddresses);
@@ -2358,10 +2362,10 @@ var app1 = new Vue({
       // console.log(this.ins_lon);
 
       var coordinate = [this.longitudine, this.latitudine];
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       var map = tt.map({
         key: this.key,
-        container: 'mymap',
+        container: "mymap",
         center: coordinate,
         zoom: 12
       });
@@ -2373,7 +2377,7 @@ var app1 = new Vue({
     searchApartment: function searchApartment(input) {
       var _this4 = this;
 
-      if (input != '') {
+      if (input != "") {
         this.inputQueryFuz = input;
         console.log(this.inputQueryFuz);
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/search/".concat(this.inputQueryFuz)).then(function (response) {
@@ -2415,13 +2419,13 @@ var app1 = new Vue({
           var r = 6371;
           var distancekm = c * r; //console.log(distancekm);
 
-          console.log(distancekm + 'range: ' + range);
+          console.log(distancekm + "range: " + range);
 
           if (distancekm <= range) {
             //this.queryApartmentResult[i] = response.data[i];
             _this5.queryApartmentResult.push(response.data[i]);
 
-            console.log('trovato!' + response.data[i] + distancekm);
+            console.log("trovato!" + response.data[i] + distancekm);
           } //console.log(this.queryApartmentResult);
 
         }
@@ -2437,6 +2441,7 @@ var app1 = new Vue({
       });
       this.bedsInputSearch = null;
       this.roomsInputSearch = null;
+      this.search_generic = "";
     },
     radiusFilter: function radiusFilter() {
       var _this7 = this;
@@ -2482,7 +2487,7 @@ var app1 = new Vue({
     cambiaPosizione: function cambiaPosizione(city) {
       var _this8 = this;
 
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv'; //console.log(this.key, this.indirizzo);
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv"; //console.log(this.key, this.indirizzo);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://api.tomtom.com/search/2/search/".concat(city, ".json?key=").concat(this.key)).then(function (response) {
         _this8.results = response.data.results;
@@ -2493,17 +2498,17 @@ var app1 = new Vue({
         _this8.actual_loc_lat = _this8.results[0]; //console.log(this.latitudine + 'long'+this.longitudine + this.search_generic);
       });
       var coordinate = [this.longitudine, this.latitudine];
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       var map = tt.map({
         key: this.key,
-        container: 'mymap',
+        container: "mymap",
         center: coordinate,
         zoom: 12
       });
       var marker = new tt.Marker().setLngLat(coordinate).addTo(map);
       map.addControl(new tt.FullscreenControl());
       map.addControl(new tt.NavigationControl());
-      this.search_generic = '';
+      this.search_generic = "";
       this.results = [];
     },
     allApartments: function allApartments() {
@@ -2511,7 +2516,7 @@ var app1 = new Vue({
 
       this.range = 20;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://localhost:8000/api/apartments/").then(function (response) {
-        console.log(response.data + ' workssss');
+        console.log(response.data + " workssss");
         _this9.queryApartmentResult = response.data;
         _this9.actual_loc = response.data[0]; // console.log(this.queryApartmentResult);
       });
@@ -2519,10 +2524,10 @@ var app1 = new Vue({
     getMapLive: function getMapLive() {
       //console.log(this.actual_loc);
       var coordinate = [this.longitudine, this.latitudine];
-      this.key = 'mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv';
+      this.key = "mKJsTWCiaSkxZVFnJAoD63ApxgFuCUZv";
       var map = tt.map({
         key: this.key,
-        container: 'mymap',
+        container: "mymap",
         center: coordinate,
         zoom: 12
       });
@@ -2548,7 +2553,7 @@ var app1 = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\tom\Desktop\B\Boolean-esercizi-git\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\Users\Walter\Desktop\BOOLEAN CAREERS\_CORSO_FULL_STACK_WEB_DEVELOPER\FINAL_PROJECT\team6_boolbnb\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

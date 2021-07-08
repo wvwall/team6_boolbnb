@@ -46,7 +46,7 @@
                 @enderror
             </div>
             <div class="center2 mt-20">
-                 <button type="submit" class="mt-20 btn btn-primary "> Procedi al pagamento </button>
+                 <button type="submit" class="mt-20 btn btn-primary "> Sponsorizza </button>
             </div>
            
 </div>

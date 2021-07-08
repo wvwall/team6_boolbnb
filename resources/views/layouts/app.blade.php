@@ -52,7 +52,7 @@
             <!-- Authentication Links -->
             @guest
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('search.advanced') }}">Adv Search</a>
+              <!-- <a class="nav-link" href="{{ route('search.advanced') }}">Adv Search</a> -->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -73,7 +73,7 @@
                 <a class="dropdown-item" href="{{ route('admin.apartments.index') }}"> <i class="fas fa-home"></i> Appartamenti</a>
                 <a class="dropdown-item" href="{{ route('admin.messages.index') }}"><i class="fas fa-envelope-open"></i> Messaggi</a>
 
-                <a class="dropdown-item" href="{{ route('search.advanced') }}"><i class="fas fa-search-plus"></i> Adv Search</a>
+                <a class="dropdown-item" href="{{ route('search.advanced') }}"><i class="fas fa-search-plus"></i> Ricerca avanzata</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                   <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
@@ -101,38 +101,38 @@
         <div class="container ">
           <div class="card-wrap">
             <div class="box-footer text-center">
-              <img src="{{ asset('img/icon-profile.jpg') }}" alt="profile">
+              <img src="{{ asset('img/ale.jpg') }}" alt="profile">
               <h6>
                 Alessandro Benigni
               </h6>
-              <span><i class="fas fa-map-marker-alt"></i> Ancona</span>
+              <span><i class="fas fa-map-marker-alt"></i> San Benedetto del tronto</span>
               <div>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href=""><i class="fab fa-github-square"></i></a>
+                <a href="https://www.linkedin.com/in/alessandro-benigni-30953a1b9/" target="_blank" rel="linkedin-alessandro"><i class="fab fa-linkedin"></i></a>
+                <a  href="https://github.com/benigni-alessandro" target="_blank" rel="github-alessandro"><i class="fab fa-github-square"></i></a>
               </div>
 
             </div>
             <div class="box-footer text-center">
-              <img src="{{ asset('img/icon-profile.jpg') }}" alt="profile">
+              <img src="{{ asset('img/me-1.jpg') }}" alt="profile">
               <h6>
                 Roy Naim
               </h6>
               <span><i class="fas fa-map-marker-alt"></i> Roma</span>
               <div>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href=""><i class="fab fa-github-square"></i></a>
+                <a href="https://it.linkedin.com/in/roy-naim-156a96a6" target="_blank" rel="linkedin-roy"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/roy-naim" target="_blank" rel="github-roy"><i class="fab fa-github-square"></i></a>
               </div>
 
             </div>
             <div class="box-footer text-center">
-              <img src="{{ asset('img/icon-profile.jpg') }}" alt="profile">
+              <img src="{{ asset('img/tom.jpg') }}" alt="profile">
               <h6>
                 Tommaso Scocciolini
               </h6>
               <span><i class="fas fa-map-marker-alt"></i> Perugia</span>
               <div>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href=""><i class="fab fa-github-square"></i></a>
+                <a href="https://www.linkedin.com/in/tommaso-scocciolini-a63413213/" target="_blank" rel="linkedin-tommaso"><i class="fab fa-linkedin"></i></a>
+                <a  href="https://github.com/tommasoscocciolini" target="_blank" rel="github-tommaso"><i class="fab fa-github-square"></i></a>
               </div>
 
             </div>
@@ -144,8 +144,8 @@
               </h6>
               <span><i class="fas fa-map-marker-alt"></i> Torino</span>
               <div>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href=""><i class="fab fa-github-square"></i></a>
+                <a href="https://www.linkedin.com/in/walter-velardo-980893192/" target="_blank" rel="linkedin-walter"><i class="fab fa-linkedin"></i></a>
+                <a  href="https://github.com/wvwall" target="_blank" rel="github-walter"><i class="fab fa-github-square"></i></a>
               </div>
 
             </div>

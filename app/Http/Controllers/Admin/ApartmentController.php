@@ -170,6 +170,7 @@ class ApartmentController extends Controller
     {
         $apartment->services()->detach();
         $apartment->messages()->delete();
+        $apartment->promotions()->detach();
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index')->with('status', 'Annuncio cancellato con successo');

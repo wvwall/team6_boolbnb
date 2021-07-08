@@ -67,7 +67,7 @@
           </div>
 
           <!-- s -->
-          <button class=" mt-20 mb-20 btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
+          <button class=" mt-20 mb-20 btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Successivo</button>
 
         <div class="" v-if="show">
 

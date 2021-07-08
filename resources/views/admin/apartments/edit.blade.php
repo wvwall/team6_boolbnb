@@ -18,7 +18,7 @@
       </div>
       <div class="col-md-8">
       <img src="{{ asset('storage/' . $apartment->thumb) }}" class="card-img-top" style="width: 300px;" style="border-radius: 10px;" alt="immagine non disponibile">
-        <form class="crea creamsg" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" @click="dati">
+        <form class="crea creamsg" action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="post" enctype="multipart/form-data" >
           @csrf
           @method('PATCH')
           <div class="mb-3 mt-20">
@@ -64,7 +64,7 @@
             </div>
           </div>
 
-          <button class="btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Next</button>
+          <button class="btn btn-primary" type="button" name="button" v-if="addressChecked != ''" v-on:click="show = !show">Successivo</button>
 
           <div class="" v-if="show">
 
@@ -99,7 +99,7 @@
               </div>
             </div> -->
 
-            <div class="mb-3" @click="dati">
+            <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Metri quadrati</label>
               <input type="number" class="form-control-file @error('square_meters') is-invalid @enderror" id="square_meters" name="square_meters" placeholder="{{ old('square_meters', $apartment->square_meters) }}" value="{{ old('square_meters', $apartment->square_meters) }}">
               <span>m2</span>
@@ -108,7 +108,7 @@
               @enderror
             </div>
             @foreach($services as $service)
-            <div class="mb-3" @click="dati">
+            <div class="mb-3">
               <label for="">{{$service->name}}</label>
               <input type="checkbox" name="service_ids[]" class="switch-input" value="{{$service->id}}" {{ $apartment->services->contains($service->id) ? 'checked="checked"' : '' }}/>
             </div>
@@ -123,7 +123,7 @@
             </div>
 
 
-            <button class="btn btn-primary" type="submit" name="button">Aggiungi</button>
+            <button class="btn btn-primary" type="submit" name="button">Modifica</button>
           </div>
         </form>
       </div>
