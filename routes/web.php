@@ -47,5 +47,5 @@ Route::middleware('auth')
     Route::resource('services', 'ServiceController');
     Route::resource('messages', 'MessageController');
     Route::resource('promotions', 'PromotionController');
-
+    Route::resource('visitors', 'ViewController');
   });

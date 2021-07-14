@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Promotion;
 use App\User;
+use App\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,21 +21,17 @@ class ApartmentController extends Controller
       $apartments = Apartment::all()->where('visibility', '=' , '1');
       return view('guests.apartments.index', compact('apartments'));
 
-      // $apartments = Apartment::where([
-      //   ['title', '!=', Null],
-      //   [function ($query) use ($request) {
-      //     if(($term = $request->term)) {
-      //       $query->orWhere('title', 'LIKE', '%' . $term . '%')->get();
-      //       $query->orWhere('city', 'LIKE', '%' . $term . '%')->get();
-      //     }
-      //   }]
-      // ])
-      // ->orderBy('id', 'desc')
-      // ->paginate(10);
-      //
-      // return view('guests.apartments.index', compact('apartments'))
-      // ->with('i', (request()->input('page', 1) -1)* 5);
+      $apartamento = DB::table('apartment_promotion')
+                    ->where('apartment_id', '=', $apartmentId)
+                    ->get();
+      dd($apartamento);
+      foreach ($apartamento as $key => $app) {
+        $idapp = $app->apartment_id;
+      }
+      $apartments = Apartment::all()->where('id','=', $idapp );
+      return view('guests.apartments.index', compact('apartments'));
     }
+
     public function indexdb()
     {
       $apartments = Apartment::all();

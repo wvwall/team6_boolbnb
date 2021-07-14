@@ -14,11 +14,10 @@ class CreateViewsTable extends Migration
     public function up()
     {
         Schema::create('views', function (Blueprint $table) {
-            $table->id();
-            $table->ipAddress('ip_address')->nullable();
-            $table->unsignedBigInteger('apartment_id')->nullable();
-            $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('set null');
-            $table->timestamps();
+          $table->id();
+           $table->foreignId('apartment_id')->constrained();
+           $table->string('ip_address', 45);
+           $table->timestamps();
         });
     }
 
