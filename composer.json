@@ -62,9 +62,9 @@
             "@php artisan key:generate --ansi"
         ]
     },
-    {
+ 
   "require" : {
     "braintree/braintree_php" : "6.3.0"
   }
 }
-}
+

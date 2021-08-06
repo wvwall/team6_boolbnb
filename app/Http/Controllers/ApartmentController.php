@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Promotion;
 use App\User;
-use App\Promotion;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
